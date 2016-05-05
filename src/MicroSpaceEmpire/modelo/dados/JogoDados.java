@@ -19,13 +19,6 @@ import MicroSpaceEmpire.modelo.Cartas.Systems.StartingSystems.*;
  * @author DavidSoares [21220084] && JorgeNogueira [21200794]
  */
 public class JogoDados {
-
-//    private List<Bola> saco;
-//    private List<BolaBranca> bolasBrancasPontuacao;
-//    private List<BolaBranca> bolasBrancasRemovidas;
-//    private List<BolaPreta> bolasPretasRemovidas;
-//    private int valorApostado;
-    //MSE
     private ArrayList<NearSystem> NearSystems;
     private ArrayList<DistantSystem> DistantSystems;
     private ArrayList<System> Empire;
@@ -59,6 +52,8 @@ public class JogoDados {
         Collections.shuffle(NearSystems);          //Baralha o Deck dos sistemas proximos
 
         Empire.add(new HomeWorld());
+        
+        //~~~~~~~~~~~~~~Retirar o primeiro evento~~~~~~~~~~~~~~~~~~~//
 
     }
 
@@ -121,8 +116,8 @@ public class JogoDados {
         return bolasPretasRemovidas;
     }
 
-    public boolean isSacoVazio() {
-        return saco.isEmpty();
+    public boolean EventDeckVazio() {
+        return EventDeck.isEmpty();
     }
 
     public Bola retiraBolaDoSaco() throws EmptyException {

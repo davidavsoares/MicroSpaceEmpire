@@ -28,7 +28,7 @@ public class AguardaOpcao extends CorreJogo
             return this;
         }
         
-         if(getJogoDados().isSacoVazio()){ //Should not happen if this method was appropriately called...
+         if(getJogoDados().EventDeckVazio()){ //Should not happen if this method was appropriately called...
             return new Sair(getJogoDados());    
         }
          
@@ -57,7 +57,7 @@ public class AguardaOpcao extends CorreJogo
             bola2.serReveladaDoSacoAposOpcao();
         }
         
-        if(getJogoDados().isSacoVazio()){
+        if(getJogoDados().EventDeckVazio()){
             return new Sair(getJogoDados());    
         }
         

@@ -19,7 +19,7 @@ public class BolaBranca extends Bola {
     public IEstado serRetiradaDoSacoAposAposta() {
         getJogoDados().getBolasBrancasPontuacao().add(this);
         getJogoDados().ganhaAposta();
-        if (getJogoDados().isSacoVazio()) {
+        if (getJogoDados().EventDeckVazio()) {
             return new Sair(getJogoDados());
         }
 

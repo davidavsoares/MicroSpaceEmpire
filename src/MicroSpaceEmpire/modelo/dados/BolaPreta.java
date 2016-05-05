@@ -21,7 +21,7 @@ public class BolaPreta extends Bola {
 
         getJogoDados().perdeAposta();
 
-        if (getJogoDados().isSacoVazio()) {
+        if (getJogoDados().EventDeckVazio()) {
             return new Sair(getJogoDados());    //Should not be necessary...
         }
 
