@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package MicroSpaceEmpire.modelo.Cartas.Events;
 
 import MicroSpaceEmpire.modelo.Cartas.Event;
@@ -14,8 +9,16 @@ import MicroSpaceEmpire.modelo.Cartas.Event;
  */
 public class SmallInvasionForce extends Event{
     
-    public SmallInvasionForce(String n) {
-        super(n);
+    public SmallInvasionForce() 
+    {
+        super("Small Invasion Force");
     }
-    
+    public void fazEfeito()
+    {
+        //faz os efeitos da carta
+        // Against Last Empire System
+        // year 1 : Force +1
+        // year 1 : Force +2
+        //Optional : +1 Resistance with Planetary Defenses
+    }
 }

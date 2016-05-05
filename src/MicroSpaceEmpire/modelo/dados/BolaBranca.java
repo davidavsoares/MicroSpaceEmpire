@@ -38,6 +38,6 @@ public class BolaBranca extends Bola {
     }
 
     public void serReveladaDoSacoAposRetiradaBolaBranca() {
-        getJogoDados().getSaco().add(this);
+        getJogoDados().getEmpire().add(this);
     }
 }

@@ -9,7 +9,7 @@ import MicroSpaceEmpire.modelo.dados.JogoDados;
  *
  * @author DavidSoares [21220084] && JorgeNogueira [21200794]
  */
-public class AguardaInicio extends EstadoAdapter
+public class AguardaInicio extends CorreJogo
 {
     
     public AguardaInicio(JogoDados jogoDados)

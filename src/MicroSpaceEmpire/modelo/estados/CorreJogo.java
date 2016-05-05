@@ -7,11 +7,11 @@ import MicroSpaceEmpire.modelo.dados.JogoDados;
  *
  * @author DavidSoares [21220084] && JorgeNogueira [21200794]
  */
-public class EstadoAdapter implements IEstado {
+public class CorreJogo implements IEstado {
 
     private JogoDados jogoDados;
 
-    public EstadoAdapter(JogoDados jogoDados) {
+    public CorreJogo(JogoDados jogoDados) {
         this.jogoDados = jogoDados;
     }
 
@@ -26,6 +26,13 @@ public class EstadoAdapter implements IEstado {
     @Override
     public IEstado iniciar() {
         return this;
+    }
+
+    @Override
+    public IEstado CarregarJogo() {
+        return this;
+       
+
     }
 
     @Override
@@ -50,7 +57,7 @@ public class EstadoAdapter implements IEstado {
 
     @Override
     public IEstado Estado_1() {
-       return this;
+        return this;
     }
 
     @Override
@@ -65,7 +72,7 @@ public class EstadoAdapter implements IEstado {
 
     @Override
     public IEstado Estado_4() {
-       return this;
+        return this;
     }
 
 }

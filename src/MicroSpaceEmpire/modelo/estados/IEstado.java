@@ -8,6 +8,8 @@ package MicroSpaceEmpire.modelo.estados;
 public interface IEstado {
 
     IEstado iniciar();
+    
+    IEstado CarregarJogo();
 
     IEstado terminar();
 

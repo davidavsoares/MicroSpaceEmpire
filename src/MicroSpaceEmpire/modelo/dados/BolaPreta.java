@@ -31,7 +31,7 @@ public class BolaPreta extends Bola {
     @Override
     public void serReveladaDoSacoAposOpcao() {
         //According to the rules, the bola returns to the bag...
-        getJogoDados().getSaco().add(this);
+        getJogoDados().getEmpire().add(this);
     }
 
     @Override

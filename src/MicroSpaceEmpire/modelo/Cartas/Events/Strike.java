@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package MicroSpaceEmpire.modelo.Cartas.Events;
 
 import MicroSpaceEmpire.modelo.Cartas.Event;
@@ -12,10 +7,17 @@ import MicroSpaceEmpire.modelo.Cartas.Event;
  *
  * @author DavidSoares [21220084] && JorgeNogueira [21200794]
  */
-public class Strike extends Event{
-    
-    public Strike(String n) {
-        super(n);
+public class Strike extends Event {
+
+    public Strike() {
+        super("Strike");
     }
-    
+
+    public void fazEfeito() {
+        //faz os efeitos da carta
+        // year 1 : No resources next turn
+        // year 1 : No resources next turn
+        //Optional : With Robot Workers, gain 1/2 instead of zero(round up)
+    }
+
 }

@@ -47,6 +47,10 @@ public class Jogo {
         setEstado(getEstado().iniciar());
     }
 
+    public void CarregarJogo() {
+        setEstado(getEstado().CarregarJogo());
+    }
+
     public void terminar() {
         setEstado(getEstado().terminar());
     }

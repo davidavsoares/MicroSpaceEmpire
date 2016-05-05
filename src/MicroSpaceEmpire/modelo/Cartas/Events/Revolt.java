@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package MicroSpaceEmpire.modelo.Cartas.Events;
 
 import MicroSpaceEmpire.modelo.Cartas.Event;
@@ -12,10 +7,17 @@ import MicroSpaceEmpire.modelo.Cartas.Event;
  *
  * @author DavidSoares [21220084] && JorgeNogueira [21200794]
  */
-public class Revolt extends Event{
-    
-    public Revolt(String n)
-    {
-        super(n);
+public class Revolt extends Event {
+
+    public Revolt() {
+        super("Revolt");
+    }
+
+    public void fazEfeito() {
+        //faz os efeitos da carta
+        // Against System with Least Resistance
+        // year 1 : Force +2
+        // year 1 : Force +3
+        //Optional : +1 System Resistance with Hyper Television
     }
 }

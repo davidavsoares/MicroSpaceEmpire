@@ -11,7 +11,7 @@ import MicroSpaceEmpire.modelo.dados.EmptyException;
  *
  * @author DavidSoares [21220084] && JorgeNogueira [21200794]
  */
-public class AguardaOpcao extends EstadoAdapter
+public class AguardaOpcao extends CorreJogo
 {
     
     public AguardaOpcao(JogoDados dataGame)

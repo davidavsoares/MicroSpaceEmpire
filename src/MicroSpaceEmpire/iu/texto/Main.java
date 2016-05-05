@@ -10,7 +10,7 @@ import MicroSpaceEmpire.modelo.Jogo;
 public class Main {
 
     public static void main(String[] args) {
-        IUTexto ui = new IUTexto(new Jogo());
+        MainMenu ui = new MainMenu(new Jogo());
         ui.corre();
     }
 }

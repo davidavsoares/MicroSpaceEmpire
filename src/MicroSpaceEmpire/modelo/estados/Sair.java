@@ -7,7 +7,7 @@ import MicroSpaceEmpire.modelo.dados.JogoDados;
  *
  * @author DavidSoares [21220084] && JorgeNogueira [21200794]
  */
-public class Sair extends EstadoAdapter {
+public class Sair extends CorreJogo {
 
     public Sair(JogoDados jogoDados) {
         super(jogoDados);

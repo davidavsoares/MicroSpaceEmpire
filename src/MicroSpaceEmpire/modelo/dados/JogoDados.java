@@ -3,6 +3,15 @@ package MicroSpaceEmpire.modelo.dados;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import MicroSpaceEmpire.modelo.Cartas.Event;
+import MicroSpaceEmpire.modelo.Cartas.System;
+
+import MicroSpaceEmpire.modelo.Cartas.Events.*;
+import MicroSpaceEmpire.modelo.Cartas.Systems.*;
+
+import MicroSpaceEmpire.modelo.Cartas.Systems.NearSystems.*;
+import MicroSpaceEmpire.modelo.Cartas.Systems.DistantSystems.*;
+import MicroSpaceEmpire.modelo.Cartas.Systems.StartingSystems.*;
 
 /**
  * I.S.E.C.
@@ -11,51 +20,76 @@ import java.util.List;
  */
 public class JogoDados {
 
-    private List<Bola> saco;
-    private List<BolaBranca> bolasBrancasPontuacao;
-    private List<BolaBranca> bolasBrancasRemovidas;
-    private List<BolaPreta> bolasPretasRemovidas;
-    private int valorApostado;
-
+//    private List<Bola> saco;
+//    private List<BolaBranca> bolasBrancasPontuacao;
+//    private List<BolaBranca> bolasBrancasRemovidas;
+//    private List<BolaPreta> bolasPretasRemovidas;
+//    private int valorApostado;
     //MSE
-//    private ArrayList<NearSystem> NearSystems;
-//    private ArrayList<DistantSystem> DistantSystems;
-//    private ArrayList<System> Empire;
-//    private ArrayList<System> UnalignedSystems;
-//
-//    private ArrayList<Event> EventDeck;
-//    private ArrayList<Event> EventDiscard;
-//
-//    private Event CurrentEvent;
-    static final int NBOLAS = 10;
+    private ArrayList<NearSystem> NearSystems;
+    private ArrayList<DistantSystem> DistantSystems;
+    private ArrayList<System> Empire;
+    private ArrayList<System> UnalignedSystems;
+    // private ArrayList<Tecnologie> Tecnologies;
+    private ArrayList<Event> EventDeck;
+    private ArrayList<Event> EventDiscard;
+
+    private Event CurrentEvent;
+    static int ANO;
 
     public JogoDados() {
 //        iniciar();
-    }
+    }               //Construtor que chama a função iniciar()
 
     public void iniciar() {
 
-//        //MSE
-//        saco = new ArrayList<>();
-//        DistantSystems = new ArrayList<>();
-//        Empire = new ArrayList<>();
-//        UnalignedSystems = new ArrayList<>();
-//
-//        EventDeck = new ArrayList<>();
+        DistantSystems = new ArrayList<>();       //Cria um array com os sistemas distantes
+        Empire = new ArrayList<>();               //Cria um array com os sistemas que pertencem ao imperio
+        UnalignedSystems = new ArrayList<>();     //Cria um array com os sistemas desalinhados
+        EventDeck = new ArrayList<>();            //Cria  um array com os eventos
 
-        saco = new ArrayList<>();
-        bolasBrancasPontuacao = new ArrayList<>();
-        bolasBrancasRemovidas = new ArrayList<>();
-        bolasPretasRemovidas = new ArrayList<>();
+        PreparaJogo();
+    }
 
-        for (int i = 0; i < NBOLAS; i++) {
-            saco.add(new BolaBranca(this));
-            saco.add(new BolaPreta(this));
-        }
+    public void PreparaJogo() {
 
-        Collections.shuffle(saco);
+        PreparaEventos();
+        PreparaSistemas();
+        Collections.shuffle(DistantSystems);      //Baralha o Deck dos sistemas distantes
+        Collections.shuffle(NearSystems);          //Baralha o Deck dos sistemas proximos
 
-        valorApostado = 0;
+        Empire.add(new HomeWorld());
+
+    }
+
+    public void PreparaEventos() {
+
+        EventDeck.add(new Asteroid());
+        EventDeck.add(new DerelictShip());
+        EventDeck.add(new LargeInvasionForce());
+        EventDeck.add(new PeaceQuiet());
+        EventDeck.add(new Revolt());
+        EventDeck.add(new SmallInvasionForce());
+        EventDeck.add(new Strike());
+
+        Collections.shuffle(EventDeck);            //Baralha o Deck dos eventos
+
+    }
+
+    public void PreparaSistemas() {
+
+        DistantSystems.add(new Polaris());
+        DistantSystems.add(new Canopus());
+        DistantSystems.add(new GalaxysEdge());
+
+        NearSystems.add(new Cygnus());
+        NearSystems.add(new EpsilonEridani());
+        NearSystems.add(new Procyon());
+        NearSystems.add(new Proxima());
+        NearSystems.add(new Sirius());
+        NearSystems.add(new TauCeti());
+        NearSystems.add(new Wolf359());
+
     }
 
     public int getValoApostado() {
@@ -71,8 +105,8 @@ public class JogoDados {
         return true;
     }
 
-    public List<Bola> getSaco() {
-        return saco;
+    public ArrayList<System> getEmpire() {
+        return Empire;
     }
 
     public List<BolaBranca> getBolasBrancasPontuacao() {

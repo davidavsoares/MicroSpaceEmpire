@@ -9,7 +9,7 @@ import MicroSpaceEmpire.modelo.dados.EmptyException;
  *
  * @author DavidSoares [21220084] && JorgeNogueira [21200794]
  */
-public class AguardaAposta extends EstadoAdapter {
+public class AguardaAposta extends CorreJogo {
 
     public AguardaAposta(JogoDados jogoDados) {
         super(jogoDados);
