@@ -12,6 +12,7 @@ import MicroSpaceEmpire.modelo.Cartas.Systems.*;
 import MicroSpaceEmpire.modelo.Cartas.Systems.NearSystems.*;
 import MicroSpaceEmpire.modelo.Cartas.Systems.DistantSystems.*;
 import MicroSpaceEmpire.modelo.Cartas.Systems.StartingSystems.*;
+import MicroSpaceEmpire.modelo.Tecnologias.*;
 
 /**
  * I.S.E.C.
@@ -23,9 +24,10 @@ public class JogoDados {
     private ArrayList<DistantSystem> DistantSystems;
     private ArrayList<System> Empire;
     private ArrayList<System> UnalignedSystems;
-    // private ArrayList<Tecnologie> Tecnologies;
+    private ArrayList<Technology> Technologies;
     private ArrayList<Event> EventDeck;
     private ArrayList<Event> EventDiscard;
+    private ArrayList<Technology> TechnologyDiscovered;
 
     private Event CurrentEvent;
     static int ANO;
@@ -40,6 +42,7 @@ public class JogoDados {
         Empire = new ArrayList<>();               //Cria um array com os sistemas que pertencem ao imperio
         UnalignedSystems = new ArrayList<>();     //Cria um array com os sistemas desalinhados
         EventDeck = new ArrayList<>();            //Cria  um array com os eventos
+        TechnologyDiscovered = new ArrayList<>(); //Cria um array com as tecnologias descobertas
 
         PreparaJogo();
     }
@@ -185,8 +188,10 @@ public class JogoDados {
         String s;
 
         s = "PONTUACAO: " + getPontuacao();
-        s += "\n\n" + "Bolas brancas de pontuacao: " + bolasBrancasPontuacao;
-        s += "\n" + "Saco (" + saco.size() + " bolas): " + saco;
+        s += "\n\n" + "Império: " + Empire;                                     //Imprime as cartas que fazem parte do império
+        s += "\n" + "Tecnologias descobertas: " + TechnologyDiscovered;         //Imprime as cartas que fazem parte do império
+        s += "\n" + "Evento actual: " + CurrentEvent;                           //Imprime a carta de evento actual
+        s += "\n" + "Eventos descartados: " + EventDiscard;                     //Imprime os eventos que já ocorreram
         s += "\n" + "Bolas removidas do jogo:";
         s += "\n\t(" + bolasBrancasRemovidas.size() + " bolas brancas):" + bolasBrancasRemovidas;
         s += "\n\t(" + bolasPretasRemovidas.size() + " bolas pretas):" + bolasPretasRemovidas;
