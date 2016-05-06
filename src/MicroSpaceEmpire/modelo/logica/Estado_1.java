@@ -1,6 +1,7 @@
 package MicroSpaceEmpire.modelo.logica;
 
 import MicroSpaceEmpire.modelo.Dados;
+import MicroSpaceEmpire.modelo.Tecnologias.Technologies.ForwardStarbases;
 
 /**
  *
@@ -14,7 +15,11 @@ public class Estado_1 extends Estado_0 {
 
     @Override
     public IEstado ConquistarSistema() {
-        return new Estado_2(getGameInfo());
+        if (!getGameInfo().isEmptyUnalignedSystems()) {
+            return new Estado_2(getGameInfo());
+        } else {
+            return this; //Exception
+        }
     }
 
     @Override
@@ -24,7 +29,10 @@ public class Estado_1 extends Estado_0 {
 
     @Override
     public IEstado ExplorarDistantSystem() {
-        return new Estado_2(getGameInfo());
+        if (getGameInfo().containsTechnologyDiscovered(new ForwardStarbases())) {
+            return new Estado_2(getGameInfo());
+        } else {
+            return this; //Exception
+        }
     }
-
 }

@@ -4,11 +4,11 @@ import MicroSpaceEmpire.modelo.Cartas.Systems.DistantSystems.Canopus;
 import MicroSpaceEmpire.modelo.Cartas.Event;
 import MicroSpaceEmpire.modelo.Cartas.System;
 import MicroSpaceEmpire.modelo.Cartas.Events.*;
-import MicroSpaceEmpire.modelo.Cartas.Systems.*;
 import MicroSpaceEmpire.modelo.Cartas.Systems.DistantSystems.*;
 import MicroSpaceEmpire.modelo.Cartas.Systems.NearSystems.*;
 import MicroSpaceEmpire.modelo.Cartas.Systems.StartingSystems.HomeWorld;
 import MicroSpaceEmpire.modelo.Tecnologias.Technology;
+import MicroSpaceEmpire.modelo.Tecnologias.Technologies.*;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -44,6 +44,7 @@ public class Dados {
         ANO = 1;
         PreparaEventos();
         PreparaSistemas();
+        PreparaTecnologias();
         Collections.shuffle(DistantSystemsDeck);      //Baralha o Deck dos sistemas distantes
         Collections.shuffle(NearSystemsDeck);          //Baralha o Deck dos sistemas proximos
 
@@ -80,6 +81,10 @@ public class Dados {
         (new Wolf359(this)).IntegrarNearSystemsDeck();
     }
 
+    public void PreparaTecnologias() {
+        TechnologyDiscovered.add(new ForwardStarbases());
+    }
+
     public ArrayList<System> getEmpire() {      //Funcao que permite adicionar um sistema ao império
         return Empire;
     }
@@ -110,6 +115,38 @@ public class Dados {
 
     public ArrayList<Event> getEventDiscard() {             //Funcao que permite adicionar um evento á lista dos já utilizados
         return EventDiscard;
+    }
+
+    public boolean isEmptyUnalignedSystems() {
+        return UnalignedSystems.isEmpty();
+    }
+
+    public boolean isEmptyDistantSystemsDeck() {
+        return DistantSystemsDeck.isEmpty();
+    }
+
+    public boolean isEmptyEventDeck() {
+        return EventDeck.isEmpty();
+    }
+
+    public boolean isEmptyEventDiscard() {
+        return EventDiscard.isEmpty();
+    }
+
+    public boolean isEmptyNearSystemsDeck() {
+        return NearSystemsDeck.isEmpty();
+    }
+
+    public boolean isEmptyTechnologies() {
+        return Technologies.isEmpty();
+    }
+
+    public boolean isEmptyTechnologyDiscovered() {
+        return TechnologyDiscovered.isEmpty();
+    }
+
+    public boolean containsTechnologyDiscovered(Technology o) {
+        return TechnologyDiscovered.contains(o);
     }
 
     @Override
