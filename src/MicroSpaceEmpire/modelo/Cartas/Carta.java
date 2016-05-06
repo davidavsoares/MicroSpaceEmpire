@@ -12,8 +12,9 @@ import MicroSpaceEmpire.modelo.Dados;
  *
  * @author DavidSoares [21220084] && JorgeNogueira [21200794]
  */
-public abstract class Carta {
+public abstract class Carta implements java.io.Serializable {
 
+    private static final long serialVersionUID = 42L;
     private Dados GameInfo;
 
     public Carta(Dados GameInfo) {

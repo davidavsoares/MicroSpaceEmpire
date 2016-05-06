@@ -9,8 +9,9 @@ import java.util.Objects;
  *
  * @author DavidSoares [21220084] && JorgeNogueira [21200794]
  */
-public class Technology {
+public class Technology implements java.io.Serializable {
 
+    private static final long serialVersionUID = 42L;
     private Dados GameInfo;
 
     public Technology(Dados GameInfo) {

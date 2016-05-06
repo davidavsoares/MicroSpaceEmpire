@@ -1,13 +1,17 @@
 package MicroSpaceEmpire.modelo.logica;
 
 import MicroSpaceEmpire.modelo.Dados;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+import java.io.IOException;
 
 /**
  *
  * @author David
  */
-public class Estado_0 implements IEstado {
+public class Estado_0 implements IEstado, java.io.Serializable {
 
+    private static final long serialVersionUID = 42L;
     private Dados GameInfo;
 
     public Estado_0(Dados GameInfo) {
@@ -107,7 +111,18 @@ public class Estado_0 implements IEstado {
 
     @Override
     public IEstado GuardarJogo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            FileOutputStream fileOut = new FileOutputStream("Save.ser");
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(GameInfo);
+            out.writeObject(this);
+            out.close();
+            fileOut.close();
+        } catch (IOException i) {
+            i.printStackTrace();
+
+        }
+        return this;
     }
 
 }

@@ -30,6 +30,9 @@ public abstract class System extends Carta {
     public void IntegrarImperio() //Função polimorfica para fazer um planeta integrar o imperio
     {
         getGameInfo().getEmpire().add(this);
+        getGameInfo().setMetalProduction(getGameInfo().getMetalProduction() + this.getMetalProduction());
+        getGameInfo().setWealthProduction(getGameInfo().getWealthProduction() + this.getWealthProduction());
+        getGameInfo().setVictoryPoints(getGameInfo().getVictoryPoints() + this.getVictoryPoints());
     }
 
     public void IntegrarUnaligned() //Função polimorfica para fazer um planeta integrar o imperio
@@ -55,7 +58,6 @@ public abstract class System extends Carta {
     }
 
     public void Batalha() {
-
         if (!ConquistaSistema()) {
             ExploraSistema();
         }

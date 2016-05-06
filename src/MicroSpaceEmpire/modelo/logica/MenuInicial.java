@@ -1,6 +1,9 @@
 package MicroSpaceEmpire.modelo.logica;
 
 import MicroSpaceEmpire.modelo.Dados;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 
 /**
  *
@@ -12,9 +15,24 @@ public class MenuInicial extends Estado_0 {
         super(GameInfo);
     }
 
-    @Override
-    public IEstado CarregarJogo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public IEstado CarregarJogo(Dados GameInfo) {
+        IEstado aux = null;
+        try {
+            FileInputStream fileIn = new FileInputStream("Save.ser");
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            GameInfo = ((Dados) in.readObject());
+            aux = (IEstado) in.readObject();
+            in.close();
+            fileIn.close();
+        } catch (IOException i) {
+            i.printStackTrace();
+            return aux;
+        } catch (ClassNotFoundException c) {
+            System.out.println("Class not found");
+            c.printStackTrace();
+            return aux;
+        }
+        return aux;
     }
 
     @Override

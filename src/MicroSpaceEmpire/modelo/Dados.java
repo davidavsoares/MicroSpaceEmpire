@@ -17,8 +17,9 @@ import java.util.Collections;
  *
  * @author David
  */
-public class Dados {
+public class Dados implements java.io.Serializable {
 
+    private static final long serialVersionUID = 42L;
     private ArrayList<System> NearSystemsDeck;          //Sistemas proximos (Face voltada para baixo)
     private ArrayList<System> DistantSystemsDeck;       //Sistemas distantes (Face voltada para baixo)
     private ArrayList<System> Empire;                   //Sistemas pertencentes ao império
@@ -30,13 +31,17 @@ public class Dados {
 
     private Event CurrentEvent;                         //Evento actual
     static int ANO;                                     //Ano actual
+    private int WealthProduction;
+    private int MetalProduction;
     private int MilitaryStrength;
     private int Wealth;
     private int VictoryPoints;
-    private int metal;
+    private int Metal;
     private int DADO;
+    private int MaxStorage;
 
     public Dados() {
+
         DistantSystemsDeck = new ArrayList<>();         //Cria um array com os sistemas distantes
         NearSystemsDeck = new ArrayList<>();            //Cria um array com os sistemas distantes
         Empire = new ArrayList<>();                     //Cria um array com os sistemas que pertencem ao imperio
@@ -48,6 +53,7 @@ public class Dados {
     }
 
     public void PreparaJogo() {
+        MaxStorage = 3;
         MilitaryStrength = 0;
         ANO = 1;
         PreparaEventos();
@@ -74,6 +80,37 @@ public class Dados {
 
     }
 
+    public int getMaxStorage() {
+        return MaxStorage;
+    }
+
+    public void setMaxStorage(int MaxStorage) {
+        this.MaxStorage = MaxStorage;
+    }
+
+    public void Recolhe() {
+        setMetal(+MetalProduction);
+        setWealth(+WealthProduction);
+    }
+
+    public void setMetal(int metal) {
+        this.Metal = metal;
+        if (this.Metal < 0) {
+            Metal = 0;
+        } else if (Metal > MaxStorage) {
+            Metal = MaxStorage;
+        }
+    }
+
+    public void setWealth(int Wealth) {
+        this.Wealth = Wealth;
+        if (this.Wealth < 0) {
+            this.Wealth = 0;
+        } else if (Wealth > MaxStorage) {
+            Wealth = MaxStorage;
+        }
+    }
+
     public void setDADO(int DADO) {
         this.DADO = DADO;
     }
@@ -83,6 +120,46 @@ public class Dados {
         if (this.MilitaryStrength < 0) {
             this.MilitaryStrength = 0;
         }
+    }
+
+    public Event getCurrentEvent() {
+        return CurrentEvent;
+    }
+
+    public void setCurrentEvent(Event CurrentEvent) {
+        this.CurrentEvent = CurrentEvent;
+    }
+
+    public int getWealthProduction() {
+        return WealthProduction;
+    }
+
+    public void setWealthProduction(int WealthProduction) {
+        this.WealthProduction = WealthProduction;
+    }
+
+    public int getMetalProduction() {
+        return MetalProduction;
+    }
+
+    public void setMetalProduction(int MetalProduction) {
+        this.MetalProduction = MetalProduction;
+    }
+
+    public int getWealth() {
+        return Wealth;
+    }
+
+    public int getVictoryPoints() {
+        return VictoryPoints;
+    }
+
+    public void setVictoryPoints(int VictoryPoints) {
+        this.VictoryPoints = VictoryPoints;
+    }
+
+    public int getMetal() {
+        return Metal;
     }
 
     public static int getANO() {
@@ -115,7 +192,7 @@ public class Dados {
         (new PlanetaryDefenses(this)).IntegrarTechnologies();
         (new HyperTelevision(this)).IntegrarTechnologies();
         (new InterstellarDiplomacy(this)).IntegrarTechnologies();
-        (new InterspeciesCommerce(this)).IntegrarTechnologies();
+        (new InterspeciesCommerce(this)).IntegrarTechnologyDiscovered();
         (new InterstellarBanking(this)).IntegrarTechnologies();
     }
 
@@ -219,7 +296,12 @@ public class Dados {
         s += "\n" + "Evento actual: " + CurrentEvent;                           //Imprime a carta de evento actual
         s += "\n" + "Eventos descartados: " + EventDiscard;                     //Imprime os eventos que já ocorreram
         s += "\n" + "Dado: " + DADO;
-        s += "\n" + "Military Strength: " + MilitaryStrength;
+        s += "\n" + "Força Militar: " + MilitaryStrength;
+        s += "\n" + "Riqueza: " + Wealth;
+        s += "\n" + "Producao de Riqueza: " + WealthProduction;
+        s += "\n" + "Metal: " + Metal;
+        s += "\n" + "Produção de metal: " + MetalProduction;
+        //s += "\n" + "Pontos de vitória: " + VictoryPoints;
 //        s += "\n\t(" + bolasBrancasRemovidas.size() + " bolas brancas):" + bolasBrancasRemovidas;
 //        s += "\n\t(" + bolasPretasRemovidas.size() + " bolas pretas):" + bolasPretasRemovidas;
 

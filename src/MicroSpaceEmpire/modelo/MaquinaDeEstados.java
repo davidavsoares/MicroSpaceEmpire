@@ -13,6 +13,14 @@ public class MaquinaDeEstados {
 
     private Dados GameInfo;
 
+    public Dados getGameInfo() {
+        return GameInfo;
+    }
+
+    public void setGameInfo(Dados GameInfo) {
+        this.GameInfo = GameInfo;
+    }
+
     @Override
     public String toString() {
         return GameInfo.toString();
