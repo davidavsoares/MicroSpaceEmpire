@@ -11,26 +11,43 @@ import MicroSpaceEmpire.modelo.Dados;
 public class Wolf359 extends NearSystem {
     private static int MetalProduction;
     private static int VictoryPoints;
+    private static int Resistance;
     
     public Wolf359(Dados GameInfo) 
     {
-        super(GameInfo, 5);
+        super(GameInfo);
         MetalProduction = 1;
         VictoryPoints = 1;
+        Resistance = 5;
     }
 
     @Override
-    public String toString() {
-        return "Wolf359";
+    public String toString() 
+    {
+        return "Wolf 359";
     }
 
+    @Override
      public int getVictoryPoints() 
     {
         return VictoryPoints;
     }
     
+    @Override
     public int getMetalProduction() 
     {
         return MetalProduction;
+    }
+
+    @Override
+    public int getWealthProduction() 
+    {
+        return 0;
+    }
+
+    @Override
+    public int getResistance() 
+    {
+        return Resistance;
     }
 }

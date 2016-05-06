@@ -16,17 +16,6 @@ public abstract class DistantSystem extends System {
         //Resistance = r;
     }
 
-//    @Override
-//    public abstract int getMetalProduction();
-//
-//    @Override
-//    public abstract int getWealthProduction();
-//
-//    // public abstract int getResistance();
-//    @Override
-//    public abstract int getVictoryPoints();
-
-    
     public void IntegrarDistantSystemsDeck() {
         getGameInfo().getDistantSystemsDeck().add(this);
 

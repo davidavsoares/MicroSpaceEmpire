@@ -11,12 +11,14 @@ import MicroSpaceEmpire.modelo.Dados;
 public class Proxima extends NearSystem {
     private static int MetalProduction;
     private static int VictoryPoints;
+    private static int Resistance;
     
     public Proxima(Dados GameInfo) 
     {
-        super(GameInfo, 6);
+        super(GameInfo);
         MetalProduction = 1;
         VictoryPoints = 1;
+        Resistance = 6;
     }
 
     @Override
@@ -24,14 +26,28 @@ public class Proxima extends NearSystem {
         return "Proxima";
     }
 
+    @Override
     public int getVictoryPoints() 
     {
         return VictoryPoints;
     }
     
+    @Override
     public int getMetalProduction() 
     {
         return MetalProduction;
+    }
+
+    @Override
+    public int getWealthProduction() 
+    {
+        return 0;
+    }
+
+    @Override
+    public int getResistance() 
+    {
+        return Resistance;
     }
 
 }

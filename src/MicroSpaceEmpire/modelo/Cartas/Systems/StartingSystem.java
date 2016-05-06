@@ -13,14 +13,4 @@ public abstract class StartingSystem extends System {
     public StartingSystem(Dados GameInfo) {
         super(GameInfo);
     }
-
-    @Override
-    public int getMetalProduction() {
-        return 0;
-    }
-
-    @Override
-    public int getWealthProduction() {
-        return 0;
-    }
 }

@@ -24,10 +24,12 @@ public class HomeWorld extends StartingSystem {
         return "HomeWorld";
     }
 
+    @Override
     public int getMetalProduction() {
         return MetalProduction;
     }
 
+    @Override
     public int getWealthProduction() {
         return WealthProduction;
     }

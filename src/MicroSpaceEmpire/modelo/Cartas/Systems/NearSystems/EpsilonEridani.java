@@ -10,20 +10,41 @@ import MicroSpaceEmpire.modelo.Dados;
  */
 public class EpsilonEridani extends NearSystem {
     private static int VictoryPoints;
+    private static int Resistance;
     
     public EpsilonEridani(Dados GameInfo) {
-        super(GameInfo, 8);
+        super(GameInfo);
         VictoryPoints = 1;
+        Resistance = 8;
     }
 
     @Override
     public String toString() {
-        return "EpsilonEridani";
+        return "Epsilon Eridani";
     }
 
+    @Override
     public int getVictoryPoints() 
     {
         return VictoryPoints;
+    }
+
+    @Override
+    public int getMetalProduction() 
+    {
+        return 0;
+    }
+
+    @Override
+    public int getWealthProduction() 
+    {
+        return 0;
+    }
+
+    @Override
+    public int getResistance() 
+    {
+        return Resistance;
     }
 
 }

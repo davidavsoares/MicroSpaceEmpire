@@ -21,7 +21,7 @@ public class GalaxysEdge extends DistantSystem {
 
     @Override
     public String toString() {
-        return "GalaxysEdge";
+        return "Galaxy's Edge";
     }
 
     @Override
