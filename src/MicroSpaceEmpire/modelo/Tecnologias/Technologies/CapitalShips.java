@@ -13,6 +13,11 @@ public class CapitalShips extends Technology {
         super("Capital Ships");
     }
 
+    @Override
+    public String toString() {
+        return "CapitalShips";
+    }
+
     public void fazEfeito() {
         //faz os efeitos da carta
     }

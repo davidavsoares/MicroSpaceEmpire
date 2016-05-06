@@ -1,6 +1,7 @@
 package MicroSpaceEmpire.modelo.Cartas.Systems.NearSystems;
 
 import MicroSpaceEmpire.modelo.Cartas.Systems.NearSystem;
+import MicroSpaceEmpire.modelo.Dados;
 
 /**
  * I.S.E.C.
@@ -8,14 +9,21 @@ import MicroSpaceEmpire.modelo.Cartas.Systems.NearSystem;
  * @author DavidSoares [21220084] && JorgeNogueira [21200794]
  */
 public class EpsilonEridani extends NearSystem {
-
-    public EpsilonEridani() {
-        super("Epsilon Eridani", 8);
+    private static int VictoryPoints;
+    
+    public EpsilonEridani(Dados GameInfo) {
+        super(GameInfo, 8);
+        VictoryPoints = 1;
     }
 
-    public void fazEfeito() {
-        //faz os efeitos da carta
-        // 1 Victory Point
+    @Override
+    public String toString() {
+        return "EpsilonEridani";
+    }
+
+    public int getVictoryPoints() 
+    {
+        return VictoryPoints;
     }
 
 }

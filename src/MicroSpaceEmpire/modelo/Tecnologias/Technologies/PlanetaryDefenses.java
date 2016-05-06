@@ -13,6 +13,11 @@ public class PlanetaryDefenses extends Technology {
         super("Planetary Defenses");
     }
 
+    @Override
+    public String toString() {
+        return "Planetary Defenses";
+    }
+
     public void fazEfeito() {
         //faz os efeitos da carta
     }

@@ -1,6 +1,7 @@
 package MicroSpaceEmpire.modelo.Cartas.Systems.DistantSystems;
 
 import MicroSpaceEmpire.modelo.Cartas.Systems.DistantSystem;
+import MicroSpaceEmpire.modelo.Dados;
 
 /**
  * I.S.E.C.
@@ -8,14 +9,27 @@ import MicroSpaceEmpire.modelo.Cartas.Systems.DistantSystem;
  * @author DavidSoares [21220084] && JorgeNogueira [21200794]
  */
 public class Polaris extends DistantSystem {
-
-    public Polaris() {
-        super("Polaris", 9);
+    private static int MetalProduction;
+    private static int VictoryPoints;
+    
+    public Polaris(Dados GameInfo) {
+        super(GameInfo, 9);
+        MetalProduction = 1;
+        VictoryPoints = 2;
     }
 
-    public void fazEfeito() {
-        //faz os efeitos da carta
-        // +1 Metal Production
-        // 2 Victory Point
+    @Override
+    public String toString() {
+        return "Polaris";
+    }
+
+    public int getVictoryPoints() 
+    {
+        return VictoryPoints;
+    }
+    
+    public int getMetalProduction() 
+    {
+        return MetalProduction;
     }
 }

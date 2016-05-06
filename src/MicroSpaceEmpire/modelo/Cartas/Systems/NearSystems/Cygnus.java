@@ -1,6 +1,7 @@
 package MicroSpaceEmpire.modelo.Cartas.Systems.NearSystems;
 
 import MicroSpaceEmpire.modelo.Cartas.Systems.NearSystem;
+import MicroSpaceEmpire.modelo.Dados;
 
 /**
  * I.S.E.C.
@@ -8,14 +9,28 @@ import MicroSpaceEmpire.modelo.Cartas.Systems.NearSystem;
  * @author DavidSoares [21220084] && JorgeNogueira [21200794]
  */
 public class Cygnus extends NearSystem {
+    private static int WealthProdution;
+    private static int VictoryPoints;
 
-    public Cygnus() {
-        super("Cygnus", 5);
+    @Override
+    public String toString() {
+        return "Cygnus";
+    }
+    
+    public Cygnus(Dados GameInfo) 
+    {
+        super(GameInfo, 5);
+        WealthProdution = 1;
+        VictoryPoints = 1;
     }
 
-    public void fazEfeito() {
-        //faz os efeitos da carta
-        // +1 Wealth Production
-        // 1 Victory Point
+    public int getWealthProduction() 
+    {
+        return WealthProdution;
+    }
+    
+    public int getVictoryPoints() 
+    {
+        return VictoryPoints;
     }
 }

@@ -1,6 +1,7 @@
 package MicroSpaceEmpire.modelo.Cartas.Events;
 
 import MicroSpaceEmpire.modelo.Cartas.Event;
+import MicroSpaceEmpire.modelo.Dados;
 
 /**
  * I.S.E.C.
@@ -9,8 +10,13 @@ import MicroSpaceEmpire.modelo.Cartas.Event;
  */
 public class LargeInvasionForce extends Event {
 
-    public LargeInvasionForce() {
-        super("Large Invasion Force");
+    public LargeInvasionForce(Dados GameInfo) {
+        super(GameInfo);
+    }
+
+    @Override
+    public String toString() {
+        return "Large Invasion Force";
     }
 
     public void fazEfeito() {

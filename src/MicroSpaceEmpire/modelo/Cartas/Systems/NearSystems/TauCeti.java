@@ -1,6 +1,7 @@
 package MicroSpaceEmpire.modelo.Cartas.Systems.NearSystems;
 
 import MicroSpaceEmpire.modelo.Cartas.Systems.NearSystem;
+import MicroSpaceEmpire.modelo.Dados;
 
 /**
  * I.S.E.C.
@@ -8,13 +9,21 @@ import MicroSpaceEmpire.modelo.Cartas.Systems.NearSystem;
  * @author DavidSoares [21220084] && JorgeNogueira [21200794]
  */
 public class TauCeti extends NearSystem {
-
-    public TauCeti() {
-        super("Tau Ceti", 4);
+    private static int VictoryPoints;
+    
+    public TauCeti(Dados GameInfo) 
+    {
+        super(GameInfo, 4);
+        VictoryPoints = 1;
     }
 
-    public void fazEfeito() {
-        //faz os efeitos da carta
-        // 1 Victory Point
+    @Override
+    public String toString() {
+        return "TauCeti";
+    }
+
+    public int getVictoryPoints() 
+    {
+        return VictoryPoints;
     }
 }

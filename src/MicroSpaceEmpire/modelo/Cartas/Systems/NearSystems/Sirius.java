@@ -1,6 +1,7 @@
 package MicroSpaceEmpire.modelo.Cartas.Systems.NearSystems;
 
 import MicroSpaceEmpire.modelo.Cartas.Systems.NearSystem;
+import MicroSpaceEmpire.modelo.Dados;
 
 /**
  * I.S.E.C.
@@ -9,15 +10,22 @@ import MicroSpaceEmpire.modelo.Cartas.Systems.NearSystem;
  */
 public class Sirius extends NearSystem
 {
+    private static int VictoryPoints;
     
-    public Sirius() 
+    public Sirius(Dados GameInfo) 
     {
-        super("Sirius", 6);
+        super(GameInfo, 6);
+        VictoryPoints = 1;
     }
-    public void fazEfeito()
+
+    @Override
+    public String toString() {
+        return "Sirius";
+    }
+    
+    public int getVictoryPoints() 
     {
-        //faz os efeitos da carta
-        // 1 Victory Point
+        return VictoryPoints;
     }
     
 }

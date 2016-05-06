@@ -1,6 +1,7 @@
 package MicroSpaceEmpire.modelo.Cartas.Systems.StartingSystems;
 
 import MicroSpaceEmpire.modelo.Cartas.Systems.StartingSystem;
+import MicroSpaceEmpire.modelo.Dados;
 
 /**
  * I.S.E.C.
@@ -8,14 +9,28 @@ import MicroSpaceEmpire.modelo.Cartas.Systems.StartingSystem;
  * @author DavidSoares [21220084] && JorgeNogueira [21200794]
  */
 public class HomeWorld extends StartingSystem {
-
-    public HomeWorld() {
-        super("Home World");
+    private static int MetalProduction;
+    private static int WealthProduction;
+    
+    public HomeWorld(Dados GameInfo) 
+    {
+        super(GameInfo);
+        MetalProduction = 1;
+        WealthProduction = 1;
     }
 
-    public void fazEfeito() {
-        //faz os efeitos da carta
-        // +1 Metal Production
-        // +1 Wealth Production
+    @Override
+    public String toString() {
+        return "HomeWorld";
+    }
+    
+    public int getMetalProduction() 
+    {
+        return MetalProduction;
+    }
+    
+    public int getWealthProduction() 
+    {
+        return WealthProduction;
     }
 }

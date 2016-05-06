@@ -1,6 +1,7 @@
 package MicroSpaceEmpire.modelo.Cartas.Events;
 
 import MicroSpaceEmpire.modelo.Cartas.Event;
+import MicroSpaceEmpire.modelo.Dados;
 
 /**
  * I.S.E.C.
@@ -9,8 +10,13 @@ import MicroSpaceEmpire.modelo.Cartas.Event;
  */
 public class PeaceQuiet extends Event {
 
-    public PeaceQuiet() {
-        super("Peace & Quiet");
+    public PeaceQuiet(Dados GameInfo) {
+        super(GameInfo);
+    }
+
+    @Override
+    public String toString() {
+        return "Peace & Quiet";
     }
 
     public void fazEfeito() {

@@ -16,4 +16,9 @@ public class InterstellarDiplomacy extends Technology {
     public void fazEfeito() {
         //faz os efeitos da carta
     }
+
+    @Override
+    public String toString() {
+        return "Interstellar Diplomacy";
+    }
 }
