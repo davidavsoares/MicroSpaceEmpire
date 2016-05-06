@@ -92,7 +92,7 @@ public class Estado_0 implements IEstado {
 //-----------OUTROS---------//
     @Override
     public IEstado Passar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this;
     }
 
     @Override

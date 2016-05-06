@@ -27,4 +27,8 @@ public class Estado_3 extends Estado_0 {
         return new Estado_4(getGameInfo());
     }
 
+    public IEstado Passar() {
+        return new Estado_4(getGameInfo());
+    }
+
 }

@@ -4,6 +4,7 @@ import MicroSpaceEmpire.modelo.Cartas.Systems.DistantSystems.Canopus;
 import MicroSpaceEmpire.modelo.Cartas.Event;
 import MicroSpaceEmpire.modelo.Cartas.System;
 import MicroSpaceEmpire.modelo.Cartas.Events.*;
+import MicroSpaceEmpire.modelo.Cartas.Systems.DistantSystem;
 import MicroSpaceEmpire.modelo.Cartas.Systems.DistantSystems.*;
 import MicroSpaceEmpire.modelo.Cartas.Systems.NearSystems.*;
 import MicroSpaceEmpire.modelo.Cartas.Systems.StartingSystems.HomeWorld;
@@ -29,6 +30,11 @@ public class Dados {
 
     private Event CurrentEvent;                         //Evento actual
     static int ANO;                                     //Ano actual
+    private int MilitaryStrength;
+    private int Wealth;
+    private int VictoryPoints;
+    private int metal;
+    private int DADO;
 
     public Dados() {
         DistantSystemsDeck = new ArrayList<>();         //Cria um array com os sistemas distantes
@@ -42,6 +48,7 @@ public class Dados {
     }
 
     public void PreparaJogo() {
+        MilitaryStrength = 0;
         ANO = 1;
         PreparaEventos();
         PreparaSistemas();
@@ -65,6 +72,25 @@ public class Dados {
         (new Strike(this)).IntegrarEventDeck();             // Adiciona 'Strike' ao Deck de eventos
         Collections.shuffle(EventDeck);                     // Baralha o Deck dos eventos
 
+    }
+
+    public void setDADO(int DADO) {
+        this.DADO = DADO;
+    }
+
+    public void setMilitaryStrength(int MilitaryStrength) {
+        this.MilitaryStrength = MilitaryStrength;
+        if (this.MilitaryStrength < 0) {
+            this.MilitaryStrength = 0;
+        }
+    }
+
+    public static int getANO() {
+        return ANO;
+    }
+
+    public int getMilitaryStrength() {
+        return MilitaryStrength;
     }
 
     public void PreparaSistemas() {
@@ -117,11 +143,10 @@ public class Dados {
         return Technologies;
     }
 
-//    public Technology getTechnologies(String tech) {
-//        for (Technology Tech : Technologies) {
-//            if Tech.
-//        }
-//    }
+    public int Dice() {
+        int dice = (int) (Math.random() * 6 + 1);
+        return dice;
+    }
 
     public ArrayList<Technology> getTechnologyDiscovered() {
         return TechnologyDiscovered;
@@ -167,24 +192,34 @@ public class Dados {
         return Technologies.remove(o);
     }
 
+    public boolean removeSystem(System o) {
+        if (o instanceof DistantSystem) {
+            return DistantSystemsDeck.remove(o);
+        } else {
+            return NearSystemsDeck.remove(o);
+        }
+    }
+
     public Technology getTechnology(String tech) {
         for (Technology Tech : Technologies) {
-            if(tech.equalsIgnoreCase(Tech.toString()))
+            if (tech.equalsIgnoreCase(Tech.toString())) {
                 return Tech;
+            }
         }
         return null; //CRIAR EXCEPTION
     }
-    
 
     @Override
     public String toString() {
         String s;
 
-//        s = "PONTUACAO: " + getPontuacao();
         s = "\n\n" + "Império: " + Empire;                                     //Imprime as cartas que fazem parte do império
+        s += "\n" + "Unaligned Systems: " + UnalignedSystems;
         s += "\n" + "Tecnologias descobertas: " + TechnologyDiscovered;         //Imprime as cartas que fazem parte do império
         s += "\n" + "Evento actual: " + CurrentEvent;                           //Imprime a carta de evento actual
         s += "\n" + "Eventos descartados: " + EventDiscard;                     //Imprime os eventos que já ocorreram
+        s += "\n" + "Dado: " + DADO;
+        s += "\n" + "Military Strength: " + MilitaryStrength;
 //        s += "\n\t(" + bolasBrancasRemovidas.size() + " bolas brancas):" + bolasBrancasRemovidas;
 //        s += "\n\t(" + bolasPretasRemovidas.size() + " bolas pretas):" + bolasPretasRemovidas;
 

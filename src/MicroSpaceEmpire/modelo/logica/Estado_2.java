@@ -21,5 +21,8 @@ public class Estado_2 extends Estado_0 {
     public IEstado DecRiquezaIncMetal() {
         return new Estado_3(getGameInfo());
     }
+        public IEstado Passar() {
+        return new Estado_3(getGameInfo());
+    }
 
 }
