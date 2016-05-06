@@ -19,7 +19,7 @@ import java.util.Collections;
 public class Dados {
 
     private ArrayList<System> NearSystemsDeck;          //Sistemas proximos (Face voltada para baixo)
-    private ArrayList<System> DistantSystemsDeck;    //Sistemas distantes (Face voltada para baixo)
+    private ArrayList<System> DistantSystemsDeck;       //Sistemas distantes (Face voltada para baixo)
     private ArrayList<System> Empire;                   //Sistemas pertencentes ao império
     private ArrayList<System> UnalignedSystems;         //Sistemas desalinhados 
     private ArrayList<Technology> Technologies;         //Tecnologias não desenvolvidas
@@ -31,13 +31,14 @@ public class Dados {
     static int ANO;                                     //Ano actual
 
     public Dados() {
-        DistantSystemsDeck = new ArrayList<>();          //Cria um array com os sistemas distantes
+        DistantSystemsDeck = new ArrayList<>();         //Cria um array com os sistemas distantes
         NearSystemsDeck = new ArrayList<>();            //Cria um array com os sistemas distantes
-        Empire = new ArrayList<>();                  //Cria um array com os sistemas que pertencem ao imperio
-        UnalignedSystems = new ArrayList<>();        //Cria um array com os sistemas desalinhados
-        EventDeck = new ArrayList<>();              //Cria  um array com os eventos
-        TechnologyDiscovered = new ArrayList<>();   //Cria um array com as tecnologias descobertas
-        PreparaJogo();                              //Chama a funcao que prepara inicialmente o jogo       
+        Empire = new ArrayList<>();                     //Cria um array com os sistemas que pertencem ao imperio
+        UnalignedSystems = new ArrayList<>();           //Cria um array com os sistemas desalinhados
+        EventDeck = new ArrayList<>();                  //Cria  um array com os eventos
+        TechnologyDiscovered = new ArrayList<>();       //Cria um array com as tecnologias descobertas
+        Technologies = new ArrayList<>();
+        PreparaJogo();                                  //Chama a funcao que prepara inicialmente o jogo       
     }
 
     public void PreparaJogo() {
@@ -45,8 +46,8 @@ public class Dados {
         PreparaEventos();
         PreparaSistemas();
         PreparaTecnologias();
-        Collections.shuffle(DistantSystemsDeck);      //Baralha o Deck dos sistemas distantes
-        Collections.shuffle(NearSystemsDeck);          //Baralha o Deck dos sistemas proximos
+        Collections.shuffle(DistantSystemsDeck);        //Baralha o Deck dos sistemas distantes
+        Collections.shuffle(NearSystemsDeck);           //Baralha o Deck dos sistemas proximos
 
         //Empire.add(new HomeWorld());
         (new HomeWorld(this)).IntegrarImperio();
@@ -82,7 +83,14 @@ public class Dados {
     }
 
     public void PreparaTecnologias() {
-        TechnologyDiscovered.add(new ForwardStarbases());
+        (new CapitalShips(this)).IntegrarTechnologies();
+        (new ForwardStarbases(this)).IntegrarTechnologies();
+        (new RobotWorkers(this)).IntegrarTechnologies();
+        (new PlanetaryDefenses(this)).IntegrarTechnologies();
+        (new HyperTelevision(this)).IntegrarTechnologies();
+        (new InterstellarDiplomacy(this)).IntegrarTechnologies();
+        (new InterspeciesCommerce(this)).IntegrarTechnologies();
+        (new InterstellarBanking(this)).IntegrarTechnologies();
     }
 
     public ArrayList<System> getEmpire() {      //Funcao que permite adicionar um sistema ao império
@@ -108,6 +116,12 @@ public class Dados {
     public ArrayList<Technology> getTechnologies() {
         return Technologies;
     }
+
+//    public Technology getTechnologies(String tech) {
+//        for (Technology Tech : Technologies) {
+//            if Tech.
+//        }
+//    }
 
     public ArrayList<Technology> getTechnologyDiscovered() {
         return TechnologyDiscovered;
@@ -148,6 +162,19 @@ public class Dados {
     public boolean containsTechnologyDiscovered(Technology o) {
         return TechnologyDiscovered.contains(o);
     }
+
+    public boolean removeTechnology(Technology o) {
+        return Technologies.remove(o);
+    }
+
+    public Technology getTechnology(String tech) {
+        for (Technology Tech : Technologies) {
+            if(tech.equalsIgnoreCase(Tech.toString()))
+                return Tech;
+        }
+        return null; //CRIAR EXCEPTION
+    }
+    
 
     @Override
     public String toString() {

@@ -1,5 +1,6 @@
 package MicroSpaceEmpire.modelo.Tecnologias.Technologies;
 
+import MicroSpaceEmpire.modelo.Dados;
 import MicroSpaceEmpire.modelo.Tecnologias.Technology;
 
 /**
@@ -9,8 +10,8 @@ import MicroSpaceEmpire.modelo.Tecnologias.Technology;
  */
 public class PlanetaryDefenses extends Technology {
 
-    public PlanetaryDefenses() {
-        super("Planetary Defenses");
+    public PlanetaryDefenses(Dados GameInfo) {
+        super(GameInfo);
     }
 
     @Override
@@ -18,7 +19,12 @@ public class PlanetaryDefenses extends Technology {
         return "Planetary Defenses";
     }
 
-    public void fazEfeito() {
-        //faz os efeitos da carta
+    public void CompraTecnologia() {
+        if (getGameInfo().getTechnologyDiscovered().contains(new RobotWorkers(getGameInfo()))) {
+            IntegrarTechnologyDiscovered();
+            getGameInfo().removeTechnology(this); //exception para caso de ja ter sido comprado
+        } else {
+            //exception
+        }
     }
 }

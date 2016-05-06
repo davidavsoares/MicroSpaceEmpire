@@ -29,7 +29,7 @@ public class Estado_1 extends Estado_0 {
 
     @Override
     public IEstado ExplorarDistantSystem() {
-        if (getGameInfo().containsTechnologyDiscovered(new ForwardStarbases())) {
+        if (getGameInfo().containsTechnologyDiscovered(new ForwardStarbases(getGameInfo()))) {
             return new Estado_2(getGameInfo());
         } else {
             return this; //Exception

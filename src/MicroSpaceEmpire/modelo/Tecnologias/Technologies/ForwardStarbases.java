@@ -1,5 +1,6 @@
 package MicroSpaceEmpire.modelo.Tecnologias.Technologies;
 
+import MicroSpaceEmpire.modelo.Dados;
 import MicroSpaceEmpire.modelo.Tecnologias.Technology;
 
 /**
@@ -9,16 +10,31 @@ import MicroSpaceEmpire.modelo.Tecnologias.Technology;
  */
 public class ForwardStarbases extends Technology {
 
-    public ForwardStarbases() {
-        super("Forward Starbases");
+    public ForwardStarbases(Dados GameInfo) {
+        super(GameInfo);
     }
 
-    public void fazEfeito() {
-        //faz os efeitos da carta
+    public void CompraTecnologia() {
+        if (getGameInfo().getTechnologyDiscovered().contains(new CapitalShips(getGameInfo()))) {
+            IntegrarTechnologyDiscovered();
+            getGameInfo().removeTechnology(this); //exception para caso de ja ter sido comprado
+        } else {
+            //exception
+        }
     }
 
     @Override
     public String toString() {
-        return "ForwardStarbases";
+        return "Forward Starbases";
     }
+
+//    @Override
+//    public boolean equals(Object obj) {
+//        boolean sameSame = false;
+//
+//        if (obj != null && obj instanceof ForwardStarbases) {
+//            sameSame = this.toString().equals(((ForwardStarbases) obj).toString());
+//        }
+//        return sameSame;
+//    }
 }

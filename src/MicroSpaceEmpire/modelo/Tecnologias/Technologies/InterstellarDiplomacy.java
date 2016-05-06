@@ -1,5 +1,6 @@
 package MicroSpaceEmpire.modelo.Tecnologias.Technologies;
 
+import MicroSpaceEmpire.modelo.Dados;
 import MicroSpaceEmpire.modelo.Tecnologias.Technology;
 
 /**
@@ -9,12 +10,17 @@ import MicroSpaceEmpire.modelo.Tecnologias.Technology;
  */
 public class InterstellarDiplomacy extends Technology {
 
-    public InterstellarDiplomacy() {
-        super("Interstellar Diplomacy");
+    public InterstellarDiplomacy(Dados GameInfo) {
+        super(GameInfo);
     }
 
-    public void fazEfeito() {
-        //faz os efeitos da carta
+    public void CompraTecnologia() {
+        if (getGameInfo().getTechnologyDiscovered().contains(new HyperTelevision(getGameInfo()))) {
+            IntegrarTechnologyDiscovered();
+            getGameInfo().removeTechnology(this); //exception para caso de ja ter sido comprado
+        } else {
+            //exception
+        }
     }
 
     @Override

@@ -1,6 +1,8 @@
 package MicroSpaceEmpire.modelo.Tecnologias;
 
+import MicroSpaceEmpire.modelo.Dados;
 import MicroSpaceEmpire.modelo.Tecnologias.Technologies.ForwardStarbases;
+import java.util.Objects;
 
 /**
  * I.S.E.C.
@@ -9,29 +11,52 @@ import MicroSpaceEmpire.modelo.Tecnologias.Technologies.ForwardStarbases;
  */
 public class Technology {
 
-    private String nome;
+    private Dados GameInfo;
 
-    public Technology(String n) {
-        nome = n;
+    public Technology(Dados GameInfo) {
+        this.GameInfo = GameInfo;
     }
 
     public void IntegrarDescobertas() //Função polimorfica para fazer um planeta integrar o imperio
     {
-//        getGameInfo().getEmpire().add(this);
+        getGameInfo().getTechnologyDiscovered().add(this);
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 79 * hash + Objects.hashCode(this.GameInfo);
+        return hash;
+    }
+
+    @Override
     public boolean equals(Object obj) {
-        boolean sameSame = false;
-
-        if (obj != null && obj instanceof ForwardStarbases) {
-            sameSame = this.nome == ((ForwardStarbases) obj).getNome();
+        if (this == obj) {
+            return true;
         }
-
-        return sameSame;
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Technology other = (Technology) obj;
+        if (!Objects.equals(this.GameInfo, other.GameInfo)) {
+            return false;
+        }
+        return true;
     }
 
-    public String getNome() {
-        return nome;
+    public void IntegrarTechnologyDiscovered() {
+        GameInfo.getTechnologyDiscovered().add(this);
     }
-    
+
+    public void IntegrarTechnologies() {
+        GameInfo.getTechnologies().add(this);
+    }
+
+    public Dados getGameInfo() {
+        return GameInfo;
+    }
+
 }

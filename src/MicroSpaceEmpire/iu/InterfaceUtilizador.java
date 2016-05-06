@@ -23,7 +23,7 @@ public class InterfaceUtilizador {
     }
 
     public void LetTheGameBeggin() {
-        
+
         while (!(ME.getEstado() instanceof Fim)) {
 
             if (ME.getEstado() instanceof MenuInicial) {
@@ -34,6 +34,8 @@ public class InterfaceUtilizador {
                 iuEstado_2();
             } else if (ME.getEstado() instanceof Estado_3) {
                 iuEstado_3();
+            } else if (ME.getEstado() instanceof Estado_32) {
+                iuEstado_32();
             } else if (ME.getEstado() instanceof Estado_4) {
                 iuEstado_4();
             }
@@ -173,7 +175,7 @@ public class InterfaceUtilizador {
 
         System.out.println();
         System.out.println("1 - Construir força militar");
-        System.out.println("2 - Comprar tecnologia");
+        System.out.println("2 - Descobrir tecnologia");
         System.out.println("3 - Construir força militar e comprar tecnologia");
         System.out.println("8 - Passar");
         System.out.println("9 - Guardar jogo");
@@ -198,6 +200,70 @@ public class InterfaceUtilizador {
                 break;
             case 8:
                 ME.Passar();
+                break;
+            case 9:
+                ME.GuardarJogo();
+                break;
+            case 0:
+                ME.Sair();
+                break;
+            default:
+                ME.setEstado(ME.getEstado());
+                break;
+
+        }
+
+    }
+
+    private void iuEstado_32() {
+        PrintGame();
+        int opcao;
+
+        System.out.println("\n\n---------------------------------");
+
+        System.out.println();
+        System.out.println("1 - Descobrir Capital Ships           (3)");
+        System.out.println("2 - Descobrir Forward Starbases       (4)");
+        System.out.println("3 - Descobrir Robot Workers           (2)");
+        System.out.println("4 - Descobrir Planetary Defenses      (4)");
+        System.out.println("5 - Descobrir Hyper Television        (3)");
+        System.out.println("6 - Descobrir Interstellar Diplomacy  (5)");
+        System.out.println("7 - Descobrir Interspicies Commerce   (2)");
+        System.out.println("8 - Descobrir Interstellar Banking    (3)");
+        System.out.println("9 - Guardar jogo");
+        System.out.println("0 - Sair");
+        System.out.print("> ");
+
+        while (!sc.hasNextInt()) {
+            sc.next();
+        }
+
+        opcao = sc.nextInt();
+        switch (opcao) {
+
+            case 1:
+                ME.DescobrirTecnologia("Capital Ships");
+                break;
+            case 2:
+                ME.DescobrirTecnologia("Forward Starbases");
+                break;
+            case 3:
+                ME.DescobrirTecnologia("Robot Workers");
+                break;
+            case 4:
+                ME.DescobrirTecnologia("Planetary Defenses");
+                break;
+            case 5:
+                ME.DescobrirTecnologia("Hyper Television");
+                break;
+            case 6:
+                ME.DescobrirTecnologia("Interstellar Diplomacy");
+                break;
+            case 7:
+                ME.DescobrirTecnologia("Interspicies Commerce");
+                break;
+            case 8:
+                ME.DescobrirTecnologia("Interstellar Banking");
                 break;
             case 9:
                 ME.GuardarJogo();

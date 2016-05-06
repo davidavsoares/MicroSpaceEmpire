@@ -1,5 +1,6 @@
 package MicroSpaceEmpire.modelo.Tecnologias.Technologies;
 
+import MicroSpaceEmpire.modelo.Dados;
 import MicroSpaceEmpire.modelo.Tecnologias.Technology;
 
 /**
@@ -9,16 +10,21 @@ import MicroSpaceEmpire.modelo.Tecnologias.Technology;
  */
 public class InterstellarBanking extends Technology {
 
-    public InterstellarBanking() {
-        super("Interstellar Banking");
+    public InterstellarBanking(Dados GameInfo) {
+        super(GameInfo);
     }
 
-    public void fazEfeito() {
-        //faz os efeitos da carta
+    public void CompraTecnologia() {
+        if (getGameInfo().getTechnologyDiscovered().contains(new InterspeciesCommerce(getGameInfo()))) {
+            IntegrarTechnologyDiscovered();
+            getGameInfo().removeTechnology(this); //exception para caso de ja ter sido comprado
+        } else {
+            //exception
+        }
     }
 
     @Override
     public String toString() {
-        return "InterstellarBanking";
+        return "Interstellar Banking";
     }
 }

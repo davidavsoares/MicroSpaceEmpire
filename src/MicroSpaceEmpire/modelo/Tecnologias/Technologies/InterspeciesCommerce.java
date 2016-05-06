@@ -1,5 +1,6 @@
 package MicroSpaceEmpire.modelo.Tecnologias.Technologies;
 
+import MicroSpaceEmpire.modelo.Dados;
 import MicroSpaceEmpire.modelo.Tecnologias.Technology;
 
 /**
@@ -9,16 +10,17 @@ import MicroSpaceEmpire.modelo.Tecnologias.Technology;
  */
 public class InterspeciesCommerce extends Technology {
 
-    public InterspeciesCommerce() {
-        super("Interspecies Commerce");
-    }
-
-    public void fazEfeito() {
-        //faz os efeitos da carta
+    public InterspeciesCommerce(Dados GameInfo) {
+        super(GameInfo);
     }
 
     @Override
     public String toString() {
-        return "InterspeciesCommerce";
+        return "Interspecies Commerce";
+    }
+
+    public void CompraTecnologia() {
+        IntegrarTechnologyDiscovered();
+        getGameInfo().removeTechnology(this); //exception para caso de ja ter sido comprado
     }
 }

@@ -6,7 +6,7 @@ import MicroSpaceEmpire.modelo.Dados;
  *
  * @author David
  */
-public abstract class Estado_0 implements IEstado {
+public class Estado_0 implements IEstado {
 
     private Dados GameInfo;
 
@@ -69,6 +69,12 @@ public abstract class Estado_0 implements IEstado {
 
     @Override
     public IEstado DescobrirEConstruir() {
+        return this;
+    }
+
+    //-----------ESTADO[3.2]---------//
+    @Override
+    public IEstado DescobrirTecnologia(String tech) {
         return this;
     }
 //-----------ESTADO[4]---------//

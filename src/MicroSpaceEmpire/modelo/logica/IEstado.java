@@ -22,7 +22,7 @@ public interface IEstado {
 //-----------ESTADO[2]---------//
 
     IEstado DecMetalIncRiqueza();
-    
+
     IEstado DecRiquezaIncMetal();
 //-----------ESTADO[3]---------//
 
@@ -31,6 +31,9 @@ public interface IEstado {
     IEstado ConstruirForcaMilitar();
 
     IEstado DescobrirEConstruir();
+
+//-----------ESTADO[3.2]---------//
+    IEstado DescobrirTecnologia(String tech);
 //-----------ESTADO[4]---------//
 
     IEstado VerificaFimAno();
@@ -38,13 +41,10 @@ public interface IEstado {
     IEstado RetirarEvento();
 
     IEstado ContarPontos();
-    
-    
-    
-    
+
 //-----------OUTROS---------//
     IEstado Sair();
-    
+
     IEstado GuardarJogo();
 
 }

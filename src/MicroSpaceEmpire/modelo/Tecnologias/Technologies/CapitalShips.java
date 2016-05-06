@@ -1,5 +1,6 @@
 package MicroSpaceEmpire.modelo.Tecnologias.Technologies;
 
+import MicroSpaceEmpire.modelo.Dados;
 import MicroSpaceEmpire.modelo.Tecnologias.Technology;
 
 /**
@@ -9,16 +10,19 @@ import MicroSpaceEmpire.modelo.Tecnologias.Technology;
  */
 public class CapitalShips extends Technology {
 
-    public CapitalShips() {
-        super("Capital Ships");
+    public CapitalShips(Dados GameInfo) {
+        super(GameInfo);
     }
 
     @Override
     public String toString() {
-        return "CapitalShips";
+        return "Capital Ships";
     }
 
-    public void fazEfeito() {
-        //faz os efeitos da carta
+    public void CompraTecnologia() {
+        getGameInfo().removeTechnology(this); //exception para caso de ja ter sido comprado
+        IntegrarTechnologyDiscovered();
+
     }
+
 }

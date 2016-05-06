@@ -63,6 +63,10 @@ public class MaquinaDeEstados {
         setEstado(estado.DescobrirTecnologia());
     }
 
+    public void DescobrirTecnologia(String tech) {
+        setEstado(estado.DescobrirTecnologia(tech));
+    }
+
     public void ConstruirForcaMilitar() {
         setEstado(estado.ConstruirForcaMilitar());
     }
@@ -98,5 +102,4 @@ public class MaquinaDeEstados {
     public void DecRiquezaIncMetal() {
         setEstado(estado.DecRiquezaIncMetal());
     }
-
 }

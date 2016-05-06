@@ -14,7 +14,7 @@ public class Estado_3 extends Estado_0 {
 
     @Override
     public IEstado DescobrirTecnologia() {
-        return new Estado_4(getGameInfo());
+        return new Estado_32(getGameInfo());
     }
 
     @Override
