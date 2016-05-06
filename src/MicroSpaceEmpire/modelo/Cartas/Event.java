@@ -13,4 +13,13 @@ public abstract class Event extends Carta {
         super(GameInfo);
     }
 
+    public void IntegrarEventDeck() //Função fazer um Evento integrar o deck de eventos
+    {
+        getGameInfo().getEventDeck().add(this);
+    }
+
+    public void IntegrarEventDiscard() //Função fazer um Evento integrar o deck de eventos utilizados
+    {
+        getGameInfo().getEventDiscard().add(this);
+    }
 }

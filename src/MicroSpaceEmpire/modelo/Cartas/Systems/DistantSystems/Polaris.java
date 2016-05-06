@@ -9,13 +9,16 @@ import MicroSpaceEmpire.modelo.Dados;
  * @author DavidSoares [21220084] && JorgeNogueira [21200794]
  */
 public class Polaris extends DistantSystem {
+
     private static int MetalProduction;
     private static int VictoryPoints;
-    
+    private static int Resistance;
+
     public Polaris(Dados GameInfo) {
-        super(GameInfo, 9);
+        super(GameInfo);
         MetalProduction = 1;
         VictoryPoints = 2;
+        Resistance = 9;
     }
 
     @Override
@@ -23,13 +26,21 @@ public class Polaris extends DistantSystem {
         return "Polaris";
     }
 
-    public int getVictoryPoints() 
-    {
+    public int getVictoryPoints() {
         return VictoryPoints;
     }
-    
-    public int getMetalProduction() 
-    {
+
+    public int getMetalProduction() {
         return MetalProduction;
+    }
+
+    @Override
+    public int getWealthProduction() {
+        return 0;
+    }
+
+    @Override
+    public int getResistance() {
+        return Resistance;
     }
 }

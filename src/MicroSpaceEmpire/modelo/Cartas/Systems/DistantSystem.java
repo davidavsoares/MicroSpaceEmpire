@@ -10,30 +10,26 @@ import MicroSpaceEmpire.modelo.Dados;
  */
 public abstract class DistantSystem extends System {
 
-    private int Resistance;
-
-    public DistantSystem(Dados GameInfo, int r) {
+    //private int Resistance;
+    public DistantSystem(Dados GameInfo) {
         super(GameInfo);
-        Resistance = r;
+        //Resistance = r;
     }
+
+//    @Override
+//    public abstract int getMetalProduction();
+//
+//    @Override
+//    public abstract int getWealthProduction();
+//
+//    // public abstract int getResistance();
+//    @Override
+//    public abstract int getVictoryPoints();
+
     
-    public int getMetalProduction() 
-    {
-        return 0;
+    public void IntegrarDistantSystemsDeck() {
+        getGameInfo().getDistantSystemsDeck().add(this);
+
     }
-    
-    public int getWealthProduction() 
-    {
-        return 0;
-    }
-    
-    public int getResistance() 
-    {
-        return Resistance;
-    }
-    
-     public int getVictoryPoints() 
-    {
-        return 0;
-    }
+
 }

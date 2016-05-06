@@ -9,33 +9,25 @@ import MicroSpaceEmpire.modelo.Dados;
  */
 public abstract class System extends Carta {
 
-    public System(Dados GameInfo) 
-    {
+    public System(Dados GameInfo) {
         super(GameInfo);
     }
-    
-    public int getMetalProduction() 
-    {
-        return 0;
-    }
-    
-    public int getWealthProduction() 
-    {
-        return 0;
-    }
-    
-    public int getVictoryPoints() 
-    {
-        return 0;
-    }
-    
-    public int getResistance() 
-    {
-        return 0;
-    }
-    
-    public void IntegrarImperio()
+
+    public abstract int getMetalProduction();
+
+    public abstract int getWealthProduction();
+
+    public abstract int getVictoryPoints();
+
+    public abstract int getResistance();
+
+    public void IntegrarImperio() //Função polimorfica para fazer um planeta integrar o imperio
     {
         getGameInfo().getEmpire().add(this);
     }
+
+//    public abstract void IntegrarNearSystemsDeck();
+//
+//    public abstract void IntegrarDistantSystemsDeck();
+
 }

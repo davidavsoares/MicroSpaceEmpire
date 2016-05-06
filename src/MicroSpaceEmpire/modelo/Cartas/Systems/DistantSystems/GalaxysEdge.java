@@ -9,11 +9,14 @@ import MicroSpaceEmpire.modelo.Dados;
  * @author DavidSoares [21220084] && JorgeNogueira [21200794]
  */
 public class GalaxysEdge extends DistantSystem {
+
     private static int VictoryPoints;
-    
+    private static int Resistance;
+
     public GalaxysEdge(Dados GameInfo) {
-        super(GameInfo, 10);
+        super(GameInfo);
         VictoryPoints = 3;
+        Resistance = 10;
     }
 
     @Override
@@ -21,8 +24,23 @@ public class GalaxysEdge extends DistantSystem {
         return "GalaxysEdge";
     }
 
-    public int getVictoryPoints() 
-    {
+    @Override
+    public int getVictoryPoints() {
         return VictoryPoints;
+    }
+
+    @Override
+    public int getMetalProduction() {
+        return 0;
+    }
+
+    @Override
+    public int getWealthProduction() {
+        return 0;
+    }
+
+    @Override
+    public int getResistance() {
+        return Resistance;
     }
 }

@@ -9,11 +9,11 @@ import MicroSpaceEmpire.modelo.Dados;
  * @author DavidSoares [21220084] && JorgeNogueira [21200794]
  */
 public class HomeWorld extends StartingSystem {
+
     private static int MetalProduction;
     private static int WealthProduction;
-    
-    public HomeWorld(Dados GameInfo) 
-    {
+
+    public HomeWorld(Dados GameInfo) {
         super(GameInfo);
         MetalProduction = 1;
         WealthProduction = 1;
@@ -23,14 +23,22 @@ public class HomeWorld extends StartingSystem {
     public String toString() {
         return "HomeWorld";
     }
-    
-    public int getMetalProduction() 
-    {
+
+    public int getMetalProduction() {
         return MetalProduction;
     }
-    
-    public int getWealthProduction() 
-    {
+
+    public int getWealthProduction() {
         return WealthProduction;
+    }
+
+    @Override
+    public int getVictoryPoints() {
+        return 0;
+    }
+
+    @Override
+    public int getResistance() {
+        return 0;
     }
 }
