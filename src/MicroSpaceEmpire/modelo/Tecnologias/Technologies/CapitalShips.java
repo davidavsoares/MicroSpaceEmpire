@@ -19,10 +19,10 @@ public class CapitalShips extends Technology {
         return "Capital Ships";
     }
 
-    public void CompraTecnologia() {
+    public boolean CompraTecnologia() {
         getGameInfo().removeTechnology(this); //exception para caso de ja ter sido comprado
         IntegrarTechnologyDiscovered();
-
+        return true;
     }
 
 }

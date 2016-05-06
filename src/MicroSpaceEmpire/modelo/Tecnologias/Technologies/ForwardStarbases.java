@@ -14,12 +14,13 @@ public class ForwardStarbases extends Technology {
         super(GameInfo);
     }
 
-    public void CompraTecnologia() {
+    public boolean CompraTecnologia() {
         if (getGameInfo().getTechnologyDiscovered().contains(new CapitalShips(getGameInfo()))) {
             IntegrarTechnologyDiscovered();
             getGameInfo().removeTechnology(this); //exception para caso de ja ter sido comprado
+            return true;
         } else {
-            //exception
+            return false;
         }
     }
 

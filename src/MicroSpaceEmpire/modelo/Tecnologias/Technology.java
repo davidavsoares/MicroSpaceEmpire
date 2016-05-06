@@ -59,4 +59,8 @@ public class Technology {
         return GameInfo;
     }
 
+    public boolean CompraTecnologia() {
+        return false;
+    }
+
 }
