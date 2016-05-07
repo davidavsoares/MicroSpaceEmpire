@@ -76,6 +76,17 @@ public class Estado_0 implements IEstado, java.io.Serializable {
         return this;
     }
 
+    public boolean ConstroiForcaMilitar() {
+        if (getGameInfo().getMetal() >= 1 || getGameInfo().getWealth() >= 1) {
+            getGameInfo().setMetal(getGameInfo().getMetal() - 1);
+            getGameInfo().setWealth(getGameInfo().getWealth() - 1);
+            getGameInfo().setMilitaryStrength(getGameInfo().getMilitaryStrength() + 1);
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     //-----------ESTADO[3.2]---------//
     @Override
     public IEstado DescobrirTecnologia(String tech) {

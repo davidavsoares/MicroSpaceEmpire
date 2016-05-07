@@ -11,7 +11,8 @@ import MicroSpaceEmpire.modelo.Tecnologias.Technology;
 public class PlanetaryDefenses extends Technology {
 
     public PlanetaryDefenses(Dados GameInfo) {
-        super(GameInfo);
+        super(GameInfo, 4);
+
     }
 
     @Override
@@ -21,11 +22,11 @@ public class PlanetaryDefenses extends Technology {
 
     public boolean CompraTecnologia() {
         if (getGameInfo().getTechnologyDiscovered().contains(new RobotWorkers(getGameInfo()))) {
-            IntegrarTechnologyDiscovered();
-            getGameInfo().removeTechnology(this); //exception para caso de ja ter sido comprado
-            return true;
-        } else {
-            return false;
+            if (IntegrarTechnologyDiscovered()) {
+                getGameInfo().removeTechnology(this); //exception para caso de ja ter sido comprado
+                return true;
+            }
         }
+        return false;
     }
 }

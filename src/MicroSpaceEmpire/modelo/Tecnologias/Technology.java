@@ -13,9 +13,19 @@ public class Technology implements java.io.Serializable {
 
     private static final long serialVersionUID = 42L;
     private Dados GameInfo;
+    private int Custo;
+
+    public int getCusto() {
+        return Custo;
+    }
 
     public Technology(Dados GameInfo) {
         this.GameInfo = GameInfo;
+    }
+
+    public Technology(Dados GameInfo, int Custo) {
+        this.GameInfo = GameInfo;
+        this.Custo = Custo;
     }
 
     public void IntegrarDescobertas() //Função polimorfica para fazer um planeta integrar o imperio
@@ -48,8 +58,13 @@ public class Technology implements java.io.Serializable {
         return true;
     }
 
-    public void IntegrarTechnologyDiscovered() {
-        GameInfo.getTechnologyDiscovered().add(this);
+    public boolean IntegrarTechnologyDiscovered() {
+        if (GameInfo.getWealth() >= Custo) {
+            GameInfo.setWealth(GameInfo.getWealth() - Custo);
+            GameInfo.getTechnologyDiscovered().add(this);
+            return true;
+        }
+        return false;
     }
 
     public void IntegrarTechnologies() {

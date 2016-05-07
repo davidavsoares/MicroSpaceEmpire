@@ -8,17 +8,26 @@ import MicroSpaceEmpire.modelo.Dados;
  */
 public class Estado_32 extends Estado_0 {
 
-    public Estado_32(Dados GameInfo) {
+    boolean Repeticao;
+
+    public Estado_32(Dados GameInfo, boolean Repeticao) {
         super(GameInfo);
+        this.Repeticao = Repeticao;
 
     }
 
     @Override
     public IEstado DescobrirTecnologia(String tech) {
         if (getGameInfo().getTechnology(tech).CompraTecnologia()) {
-            return new Estado_4(getGameInfo());
+            if (Repeticao) {
+                return new Estado_31(getGameInfo());
+            } else {
+                return new Estado_4(getGameInfo());
+            }
+        } else if (Repeticao) {
+            return new Estado_31(getGameInfo());
         } else {
-            return this;
+            return new Estado_4(getGameInfo());
         }
     }
 }

@@ -34,6 +34,8 @@ public class InterfaceUtilizador {
                 iuEstado_2();
             } else if (ME.getEstado() instanceof Estado_3) {
                 iuEstado_3();
+            } else if (ME.getEstado() instanceof Estado_31) {
+                iuEstado_31();
             } else if (ME.getEstado() instanceof Estado_32) {
                 iuEstado_32();
             } else if (ME.getEstado() instanceof Estado_4) {
@@ -176,7 +178,6 @@ public class InterfaceUtilizador {
         System.out.println();
         System.out.println("1 - Construir força militar");
         System.out.println("2 - Descobrir tecnologia");
-        System.out.println("3 - Construir força militar e comprar tecnologia");
         System.out.println("8 - Passar");
         System.out.println("9 - Guardar jogo");
         System.out.println("0 - Sair");
@@ -195,11 +196,45 @@ public class InterfaceUtilizador {
             case 2:
                 ME.DescobrirTecnologia();
                 break;
-            case 3:
-                ME.DescobrirEConstruir();
-                break;
             case 8:
                 ME.Passar();
+                break;
+            case 0:
+                ME.Sair();
+                break;
+            default:
+                ME.setEstado(ME.getEstado());
+                break;
+
+        }
+
+    }
+
+    private void iuEstado_31() {
+        PrintGame();
+        int opcao;
+
+        System.out.println("\n\n---------------------------------");
+
+        System.out.println();
+        System.out.println("1 - Avançar");
+        System.out.println("2 - Construir força militar");
+        System.out.println("9 - Guardar jogo");
+        System.out.println("0 - Sair");
+        System.out.print("> ");
+
+        while (!sc.hasNextInt()) {
+            sc.next();
+        }
+
+        opcao = sc.nextInt();
+        switch (opcao) {
+
+            case 1:
+                ME.Passar();
+                break;
+            case 2:
+                ME.ConstruirForcaMilitar();
                 break;
             case 9:
                 ME.GuardarJogo();

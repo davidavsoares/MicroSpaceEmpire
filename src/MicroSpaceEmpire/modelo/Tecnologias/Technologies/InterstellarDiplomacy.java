@@ -11,7 +11,7 @@ import MicroSpaceEmpire.modelo.Tecnologias.Technology;
 public class InterstellarDiplomacy extends Technology {
 
     public InterstellarDiplomacy(Dados GameInfo) {
-        super(GameInfo);
+        super(GameInfo,5);
     }
 
     public boolean CompraTecnologia() {

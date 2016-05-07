@@ -11,7 +11,8 @@ import MicroSpaceEmpire.modelo.Tecnologias.Technology;
 public class CapitalShips extends Technology {
 
     public CapitalShips(Dados GameInfo) {
-        super(GameInfo);
+        super(GameInfo, 3);
+
     }
 
     @Override
@@ -21,8 +22,11 @@ public class CapitalShips extends Technology {
 
     public boolean CompraTecnologia() {
         getGameInfo().removeTechnology(this); //exception para caso de ja ter sido comprado
-        IntegrarTechnologyDiscovered();
-        return true;
+        if (IntegrarTechnologyDiscovered()) {
+            getGameInfo().setMaxMilitary(5);
+            return true;
+        }
+        return false;
     }
 
 }

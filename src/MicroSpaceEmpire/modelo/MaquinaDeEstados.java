@@ -2,6 +2,9 @@ package MicroSpaceEmpire.modelo;
 
 import MicroSpaceEmpire.modelo.logica.IEstado;
 import MicroSpaceEmpire.modelo.logica.MenuInicial;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 
 /**
  *
@@ -40,6 +43,21 @@ public class MaquinaDeEstados {
     }
 
     public IEstado CarregarJogo() {
+        try {
+            FileInputStream fileIn = new FileInputStream("Save.ser");
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            this.GameInfo = ((Dados) in.readObject());
+            this.estado = (IEstado) in.readObject();
+            in.close();
+            fileIn.close();
+        } catch (IOException i) {
+            i.printStackTrace();
+
+        } catch (ClassNotFoundException c) {
+            System.out.println("Class not found");
+            c.printStackTrace();
+
+        }
         return estado.CarregarJogo();
     }
 

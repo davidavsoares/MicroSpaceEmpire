@@ -11,17 +11,17 @@ import MicroSpaceEmpire.modelo.Tecnologias.Technology;
 public class ForwardStarbases extends Technology {
 
     public ForwardStarbases(Dados GameInfo) {
-        super(GameInfo);
+        super(GameInfo, 4);
     }
 
     public boolean CompraTecnologia() {
         if (getGameInfo().getTechnologyDiscovered().contains(new CapitalShips(getGameInfo()))) {
-            IntegrarTechnologyDiscovered();
-            getGameInfo().removeTechnology(this); //exception para caso de ja ter sido comprado
-            return true;
-        } else {
-            return false;
+            if (IntegrarTechnologyDiscovered()) {
+                getGameInfo().removeTechnology(this); //exception para caso de ja ter sido comprado
+                return true;
+            }
         }
+        return false;
     }
 
     @Override

@@ -39,6 +39,7 @@ public class Dados implements java.io.Serializable {
     private int Metal;
     private int DADO;
     private int MaxStorage;
+    private int MaxMilitary;
 
     public Dados() {
 
@@ -54,6 +55,7 @@ public class Dados implements java.io.Serializable {
 
     public void PreparaJogo() {
         MaxStorage = 3;
+        MaxMilitary = 3;
         MilitaryStrength = 0;
         ANO = 1;
         PreparaEventos();
@@ -78,6 +80,14 @@ public class Dados implements java.io.Serializable {
         (new Strike(this)).IntegrarEventDeck();             // Adiciona 'Strike' ao Deck de eventos
         Collections.shuffle(EventDeck);                     // Baralha o Deck dos eventos
 
+    }
+
+    public int getMaxMilitary() {
+        return MaxMilitary;
+    }
+
+    public void setMaxMilitary(int MaxMilitary) {
+        this.MaxMilitary = MaxMilitary;
     }
 
     public int getMaxStorage() {
@@ -119,6 +129,8 @@ public class Dados implements java.io.Serializable {
         this.MilitaryStrength = MilitaryStrength;
         if (this.MilitaryStrength < 0) {
             this.MilitaryStrength = 0;
+        } else if (this.MilitaryStrength > MaxMilitary) {
+            this.MilitaryStrength = MaxMilitary;
         }
     }
 
@@ -192,7 +204,7 @@ public class Dados implements java.io.Serializable {
         (new PlanetaryDefenses(this)).IntegrarTechnologies();
         (new HyperTelevision(this)).IntegrarTechnologies();
         (new InterstellarDiplomacy(this)).IntegrarTechnologies();
-        (new InterspeciesCommerce(this)).IntegrarTechnologyDiscovered();
+        (new InterspeciesCommerce(this)).IntegrarTechnologies();
         (new InterstellarBanking(this)).IntegrarTechnologies();
     }
 

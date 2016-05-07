@@ -11,7 +11,8 @@ import MicroSpaceEmpire.modelo.Tecnologias.Technology;
 public class RobotWorkers extends Technology {
 
     public RobotWorkers(Dados GameInfo) {
-        super(GameInfo);
+        super(GameInfo, 2);
+
     }
 
     @Override
@@ -20,8 +21,10 @@ public class RobotWorkers extends Technology {
     }
 
     public boolean CompraTecnologia() {
-        IntegrarTechnologyDiscovered();
-        getGameInfo().removeTechnology(this); //exception para caso de ja ter sido comprado
-        return true;
+        if (IntegrarTechnologyDiscovered()) {
+            getGameInfo().removeTechnology(this); //exception para caso de ja ter sido comprado
+            return true;
+        }
+        return false;
     }
 }
