@@ -21,6 +21,10 @@ public class Proxima extends NearSystem {
         Resistance = 6;
     }
 
+    public void setResistance(int Resistance) {
+        Proxima.Resistance = Resistance;
+    }
+
     @Override
     public String toString() {
         return "Proxima";

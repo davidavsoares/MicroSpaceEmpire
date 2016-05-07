@@ -12,11 +12,13 @@ public class HomeWorld extends StartingSystem {
 
     private static int MetalProduction;
     private static int WealthProduction;
+    private static int Resistance;
 
     public HomeWorld(Dados GameInfo) {
         super(GameInfo);
         MetalProduction = 1;
         WealthProduction = 1;
+        Resistance = 0;
     }
 
     @Override
@@ -41,6 +43,10 @@ public class HomeWorld extends StartingSystem {
 
     @Override
     public int getResistance() {
-        return 0;
+        return Resistance;
+    }
+
+    public void setResistance(int Resistance) {
+        HomeWorld.Resistance = Resistance;
     }
 }

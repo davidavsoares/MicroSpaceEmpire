@@ -2,6 +2,7 @@ package MicroSpaceEmpire.modelo.Cartas.Events;
 
 import MicroSpaceEmpire.modelo.Cartas.Event;
 import MicroSpaceEmpire.modelo.Dados;
+import MicroSpaceEmpire.modelo.Tecnologias.Technologies.RobotWorkers;
 
 /**
  * I.S.E.C.
@@ -19,11 +20,13 @@ public class Strike extends Event {
         return "Strike";
     }
 
-    public void fazEfeito() {
-        //faz os efeitos da carta
-        // year 1 : No resources next turn
-        // year 1 : No resources next turn
-        //Optional : With Robot Workers, gain 1/2 instead of zero(round up)
+    public void CorreEvento() {
+
+        if (getGameInfo().getTechnologyDiscovered().contains(new RobotWorkers(getGameInfo()))) {
+            getGameInfo().setPercentagemProducao(50);
+        } else {
+            getGameInfo().setPercentagemProducao(0);
+        }
     }
 
 }

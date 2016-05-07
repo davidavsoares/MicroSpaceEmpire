@@ -20,6 +20,10 @@ public class Procyon extends NearSystem {
         Resistance = 7;
     }
 
+    public void setResistance(int Resistance) {
+        Procyon.Resistance = Resistance;
+    }
+
     @Override
     public String toString() {
         return "Procyon";

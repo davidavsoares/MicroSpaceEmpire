@@ -20,6 +20,10 @@ public class Sirius extends NearSystem
         Resistance = 6;
     }
 
+    public void setResistance(int Resistance) {
+        Sirius.Resistance = Resistance;
+    }
+
     @Override
     public String toString() {
         return "Sirius";

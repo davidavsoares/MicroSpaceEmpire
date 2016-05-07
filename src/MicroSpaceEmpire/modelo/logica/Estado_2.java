@@ -1,8 +1,8 @@
 package MicroSpaceEmpire.modelo.logica;
 
+import MicroSpaceEmpire.modelo.Cartas.Events.Strike;
 import MicroSpaceEmpire.modelo.Dados;
 import MicroSpaceEmpire.modelo.Tecnologias.Technologies.InterspeciesCommerce;
-import MicroSpaceEmpire.modelo.Tecnologias.Technologies.InterstellarBanking;
 
 /**
  *
@@ -12,7 +12,9 @@ public class Estado_2 extends Estado_0 {
 
     public Estado_2(Dados GameInfo) {
         super(GameInfo);
+
         GameInfo.Recolhe();
+
     }
 
     @Override

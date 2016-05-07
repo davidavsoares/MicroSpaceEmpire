@@ -19,8 +19,7 @@ public class PeaceQuiet extends Event {
         return "Peace & Quiet";
     }
 
-    public void fazEfeito() {
-        //faz os efeitos da carta
+    public void CorreEvento() {
         // não faz nada
     }
 }

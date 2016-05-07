@@ -263,7 +263,7 @@ public class InterfaceUtilizador {
         System.out.println("4 - Descobrir Planetary Defenses      (4)");
         System.out.println("5 - Descobrir Hyper Television        (3)");
         System.out.println("6 - Descobrir Interstellar Diplomacy  (5)");
-        System.out.println("7 - Descobrir Interspicies Commerce   (2)");
+        System.out.println("7 - Descobrir Interspecies Commerce   (2)");
         System.out.println("8 - Descobrir Interstellar Banking    (3)");
         System.out.println("9 - Guardar jogo");
         System.out.println("0 - Sair");
@@ -295,7 +295,7 @@ public class InterfaceUtilizador {
                 ME.DescobrirTecnologia("Interstellar Diplomacy");
                 break;
             case 7:
-                ME.DescobrirTecnologia("Interspicies Commerce");
+                ME.DescobrirTecnologia("Interspecies Commerce");
                 break;
             case 8:
                 ME.DescobrirTecnologia("Interstellar Banking");
@@ -334,10 +334,7 @@ public class InterfaceUtilizador {
         switch (opcao) {
 
             case 1:
-                ME.RetirarEvento();
-                break;
-            case 8:
-                ME.Passar();
+                ME.VerificaFim();
                 break;
             case 9:
                 ME.GuardarJogo();

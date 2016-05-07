@@ -21,6 +21,10 @@ public class Wolf359 extends NearSystem {
         Resistance = 5;
     }
 
+    public void setResistance(int Resistance) {
+        Wolf359.Resistance = Resistance;
+    }
+
     @Override
     public String toString() 
     {

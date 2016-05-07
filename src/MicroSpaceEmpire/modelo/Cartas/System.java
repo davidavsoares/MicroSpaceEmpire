@@ -13,6 +13,7 @@ public abstract class System extends Carta {
 
     public System(Dados GameInfo) {
         super(GameInfo);
+
     }
 
     public int getDADO() {
@@ -26,6 +27,8 @@ public abstract class System extends Carta {
     public abstract int getVictoryPoints();
 
     public abstract int getResistance();
+    
+    public abstract void setResistance(int Resistance);
 
     public void IntegrarImperio() //Função polimorfica para fazer um planeta integrar o imperio
     {
@@ -38,6 +41,11 @@ public abstract class System extends Carta {
     public void IntegrarUnaligned() //Função polimorfica para fazer um planeta integrar o imperio
     {
         getGameInfo().getUnalignedSystems().add(this);
+    }
+
+    public void DesintegrarImperio() {
+        getGameInfo().DesintegrarImperio(this).IntegrarUnaligned();
+        
     }
 
     public boolean ConquistaSistema() {        //Funcao que remove um sistema do deck e adiciona ao Imperio
@@ -54,7 +62,7 @@ public abstract class System extends Carta {
     public void ExploraSistema() {        //Funcao que remove um sistema do deck e adiciona ao Imperio
         getGameInfo().removeSystem(this);
         this.IntegrarUnaligned();
-        getGameInfo().setMilitaryStrength(getGameInfo().getMilitaryStrength()-1);
+        getGameInfo().setMilitaryStrength(getGameInfo().getMilitaryStrength() - 1);
     }
 
     public void Batalha() {
@@ -63,4 +71,5 @@ public abstract class System extends Carta {
         }
 
     }
+
 }

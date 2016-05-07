@@ -101,18 +101,6 @@ public class MaquinaDeEstados {
         setEstado(estado.DescobrirEConstruir());
     }
 
-    public IEstado VerificaFimAno() {
-        return estado.VerificaFimAno();
-    }
-
-    public IEstado RetirarEvento() {
-        return estado.RetirarEvento();
-    }
-
-    public IEstado ContarPontos() {
-        return estado.ContarPontos();
-    }
-
     public void Sair() {
         setEstado(getEstado().Sair());
     }
@@ -127,5 +115,9 @@ public class MaquinaDeEstados {
 
     public void DecRiquezaIncMetal() {
         setEstado(estado.DecRiquezaIncMetal());
+    }
+
+    public void VerificaFim() {
+        setEstado(estado.VerificaFim());
     }
 }

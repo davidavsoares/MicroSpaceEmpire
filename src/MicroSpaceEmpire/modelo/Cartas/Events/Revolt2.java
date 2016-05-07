@@ -10,9 +10,9 @@ import MicroSpaceEmpire.modelo.Tecnologias.Technologies.PlanetaryDefenses;
  *
  * @author DavidSoares [21220084] && JorgeNogueira [21200794]
  */
-public class Revolt extends Event {
+public class Revolt2 extends Event {
 
-    public Revolt(Dados GameInfo) {
+    public Revolt2(Dados GameInfo) {
         super(GameInfo);
     }
 
@@ -27,7 +27,7 @@ public class Revolt extends Event {
             if (getGameInfo().getANO() == 1) {
                 Forca = 1 + getGameInfo().Dice();
             } else {
-                Forca = 2 + getGameInfo().Dice();
+                Forca = 3 + getGameInfo().Dice();
             }
 
             if (getGameInfo().getEmpire().size() > 1 && getGameInfo().getTechnologyDiscovered().contains(new HyperTelevision(getGameInfo()))) {

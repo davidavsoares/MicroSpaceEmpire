@@ -19,6 +19,10 @@ public class TauCeti extends NearSystem {
         Resistance = 4;
     }
 
+    public void setResistance(int Resistance) {
+        TauCeti.Resistance = Resistance;
+    }
+
     @Override
     public String toString() 
     {

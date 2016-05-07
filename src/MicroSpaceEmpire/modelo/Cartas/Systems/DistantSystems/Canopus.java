@@ -25,20 +25,28 @@ public class Canopus extends DistantSystem {
     public String toString() {
         return "Canopus";
     }
+
     @Override
     public int getWealthProduction() {
         return WealthProduction;
     }
+
     @Override
     public int getVictoryPoints() {
         return VictoryPoints;
     }
+
     @Override
     public int getMetalProduction() {
         return 0;
     }
+
     @Override
     public int getResistance() {
         return Resistance;
+    }
+
+    public void setResistance(int Resistance) {
+        Canopus.Resistance = Resistance;
     }
 }

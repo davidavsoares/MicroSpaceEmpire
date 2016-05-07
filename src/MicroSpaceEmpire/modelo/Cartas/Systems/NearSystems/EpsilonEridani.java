@@ -18,6 +18,10 @@ public class EpsilonEridani extends NearSystem {
         Resistance = 8;
     }
 
+    public void setResistance(int Resistance) {
+        EpsilonEridani.Resistance = Resistance;
+    }
+
     @Override
     public String toString() {
         return "Epsilon Eridani";

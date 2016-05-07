@@ -10,6 +10,7 @@ import MicroSpaceEmpire.modelo.Cartas.Systems.NearSystems.*;
 import MicroSpaceEmpire.modelo.Cartas.Systems.StartingSystems.HomeWorld;
 import MicroSpaceEmpire.modelo.Tecnologias.Technology;
 import MicroSpaceEmpire.modelo.Tecnologias.Technologies.*;
+import static java.lang.Math.round;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -40,6 +41,8 @@ public class Dados implements java.io.Serializable {
     private int DADO;
     private int MaxStorage;
     private int MaxMilitary;
+    private int MaxProdution;
+    private int PercentagemProducao;
 
     public Dados() {
 
@@ -48,12 +51,15 @@ public class Dados implements java.io.Serializable {
         Empire = new ArrayList<>();                     //Cria um array com os sistemas que pertencem ao imperio
         UnalignedSystems = new ArrayList<>();           //Cria um array com os sistemas desalinhados
         EventDeck = new ArrayList<>();                  //Cria  um array com os eventos
+        EventDiscard = new ArrayList<>();
         TechnologyDiscovered = new ArrayList<>();       //Cria um array com as tecnologias descobertas
         Technologies = new ArrayList<>();
         PreparaJogo();                                  //Chama a funcao que prepara inicialmente o jogo       
     }
 
     public void PreparaJogo() {
+        PercentagemProducao = 100;
+        MaxProdution = 5;
         MaxStorage = 3;
         MaxMilitary = 3;
         MilitaryStrength = 0;
@@ -76,10 +82,51 @@ public class Dados implements java.io.Serializable {
         (new DerelictShip(this)).IntegrarEventDeck();       // Adiciona 'Derelict Ship' ao Deck de eventos
         (new LargeInvasionForce(this)).IntegrarEventDeck(); // Adiciona 'Large Invasion Force' ao Deck de eventos
         (new Revolt(this)).IntegrarEventDeck();             // Adiciona 'Revolt' ao Deck de eventos
+        (new Revolt2(this)).IntegrarEventDeck();            // Adiciona 'Revolt2' ao Deck de eventos
         (new SmallInvasionForce(this)).IntegrarEventDeck(); // Adiciona 'Small Invasion Force' ao Deck de eventos
         (new Strike(this)).IntegrarEventDeck();             // Adiciona 'Strike' ao Deck de eventos
         Collections.shuffle(EventDeck);                     // Baralha o Deck dos eventos
 
+    }
+
+    public void setANO(int ANO) {
+        Dados.ANO = ANO;
+    }
+
+    public System getMenorResistencia() {
+        if (Empire.size() == 1) {
+            return Empire.get(0);
+        }
+        int min = 20, index = 0;
+        for (int i = 1; i < Empire.size(); i++) {
+            if (Empire.get(i).getResistance() < min) {
+                min = Empire.get(i).getResistance();
+                index = i;
+            }
+        }
+        return Empire.get(index);
+
+    }
+
+    public void RecolheEventDeck() {
+        EventDiscard.add(CurrentEvent);
+        Collections.shuffle(EventDiscard);
+        for (int i = 0; i < EventDiscard.size() - 2; i++) {
+            EventDeck.add(EventDiscard.get(i));
+        }
+        EventDiscard.removeAll(EventDiscard);
+    }
+
+    public boolean isEmpty() {
+        return Empire.isEmpty();
+    }
+
+    public int getPercentagemProducao() {
+        return PercentagemProducao;
+    }
+
+    public void setPercentagemProducao(int PercentagemProducao) {
+        this.PercentagemProducao = PercentagemProducao;
     }
 
     public int getMaxMilitary() {
@@ -99,8 +146,8 @@ public class Dados implements java.io.Serializable {
     }
 
     public void Recolhe() {
-        setMetal(+MetalProduction);
-        setWealth(+WealthProduction);
+        setMetal(Metal + round(MetalProduction * PercentagemProducao / 100));
+        setWealth(Wealth + round(WealthProduction * PercentagemProducao / 100));
     }
 
     public void setMetal(int metal) {
@@ -148,6 +195,11 @@ public class Dados implements java.io.Serializable {
 
     public void setWealthProduction(int WealthProduction) {
         this.WealthProduction = WealthProduction;
+        if (this.WealthProduction < 0) {
+            this.WealthProduction = 0;
+        } else if (WealthProduction > MaxProdution) {
+            WealthProduction = MaxProdution;
+        }
     }
 
     public int getMetalProduction() {
@@ -156,6 +208,11 @@ public class Dados implements java.io.Serializable {
 
     public void setMetalProduction(int MetalProduction) {
         this.MetalProduction = MetalProduction;
+        if (this.MetalProduction < 0) {
+            this.MetalProduction = 0;
+        } else if (MetalProduction > MaxProdution) {
+            MetalProduction = MaxProdution;
+        }
     }
 
     public int getWealth() {
@@ -174,7 +231,7 @@ public class Dados implements java.io.Serializable {
         return Metal;
     }
 
-    public static int getANO() {
+    public int getANO() {
         return ANO;
     }
 
@@ -279,6 +336,12 @@ public class Dados implements java.io.Serializable {
 
     public boolean removeTechnology(Technology o) {
         return Technologies.remove(o);
+    }
+
+    public System DesintegrarImperio(System o) {
+        setMetalProduction(o.getMetalProduction());
+        setWealthProduction(o.getWealthProduction());
+        return Empire.remove(Empire.indexOf(o));
     }
 
     public boolean removeSystem(System o) {

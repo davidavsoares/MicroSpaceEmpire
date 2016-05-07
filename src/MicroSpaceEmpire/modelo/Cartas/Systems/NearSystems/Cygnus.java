@@ -25,6 +25,10 @@ public class Cygnus extends NearSystem {
         VictoryPoints = 1;
         Resistance = 5;
     }
+
+    public void setResistance(int Resistance) {
+        Cygnus.Resistance = Resistance;
+    }
     
     @Override
     public int getWealthProduction() 

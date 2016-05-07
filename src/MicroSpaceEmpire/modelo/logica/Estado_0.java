@@ -94,14 +94,12 @@ public class Estado_0 implements IEstado, java.io.Serializable {
     }
 //-----------ESTADO[4]---------//
 
-    @Override
-    public IEstado VerificaFimAno() {
-        return this;
+    public void VerificaFimAno() {
+
     }
 
-    @Override
-    public IEstado RetirarEvento() {
-        return this;
+    public void RetirarEvento() {
+
     }
 
 //-----------OUTROS---------//
@@ -110,9 +108,8 @@ public class Estado_0 implements IEstado, java.io.Serializable {
         return this;
     }
 
-    @Override
-    public IEstado ContarPontos() {
-        return this;
+    public void ContarPontos() {
+
     }
 
     @Override
@@ -133,6 +130,11 @@ public class Estado_0 implements IEstado, java.io.Serializable {
             i.printStackTrace();
 
         }
+        return this;
+    }
+
+    @Override
+    public IEstado VerificaFim() {
         return this;
     }
 

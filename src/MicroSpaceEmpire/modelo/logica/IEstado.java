@@ -36,13 +36,9 @@ public interface IEstado {
     IEstado DescobrirTecnologia(String tech);
 //-----------ESTADO[4]---------//
 
-    IEstado VerificaFimAno();
-
-    IEstado RetirarEvento();
-
-    IEstado ContarPontos();
-
+    IEstado VerificaFim();
 //-----------OUTROS---------//
+
     IEstado Sair();
 
     IEstado GuardarJogo();
