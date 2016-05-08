@@ -80,13 +80,20 @@ public class Dados implements java.io.Serializable {
     public void PreparaEventos() {
 
         (new Asteroid(this)).IntegrarEventDeck();           // Adiciona 'Asteroid' ao Deck de eventos
-        (new DerelictShip(this)).IntegrarEventDeck();       // Adiciona 'Derelict Ship' ao Deck de eventos
-        (new LargeInvasionForce(this)).IntegrarEventDeck(); // Adiciona 'Large Invasion Force' ao Deck de eventos
-        (new Revolt(this)).IntegrarEventDeck();             // Adiciona 'Revolt' ao Deck de eventos
-        (new Revolt2(this)).IntegrarEventDeck();            // Adiciona 'Revolt2' ao Deck de eventos
-        (new SmallInvasionForce(this)).IntegrarEventDeck(); // Adiciona 'Small Invasion Force' ao Deck de eventos
-        (new Strike(this)).IntegrarEventDeck();             // Adiciona 'Strike' ao Deck de eventos
+//        (new DerelictShip(this)).IntegrarEventDeck();       // Adiciona 'Derelict Ship' ao Deck de eventos
+//        (new LargeInvasionForce(this)).IntegrarEventDeck(); // Adiciona 'Large Invasion Force' ao Deck de eventos
+//        (new Revolt(this)).IntegrarEventDeck();             // Adiciona 'Revolt' ao Deck de eventos
+//        (new Revolt2(this)).IntegrarEventDeck();            // Adiciona 'Revolt2' ao Deck de eventos
+//        (new SmallInvasionForce(this)).IntegrarEventDeck(); // Adiciona 'Small Invasion Force' ao Deck de eventos
+//        (new Strike(this)).IntegrarEventDeck();             // Adiciona 'Strike' ao Deck de eventos
         Collections.shuffle(EventDeck);                     // Baralha o Deck dos eventos
+                
+        (new DerelictShip(this)).IntegrarEventDiscard();       // Adiciona 'Derelict Ship' ao Deck de eventos
+        (new LargeInvasionForce(this)).IntegrarEventDiscard(); // Adiciona 'Large Invasion Force' ao Deck de eventos
+        (new Revolt(this)).IntegrarEventDiscard();             // Adiciona 'Revolt' ao Deck de eventos
+        (new Revolt2(this)).IntegrarEventDiscard();            // Adiciona 'Revolt2' ao Deck de eventos
+        (new SmallInvasionForce(this)).IntegrarEventDiscard(); // Adiciona 'Small Invasion Force' ao Deck de eventos
+        (new Strike(this)).IntegrarEventDiscard();             // Adiciona 'Strike' ao Deck de eventos
         
         
 
