@@ -65,6 +65,7 @@ public class Dados implements java.io.Serializable {
         MilitaryStrength = 2;
         Wealth = 10;
         ANO = 1;
+        VictoryPoints = 0;
         PreparaEventos();
         PreparaSistemas();
         PreparaTecnologias();
@@ -87,15 +88,13 @@ public class Dados implements java.io.Serializable {
 //        (new SmallInvasionForce(this)).IntegrarEventDeck(); // Adiciona 'Small Invasion Force' ao Deck de eventos
 //        (new Strike(this)).IntegrarEventDeck();             // Adiciona 'Strike' ao Deck de eventos
         Collections.shuffle(EventDeck);                     // Baralha o Deck dos eventos
-                
+
         (new DerelictShip(this)).IntegrarEventDiscard();       // Adiciona 'Derelict Ship' ao Deck de eventos
         (new LargeInvasionForce(this)).IntegrarEventDiscard(); // Adiciona 'Large Invasion Force' ao Deck de eventos
         (new Revolt(this)).IntegrarEventDiscard();             // Adiciona 'Revolt' ao Deck de eventos
         (new Revolt2(this)).IntegrarEventDiscard();            // Adiciona 'Revolt2' ao Deck de eventos
         (new SmallInvasionForce(this)).IntegrarEventDiscard(); // Adiciona 'Small Invasion Force' ao Deck de eventos
         (new Strike(this)).IntegrarEventDiscard();             // Adiciona 'Strike' ao Deck de eventos
-        
-        
 
     }
 
@@ -163,9 +162,9 @@ public class Dados implements java.io.Serializable {
     public void setMetal(int metal) {
         this.Metal = metal;
         if (this.Metal < 0) {
-            Metal = 0;
+            this.Metal = 0;
         } else if (Metal > MaxStorage) {
-            Metal = MaxStorage;
+            this.Metal = this.MaxStorage;
         }
     }
 
@@ -173,8 +172,8 @@ public class Dados implements java.io.Serializable {
         this.Wealth = Wealth;
         if (this.Wealth < 0) {
             this.Wealth = 0;
-        } else if (Wealth > MaxStorage) {
-            Wealth = MaxStorage;
+        } else if (this.Wealth > MaxStorage) {
+            this.Wealth = MaxStorage;
         }
     }
 
@@ -234,7 +233,7 @@ public class Dados implements java.io.Serializable {
     }
 
     public void setVictoryPoints(int VictoryPoints) {
-        this.VictoryPoints = VictoryPoints;
+        this.VictoryPoints += VictoryPoints;
     }
 
     public int getMetal() {
@@ -375,6 +374,37 @@ public class Dados implements java.io.Serializable {
         return null; //CRIAR EXCEPTION
     }
 
+    public String CalculaVictoryPoints() {
+        String s;
+        s = "\n\n" + "--------Victory Points---------";
+        // Obtem victory points dos sistemas no imperio //
+        for (int i = 0; i < Empire.size(); i++) {
+            setVictoryPoints(Empire.get(i).getVictoryPoints());
+        }
+        s += "\n" + "Pontos de império:    " + getVictoryPoints();
+
+        // Obtem victory points das tecnologias //
+        setVictoryPoints(TechnologyDiscovered.size());
+        s += "\n" + "Pontos de tecnologias descobertas: " + TechnologyDiscovered.size();
+        // Obtem victory points de exploracao //
+        if (isEmptyNearSystemsDeck() && isEmptyDistantSystemsDeck()) {
+            s += "\n" + "Bónus de Exploração:   1";
+            setVictoryPoints(1);
+            // Obtem victory points senhor da guerra //
+            if (isEmptyUnalignedSystems()) {
+                s += "\n" + "Bónus senhora da guerra:   3";
+                setVictoryPoints(3);
+            }
+        }
+        // Obtem victory points bonus cientifico //
+        if (isEmptyTechnologies()) {
+            s += "\n" + "Bónus cientifico:  1";
+            setVictoryPoints(1);
+        }
+        s += "\nTotal:   " + VictoryPoints;
+        return s;
+    }
+
     @Override
     public String toString() {
         String s;
@@ -392,8 +422,6 @@ public class Dados implements java.io.Serializable {
         s += "\n" + "Metal: " + Metal;
         s += "\n" + "Produção de metal: " + MetalProduction;
         //s += "\n" + "Pontos de vitória: " + VictoryPoints;
-//        s += "\n\t(" + bolasBrancasRemovidas.size() + " bolas brancas):" + bolasBrancasRemovidas;
-//        s += "\n\t(" + bolasPretasRemovidas.size() + " bolas pretas):" + bolasPretasRemovidas;
 
         return s;
     }
@@ -402,7 +430,7 @@ public class Dados implements java.io.Serializable {
         String s;
         s = "\n\n" + "Sistemas desalinhados: ";
         for (int i = 0; i < UnalignedSystems.size(); i++) {
-            s += "\n" + (i + 1) + UnalignedSystems.get(i).toString();
+            s += "\n" + (i + 1) + " " + UnalignedSystems.get(i).toString();
         }
         return s;
     }

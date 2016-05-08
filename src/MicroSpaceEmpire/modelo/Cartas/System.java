@@ -35,7 +35,6 @@ public abstract class System extends Carta {
         getGameInfo().getEmpire().add(this);
         getGameInfo().setMetalProduction(getGameInfo().getMetalProduction() + this.getMetalProduction());
         getGameInfo().setWealthProduction(getGameInfo().getWealthProduction() + this.getWealthProduction());
-        getGameInfo().setVictoryPoints(getGameInfo().getVictoryPoints() + this.getVictoryPoints());
     }
 
     public void IntegrarUnaligned() //Função polimorfica para fazer um planeta integrar o imperio

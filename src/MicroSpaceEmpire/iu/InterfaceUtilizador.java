@@ -45,7 +45,7 @@ public class InterfaceUtilizador {
             }
 
         }
-
+        System.out.println(ME.getGameInfo().CalculaVictoryPoints());
         System.out.println();
         System.out.println("************** Fim do jogo *****************");
 
@@ -126,7 +126,7 @@ public class InterfaceUtilizador {
 
         }
     }
-    
+
     private void iuEstado_11() {
         PrintGame();
         int opcao;
@@ -141,9 +141,8 @@ public class InterfaceUtilizador {
         }
 
         opcao = sc.nextInt();
-        
-        if(opcao <= ME.getGameInfo().getUnalignedSystems().size())
-        {
+
+        if (opcao <= ME.getGameInfo().getUnalignedSystems().size()) {
             ME.Batalha(opcao);
         }
     }
