@@ -20,19 +20,24 @@ public class SmallInvasionForce extends Event {
         return "Small Invasion Force";
     }
 
+    @Override
     public void CorreEvento() {
-//        int Forca;
-//        if (getGameInfo().getANO() == 1) {
-//            Forca = 1 + getGameInfo().Dice();
-//        } else {
-//            Forca = 2 + getGameInfo().Dice();
-//        }
-//        if (Forca >= (getGameInfo().getEmpire().get(getGameInfo().getEmpire().size() - 1).getResistance() + 1)
-//                && getGameInfo().getTechnologyDiscovered().contains(new PlanetaryDefenses(getGameInfo()))) {
-//
-//            getGameInfo().getEmpire().get(getGameInfo().getEmpire().size() - 1).DesintegrarImperio();
-//        } else if (Forca >= getGameInfo().getEmpire().get(getGameInfo().getEmpire().size() - 1).getResistance()) {
-//            getGameInfo().getEmpire().get(getGameInfo().getEmpire().size() - 1).DesintegrarImperio();
-//        }
+        int Forca, ResistenciaExtra = 0;
+
+        if (getGameInfo().getANO() == 1) {
+            if (getGameInfo().getEmpire().size() == 1) {
+                return;
+            }
+            Forca = 1 + getGameInfo().Dice();
+        } else {
+            Forca = 2 + getGameInfo().Dice();
+        }
+        if (getGameInfo().getTechnologyDiscovered().contains(new PlanetaryDefenses(getGameInfo()))) {
+            ResistenciaExtra = 1;
+        }
+
+        if (Forca >= getGameInfo().getEmpire().get(getGameInfo().getEmpire().size() - 1).getResistance() + ResistenciaExtra) {
+            getGameInfo().getEmpire().get(getGameInfo().getEmpire().size() - 1).SaiImperioEntraUnaligned();
+        }
     }
 }

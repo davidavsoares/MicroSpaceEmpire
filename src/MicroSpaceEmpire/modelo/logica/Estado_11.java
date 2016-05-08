@@ -1,15 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package MicroSpaceEmpire.modelo.logica;
 
 import MicroSpaceEmpire.modelo.Dados;
 
 /**
+ * I.S.E.C.
  *
- * @author David
+ * @author DavidSoares [21220084] && JorgeNogueira [21200794]
  */
 public class Estado_11 extends Estado_0 {
 
@@ -17,8 +13,9 @@ public class Estado_11 extends Estado_0 {
         super(GameInfo);
     }
 
-    public IEstado ElConquistador(int index) {
-        getGameInfo().getUnalignedSystems().get(index - 1).Batalha();
+    @Override
+    public IEstado ConquistaUnaligned(int index) {
+        getGameInfo().getUnalignedSystems().get(index - 1).AtacarSistema();
         return new Estado_2(getGameInfo());
     }
 }

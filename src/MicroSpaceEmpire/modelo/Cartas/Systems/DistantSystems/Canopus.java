@@ -10,15 +10,13 @@ import MicroSpaceEmpire.modelo.Dados;
  */
 public class Canopus extends DistantSystem {
 
-    private static int WealthProduction;
-    private static int VictoryPoints;
-    private static int Resistance;
+    private static final int MetalProduction = 0;
+    private static final int WealthProduction = 1;
+    private static final int VictoryPoints = 2;
+    private static final int Resistance = 9;
 
     public Canopus(Dados GameInfo) {
         super(GameInfo);
-        WealthProduction = 1;
-        VictoryPoints = 2;
-        Resistance = 9;
     }
 
     @Override
@@ -38,15 +36,11 @@ public class Canopus extends DistantSystem {
 
     @Override
     public int getMetalProduction() {
-        return 0;
+        return MetalProduction;
     }
 
     @Override
     public int getResistance() {
         return Resistance;
-    }
-
-    public void setResistance(int Resistance) {
-        Canopus.Resistance = Resistance;
     }
 }

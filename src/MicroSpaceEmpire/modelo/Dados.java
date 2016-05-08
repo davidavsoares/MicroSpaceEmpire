@@ -13,36 +13,44 @@ import MicroSpaceEmpire.modelo.Tecnologias.Technologies.*;
 import static java.lang.Math.round;
 import java.util.ArrayList;
 import java.util.Collections;
+import static java.lang.Math.round;
 
 /**
+ * I.S.E.C.
  *
- * @author David
+ * @author DavidSoares [21220084] && JorgeNogueira [21200794]
  */
 public class Dados implements java.io.Serializable {
 
-    private static final long serialVersionUID = 42L;
-    private ArrayList<System> NearSystemsDeck;          //Sistemas proximos (Face voltada para baixo)
-    private ArrayList<System> DistantSystemsDeck;       //Sistemas distantes (Face voltada para baixo)
-    private ArrayList<System> Empire;                   //Sistemas pertencentes ao império
-    private ArrayList<System> UnalignedSystems;         //Sistemas desalinhados 
-    private ArrayList<Technology> Technologies;         //Tecnologias não desenvolvidas
-    private ArrayList<Technology> TechnologyDiscovered; //Tecnologias compradas
-    private ArrayList<Event> EventDeck;                 //Eventos (Face voltada para baixo)
-    private ArrayList<Event> EventDiscard;              //Eventos já utilizados
+    private static final long serialVersionUID = 42L;           //Permite Guardar e Carregar o jogo
 
-    private Event CurrentEvent;                         //Evento actual
-    static int ANO;                                     //Ano actual
-    private int WealthProduction;
-    private int MetalProduction;
-    private int MilitaryStrength;
-    private int Wealth;
-    private int VictoryPoints;
-    private int Metal;
-    private int DADO;
-    private int MaxStorage;
-    private int MaxMilitary;
-    private int MaxProdution;
-    private int PercentagemProducao;
+    private final ArrayList<System> NearSystemsDeck;            //Sistemas proximos (Face voltada para baixo)
+    private final ArrayList<System> DistantSystemsDeck;         //Sistemas distantes (Face voltada para baixo)
+    private final ArrayList<System> Empire;                     //Sistemas pertencentes ao império
+    private final ArrayList<System> UnalignedSystems;           //Sistemas desalinhados 
+    private final ArrayList<Technology> Technologies;           //Tecnologias não desenvolvidas
+    private final ArrayList<Technology> TechnologyDiscovered;   //Tecnologias compradas
+    private final ArrayList<Event> EventDeck;                   //Eventos (Face voltada para baixo)
+    private final ArrayList<Event> EventDiscard;                //Eventos já utilizados
+
+    private Event CurrentEvent;                                 //Evento actual
+    private Event RemovedEvent;                                 //Evento removido ao inicio
+
+    static int ANO;                                             //Ano actual
+    private int WealthProduction;                               //Producao de riqueza
+    private int MetalProduction;                                //Producao de metal
+    private int MilitaryStrength;                               //Capacidade militar
+    private int Wealth;                                         //Riqueza
+    private int VictoryPoints;                                  //Pontos de victoria
+    private int Metal;                                          //Metal em Stock
+    private int DADO;                                           //Valor que saiu no dado
+    private int MaxStorage;                                     //Capacidade de armazenamento
+    private int MaxMilitary;                                    //Capacidade militar maxima
+    private int MaxProdution;                                   //Producao maxima de riqueza e metal
+    private int PercentagemProducao;                            //Percentagem de producao de metal e riqueza
+
+    private boolean Diplomacy = false;
+    private boolean Greve = false;
 
     public Dados() {
 
@@ -51,51 +59,82 @@ public class Dados implements java.io.Serializable {
         Empire = new ArrayList<>();                     //Cria um array com os sistemas que pertencem ao imperio
         UnalignedSystems = new ArrayList<>();           //Cria um array com os sistemas desalinhados
         EventDeck = new ArrayList<>();                  //Cria  um array com os eventos
-        EventDiscard = new ArrayList<>();
+        EventDiscard = new ArrayList<>();               //Cria  um array com os eventos já utilizados
         TechnologyDiscovered = new ArrayList<>();       //Cria um array com as tecnologias descobertas
-        Technologies = new ArrayList<>();
+        Technologies = new ArrayList<>();               //Cria  um array com as tecnologias
+
         PreparaJogo();                                  //Chama a funcao que prepara inicialmente o jogo       
     }
 
-    public void PreparaJogo() {
-        PercentagemProducao = 100;
-        MaxProdution = 5;
+    private void PreparaJogo() {
+        RemovedEvent = null;
+        CurrentEvent = null;
+        ANO = 1;
+        WealthProduction = 0;
+        MetalProduction = 0;
+        MilitaryStrength = 0;
+        Wealth = 0;
+        VictoryPoints = 0;
+        Metal = 0;
+        DADO = 0;
         MaxStorage = 3;
         MaxMilitary = 3;
-        MilitaryStrength = 2;
-        Wealth = 10;
-        ANO = 1;
-        VictoryPoints = 0;
+        MaxProdution = 3;
+        PercentagemProducao = 100;
+
         PreparaEventos();
+
         PreparaSistemas();
+
         PreparaTecnologias();
-        Collections.shuffle(DistantSystemsDeck);        //Baralha o Deck dos sistemas distantes
-        Collections.shuffle(NearSystemsDeck);           //Baralha o Deck dos sistemas proximos
-
-        //Empire.add(new HomeWorld());
-        (new HomeWorld(this)).IntegrarImperio();
-
-        //~~~~~~~~~~~~~~Retirar o primeiro evento~~~~~~~~~~~~~~~~~~~//
     }
 
     public void PreparaEventos() {
 
         (new Asteroid(this)).IntegrarEventDeck();           // Adiciona 'Asteroid' ao Deck de eventos
-//        (new DerelictShip(this)).IntegrarEventDeck();       // Adiciona 'Derelict Ship' ao Deck de eventos
-//        (new LargeInvasionForce(this)).IntegrarEventDeck(); // Adiciona 'Large Invasion Force' ao Deck de eventos
-//        (new Revolt(this)).IntegrarEventDeck();             // Adiciona 'Revolt' ao Deck de eventos
-//        (new Revolt2(this)).IntegrarEventDeck();            // Adiciona 'Revolt2' ao Deck de eventos
-//        (new SmallInvasionForce(this)).IntegrarEventDeck(); // Adiciona 'Small Invasion Force' ao Deck de eventos
-//        (new Strike(this)).IntegrarEventDeck();             // Adiciona 'Strike' ao Deck de eventos
+        (new DerelictShip(this)).IntegrarEventDeck();       // Adiciona 'Derelict Ship' ao Deck de eventos
+        (new LargeInvasionForce(this)).IntegrarEventDeck(); // Adiciona 'Large Invasion Force' ao Deck de eventos
+        (new Revolt(this)).IntegrarEventDeck();             // Adiciona 'Revolt' ao Deck de eventos
+        (new Revolt2(this)).IntegrarEventDeck();            // Adiciona 'Revolt2' ao Deck de eventos
+        (new SmallInvasionForce(this)).IntegrarEventDeck(); // Adiciona 'Small Invasion Force' ao Deck de eventos
+        (new Strike(this)).IntegrarEventDeck();             // Adiciona 'Strike' ao Deck de eventos
         Collections.shuffle(EventDeck);                     // Baralha o Deck dos eventos
 
-        (new DerelictShip(this)).IntegrarEventDiscard();       // Adiciona 'Derelict Ship' ao Deck de eventos
-        (new LargeInvasionForce(this)).IntegrarEventDiscard(); // Adiciona 'Large Invasion Force' ao Deck de eventos
-        (new Revolt(this)).IntegrarEventDiscard();             // Adiciona 'Revolt' ao Deck de eventos
-        (new Revolt2(this)).IntegrarEventDiscard();            // Adiciona 'Revolt2' ao Deck de eventos
-        (new SmallInvasionForce(this)).IntegrarEventDiscard(); // Adiciona 'Small Invasion Force' ao Deck de eventos
-        (new Strike(this)).IntegrarEventDiscard();             // Adiciona 'Strike' ao Deck de eventos
+        RemovedEvent = EventDeck.get(0);
+        EventDeck.remove(0);
+    }
 
+    public void PreparaSistemas() {
+
+//---------------------------------------------------Sistema Inicial----------//
+        (new HomeWorld(this)).IntegrarImperio();
+
+//------------------------------------------------Sistemas Distantes----------//
+        (new Polaris(this)).IntegrarDistantSystemsDeck();
+        (new Canopus(this)).IntegrarDistantSystemsDeck();
+        (new GalaxysEdge(this)).IntegrarDistantSystemsDeck();
+        Collections.shuffle(DistantSystemsDeck);        //Baralha o Deck dos sistemas distantes
+
+//-------------------------------------------------Sistemas Proximos----------//
+        (new Cygnus(this)).IntegrarNearSystemsDeck();
+        (new EpsilonEridani(this)).IntegrarNearSystemsDeck();
+        (new Procyon(this)).IntegrarNearSystemsDeck();
+        (new Proxima(this)).IntegrarNearSystemsDeck();
+        (new Sirius(this)).IntegrarNearSystemsDeck();
+        (new TauCeti(this)).IntegrarNearSystemsDeck();
+        (new Wolf359(this)).IntegrarNearSystemsDeck();
+        Collections.shuffle(NearSystemsDeck);           //Baralha o Deck dos sistemas proximos
+    }
+
+    public void PreparaTecnologias() {
+        (new CapitalShips(this)).IntegrarTechnologies();
+        (new ForwardStarbases(this)).IntegrarTechnologies();
+        (new RobotWorkers(this)).IntegrarTechnologies();
+        (new PlanetaryDefenses(this)).IntegrarTechnologies();
+        (new HyperTelevision(this)).IntegrarTechnologies();
+        (new InterstellarDiplomacy(this)).IntegrarTechnologies();
+        (new InterspeciesCommerce(this)).IntegrarTechnologies();
+        (new InterstellarBanking(this)).IntegrarTechnologies();
     }
 
     public void setANO(int ANO) {
@@ -114,10 +153,10 @@ public class Dados implements java.io.Serializable {
             }
         }
         return Empire.get(index);
-
     }
 
-    public void RecolheEventDeck() {
+    public void ReiniciarEventos() {
+        EventDiscard.add(RemovedEvent);
         EventDiscard.add(CurrentEvent);
         Collections.shuffle(EventDiscard);
         for (int i = 0; i < EventDiscard.size() - 2; i++) {
@@ -126,16 +165,20 @@ public class Dados implements java.io.Serializable {
         EventDiscard.removeAll(EventDiscard);
     }
 
-    public boolean isEmpty() {
-        return Empire.isEmpty();
-    }
-
     public int getPercentagemProducao() {
         return PercentagemProducao;
     }
 
     public void setPercentagemProducao(int PercentagemProducao) {
         this.PercentagemProducao = PercentagemProducao;
+    }
+
+    public boolean getDiplomacy() {
+        return Diplomacy;
+    }
+
+    public void setDiplomacy(boolean Diplomacy) {
+        this.Diplomacy = Diplomacy;
     }
 
     public int getMaxMilitary() {
@@ -154,9 +197,11 @@ public class Dados implements java.io.Serializable {
         this.MaxStorage = MaxStorage;
     }
 
-    public void Recolhe() {
-        setMetal(Metal + round(MetalProduction * PercentagemProducao / 100));
+    public void RecolheMetaleRiqueza() {
+        setMetal(Metal + round(getMetalProduction() * PercentagemProducao / 100));
         setWealth(Wealth + round(WealthProduction * PercentagemProducao / 100));
+
+        setPercentagemProducao(100);
     }
 
     public void setMetal(int metal) {
@@ -166,6 +211,22 @@ public class Dados implements java.io.Serializable {
         } else if (Metal > MaxStorage) {
             this.Metal = this.MaxStorage;
         }
+    }
+
+    public int getMetalProduction() {
+        int somatorio = 0;
+        for (System imperio : Empire) {
+            somatorio += imperio.getMetalProduction();
+        }
+        return somatorio;
+    }
+
+    public int getWealthProduction() {
+        int somatorio = 0;
+        for (System imperio : Empire) {
+            somatorio += imperio.getWealthProduction();
+        }
+        return somatorio;
     }
 
     public void setWealth(int Wealth) {
@@ -198,34 +259,26 @@ public class Dados implements java.io.Serializable {
         this.CurrentEvent = CurrentEvent;
     }
 
-    public int getWealthProduction() {
-        return WealthProduction;
+    public int getWealth() {
+        return Wealth;
     }
 
     public void setWealthProduction(int WealthProduction) {
         this.WealthProduction = WealthProduction;
         if (this.WealthProduction < 0) {
             this.WealthProduction = 0;
-        } else if (WealthProduction > MaxProdution) {
-            WealthProduction = MaxProdution;
+        } else if (this.WealthProduction > MaxProdution) {
+            this.WealthProduction = MaxProdution;
         }
-    }
-
-    public int getMetalProduction() {
-        return MetalProduction;
     }
 
     public void setMetalProduction(int MetalProduction) {
         this.MetalProduction = MetalProduction;
         if (this.MetalProduction < 0) {
             this.MetalProduction = 0;
-        } else if (MetalProduction > MaxProdution) {
-            MetalProduction = MaxProdution;
+        } else if (this.MetalProduction > MaxProdution) {
+            this.MetalProduction = MaxProdution;
         }
-    }
-
-    public int getWealth() {
-        return Wealth;
     }
 
     public int getVictoryPoints() {
@@ -246,32 +299,6 @@ public class Dados implements java.io.Serializable {
 
     public int getMilitaryStrength() {
         return MilitaryStrength;
-    }
-
-    public void PreparaSistemas() {
-        //--------------Distant Systems--------------------------//
-        (new Polaris(this)).IntegrarDistantSystemsDeck();
-        (new Canopus(this)).IntegrarDistantSystemsDeck();
-        (new GalaxysEdge(this)).IntegrarDistantSystemsDeck();
-        //--------------Near Systems-----------------------------//
-        (new Cygnus(this)).IntegrarNearSystemsDeck();
-        (new EpsilonEridani(this)).IntegrarNearSystemsDeck();
-        (new Procyon(this)).IntegrarNearSystemsDeck();
-        (new Proxima(this)).IntegrarNearSystemsDeck();
-        (new Sirius(this)).IntegrarNearSystemsDeck();
-        (new TauCeti(this)).IntegrarNearSystemsDeck();
-        (new Wolf359(this)).IntegrarNearSystemsDeck();
-    }
-
-    public void PreparaTecnologias() {
-        (new CapitalShips(this)).IntegrarTechnologies();
-        (new ForwardStarbases(this)).IntegrarTechnologies();
-        (new RobotWorkers(this)).IntegrarTechnologies();
-        (new PlanetaryDefenses(this)).IntegrarTechnologies();
-        (new HyperTelevision(this)).IntegrarTechnologies();
-        (new InterstellarDiplomacy(this)).IntegrarTechnologies();
-        (new InterspeciesCommerce(this)).IntegrarTechnologies();
-        (new InterstellarBanking(this)).IntegrarTechnologies();
     }
 
     public ArrayList<System> getEmpire() {      //Funcao que permite adicionar um sistema ao império
@@ -347,12 +374,6 @@ public class Dados implements java.io.Serializable {
         return Technologies.remove(o);
     }
 
-    public System DesintegrarImperio(System o) {
-        setMetalProduction(o.getMetalProduction());
-        setWealthProduction(o.getWealthProduction());
-        return Empire.remove(Empire.indexOf(o));
-    }
-
     public boolean removeSystem(System o) {
         if (isEmptyUnalignedSystems()) {
             if (o instanceof DistantSystem) {
@@ -409,19 +430,25 @@ public class Dados implements java.io.Serializable {
     public String toString() {
         String s;
 
-        s = "\n\n" + "Império: " + Empire;                                     //Imprime as cartas que fazem parte do império
-        s += "\n" + "Ano: " + ANO;
-        s += "\n" + "Unaligned Systems: " + UnalignedSystems;
+        s = "\n" + "---------------[ANO " + ANO + "]-------------";
+        s += "\n\n" + "Império:          " + Empire;                                     //Imprime as cartas que fazem parte do império
+        s += "\n" + "Sistemas desalinhados: " + UnalignedSystems;
+
+        s += "\n\n" + "Tecnologias: " + Technologies;
         s += "\n" + "Tecnologias descobertas: " + TechnologyDiscovered;         //Imprime as cartas que fazem parte do império
-        s += "\n" + "Evento actual: " + CurrentEvent;                           //Imprime a carta de evento actual
+
+        s += "\n\n" + "Evento actual:       [" + CurrentEvent + "]";                           //Imprime a carta de evento actual
         s += "\n" + "Eventos descartados: " + EventDiscard;                     //Imprime os eventos que já ocorreram
-        s += "\n" + "Dado: " + DADO;
-        s += "\n" + "Força Militar: " + MilitaryStrength;
-        s += "\n" + "Riqueza: " + Wealth;
-        s += "\n" + "Producao de Riqueza: " + WealthProduction;
-        s += "\n" + "Metal: " + Metal;
-        s += "\n" + "Produção de metal: " + MetalProduction;
-        //s += "\n" + "Pontos de vitória: " + VictoryPoints;
+
+        s += "\n\n" + "[Força Militar:        " + MilitaryStrength + "]";
+
+        s += "\n" + "[Producao de Riqueza:  " + WealthProduction + "]   ";
+        s += "[Riqueza: " + Wealth + "]";
+
+        s += "\n" + "[Produção de metal:    " + MetalProduction + "]   ";
+        s += "[Metal:   " + Metal + "]";
+
+        s += "\n\n" + "[Valor saido no dado:  " + DADO + "]";
 
         return s;
     }

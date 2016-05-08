@@ -19,14 +19,4 @@ public class PlanetaryDefenses extends Technology {
     public String toString() {
         return "Planetary Defenses";
     }
-
-    public boolean CompraTecnologia() {
-        if (getGameInfo().getTechnologyDiscovered().contains(new RobotWorkers(getGameInfo()))) {
-            if (IntegrarTechnologyDiscovered()) {
-                getGameInfo().removeTechnology(this); //exception para caso de ja ter sido comprado
-                return true;
-            }
-        }
-        return false;
-    }
 }

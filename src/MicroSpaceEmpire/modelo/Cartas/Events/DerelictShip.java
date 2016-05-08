@@ -19,6 +19,7 @@ public class DerelictShip extends Event {
         return "Derelict Ship";
     }
 
+    @Override
     public void CorreEvento() {
         getGameInfo().setMetal(getGameInfo().getMetal() + 1);
     }

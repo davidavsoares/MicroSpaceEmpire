@@ -6,8 +6,9 @@ import java.io.ObjectOutputStream;
 import java.io.IOException;
 
 /**
+ * I.S.E.C.
  *
- * @author David
+ * @author DavidSoares [21220084] && JorgeNogueira [21200794]
  */
 public class Estado_0 implements IEstado, java.io.Serializable {
 
@@ -139,7 +140,7 @@ public class Estado_0 implements IEstado, java.io.Serializable {
     }
 
     @Override
-    public IEstado ElConquistador(int index) {
+    public IEstado ConquistaUnaligned(int index) {
         return this;
     }
 

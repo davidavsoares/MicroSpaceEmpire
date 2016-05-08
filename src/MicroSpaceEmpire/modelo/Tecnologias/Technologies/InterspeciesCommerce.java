@@ -19,11 +19,4 @@ public class InterspeciesCommerce extends Technology {
         return "Interspecies Commerce";
     }
 
-    public boolean CompraTecnologia() {
-        if (IntegrarTechnologyDiscovered()) {
-            getGameInfo().removeTechnology(this); //exception para caso de ja ter sido comprado
-            return true;
-        }
-        return false;
-    }
 }

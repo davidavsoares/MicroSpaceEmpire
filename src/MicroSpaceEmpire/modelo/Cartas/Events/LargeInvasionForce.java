@@ -20,19 +20,24 @@ public class LargeInvasionForce extends Event {
         return "Large Invasion Force";
     }
 
+    @Override
     public void CorreEvento() {
-        int Forca;
+        int Forca, ResistenciaExtra = 0;
+
         if (getGameInfo().getANO() == 1) {
+            if (getGameInfo().getEmpire().size() == 1) {
+                return;
+            }
             Forca = 2 + getGameInfo().Dice();
         } else {
             Forca = 3 + getGameInfo().Dice();
         }
+        if (getGameInfo().getTechnologyDiscovered().contains(new PlanetaryDefenses(getGameInfo()))) {
+            ResistenciaExtra = 1;
+        }
 
-        if (Forca >= getGameInfo().getEmpire().get(getGameInfo().getEmpire().size() - 1).getResistance()) {
-
-            getGameInfo().getEmpire().get(getGameInfo().getEmpire().size() - 1).DesintegrarImperio();
-        } else if (getGameInfo().getTechnologyDiscovered().contains(new PlanetaryDefenses(getGameInfo()))) {
-            getGameInfo().getEmpire().get(getGameInfo().getEmpire().size() - 1).setResistance(getGameInfo().getEmpire().get(getGameInfo().getEmpire().size() - 1).getResistance() + 1);
+        if (Forca >= getGameInfo().getEmpire().get(getGameInfo().getEmpire().size() - 1).getResistance() + ResistenciaExtra) {
+            getGameInfo().getEmpire().get(getGameInfo().getEmpire().size() - 1).SaiImperioEntraUnaligned();
         }
     }
 }

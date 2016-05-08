@@ -24,10 +24,6 @@ public class GalaxysEdge extends DistantSystem {
         return "Galaxy's Edge";
     }
 
-    public void setResistance(int Resistance) {
-        GalaxysEdge.Resistance = Resistance;
-    }
-
     @Override
     public int getVictoryPoints() {
         return VictoryPoints;

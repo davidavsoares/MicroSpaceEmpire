@@ -19,12 +19,4 @@ public class RobotWorkers extends Technology {
     public String toString() {
         return "Robot Workers";
     }
-
-    public boolean CompraTecnologia() {
-        if (IntegrarTechnologyDiscovered()) {
-            getGameInfo().removeTechnology(this); //exception para caso de ja ter sido comprado
-            return true;
-        }
-        return false;
-    }
 }

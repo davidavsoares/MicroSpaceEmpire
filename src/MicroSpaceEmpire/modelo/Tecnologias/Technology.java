@@ -1,7 +1,6 @@
 package MicroSpaceEmpire.modelo.Tecnologias;
 
 import MicroSpaceEmpire.modelo.Dados;
-import MicroSpaceEmpire.modelo.Tecnologias.Technologies.ForwardStarbases;
 import java.util.Objects;
 
 /**
@@ -9,7 +8,7 @@ import java.util.Objects;
  *
  * @author DavidSoares [21220084] && JorgeNogueira [21200794]
  */
-public class Technology implements java.io.Serializable {
+public abstract class Technology implements java.io.Serializable {
 
     private static final long serialVersionUID = 42L;
     private Dados GameInfo;
@@ -30,7 +29,7 @@ public class Technology implements java.io.Serializable {
 
     public void IntegrarDescobertas() //Função polimorfica para fazer um planeta integrar o imperio
     {
-        getGameInfo().getTechnologyDiscovered().add(this);
+        GameInfo.getTechnologyDiscovered().add(this);
     }
 
     @Override
@@ -58,9 +57,10 @@ public class Technology implements java.io.Serializable {
         return true;
     }
 
-    public boolean IntegrarTechnologyDiscovered() {
+    public boolean CompraTecnologia() {
         if (GameInfo.getWealth() >= Custo) {
             GameInfo.setWealth(GameInfo.getWealth() - Custo);
+            DesintegrarTechnologies();
             IntegrarDescobertas();
             return true;
         }
@@ -71,12 +71,14 @@ public class Technology implements java.io.Serializable {
         GameInfo.getTechnologies().add(this);
     }
 
+    public Technology DesintegrarTechnologies() {
+        GameInfo.getTechnologies().remove(this);
+        return this;
+    }
+
     public Dados getGameInfo() {
         return GameInfo;
     }
 
-    public boolean CompraTecnologia() {
-        return false;
-    }
 
 }

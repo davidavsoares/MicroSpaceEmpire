@@ -5,8 +5,9 @@ import java.util.Scanner;
 import MicroSpaceEmpire.modelo.logica.*;
 
 /**
+ * I.S.E.C.
  *
- * @author David
+ * @author DavidSoares [21220084] && JorgeNogueira [21200794]
  */
 public class InterfaceUtilizador {
 

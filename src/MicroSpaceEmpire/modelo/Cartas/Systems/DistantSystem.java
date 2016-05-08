@@ -10,15 +10,11 @@ import MicroSpaceEmpire.modelo.Dados;
  */
 public abstract class DistantSystem extends System {
 
-    //private int Resistance;
     public DistantSystem(Dados GameInfo) {
         super(GameInfo);
-        //Resistance = r;
     }
 
     public void IntegrarDistantSystemsDeck() {
         getGameInfo().getDistantSystemsDeck().add(this);
-
-    }
-
+    }   
 }

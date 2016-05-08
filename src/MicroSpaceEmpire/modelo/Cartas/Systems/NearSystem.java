@@ -14,7 +14,7 @@ public abstract class NearSystem extends System {
         super(GameInfo);
     }
 
-    public void IntegrarNearSystemsDeck() //Função polimorfica para fazer um planeta integrar o imperio
+    public void IntegrarNearSystemsDeck() //Função polimorfica para fazer um planeta o Deck the sistemas proximos
     {
         getGameInfo().getNearSystemsDeck().add(this);
     }

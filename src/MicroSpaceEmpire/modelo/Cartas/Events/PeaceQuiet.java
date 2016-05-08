@@ -19,6 +19,8 @@ public class PeaceQuiet extends Event {
         return "Peace & Quiet";
     }
 
+    @Override
     public void CorreEvento() {
+        //Nao acontece nada
     }
 }

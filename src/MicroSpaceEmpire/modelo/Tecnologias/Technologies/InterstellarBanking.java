@@ -15,17 +15,6 @@ public class InterstellarBanking extends Technology {
 
     }
 
-    public boolean CompraTecnologia() {
-        if (getGameInfo().getTechnologyDiscovered().contains(new InterspeciesCommerce(getGameInfo()))) {
-            if (IntegrarTechnologyDiscovered()) {
-                getGameInfo().removeTechnology(this); //exception para caso de ja ter sido comprado
-                getGameInfo().setMaxStorage(5);
-                return true;
-            }
-        }
-        return false;
-    }
-
     @Override
     public String toString() {
         return "Interstellar Banking";

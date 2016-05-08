@@ -1,8 +1,9 @@
 package MicroSpaceEmpire.modelo.logica;
 
 /**
+ * I.S.E.C.
  *
- * @author David
+ * @author DavidSoares [21220084] && JorgeNogueira [21200794]
  */
 public interface IEstado {
 
@@ -19,6 +20,8 @@ public interface IEstado {
     IEstado ExplorarDistantSystem();
 
     IEstado Passar();
+
+    IEstado ConquistaUnaligned(int index);
 //-----------ESTADO[2]---------//
 
     IEstado DecMetalIncRiqueza();
@@ -38,8 +41,7 @@ public interface IEstado {
 
     IEstado VerificaFim();
 //-----------OUTROS---------//
-    IEstado ElConquistador(int index);
-    
+
     IEstado Sair();
 
     IEstado GuardarJogo();

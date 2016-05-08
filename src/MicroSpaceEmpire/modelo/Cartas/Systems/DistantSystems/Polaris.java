@@ -21,19 +21,17 @@ public class Polaris extends DistantSystem {
         Resistance = 9;
     }
 
-    public void setResistance(int Resistance) {
-        Polaris.Resistance = Resistance;
-    }
-
     @Override
     public String toString() {
         return "Polaris";
     }
 
+    @Override
     public int getVictoryPoints() {
         return VictoryPoints;
     }
 
+    @Override
     public int getMetalProduction() {
         return MetalProduction;
     }

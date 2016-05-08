@@ -14,16 +14,6 @@ public class InterstellarDiplomacy extends Technology {
         super(GameInfo,5);
     }
 
-    public boolean CompraTecnologia() {
-        if (getGameInfo().getTechnologyDiscovered().contains(new HyperTelevision(getGameInfo()))) {
-            IntegrarTechnologyDiscovered();
-            getGameInfo().removeTechnology(this); //exception para caso de ja ter sido comprado
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     @Override
     public String toString() {
         return "Interstellar Diplomacy";

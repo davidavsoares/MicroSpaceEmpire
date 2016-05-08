@@ -6,7 +6,9 @@ import MicroSpaceEmpire.modelo.MaquinaDeEstados;
 public class Main {
 
     /**
-     * @param args the command line arguments
+     * I.S.E.C.
+     *
+     * @author DavidSoares [21220084] && JorgeNogueira [21200794]
      */
     public static void main(String[] args) {
         InterfaceUtilizador ui = new InterfaceUtilizador(new MaquinaDeEstados());

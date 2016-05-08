@@ -20,13 +20,12 @@ public class Strike extends Event {
         return "Strike";
     }
 
+    @Override
     public void CorreEvento() {
-
         if (getGameInfo().getTechnologyDiscovered().contains(new RobotWorkers(getGameInfo()))) {
             getGameInfo().setPercentagemProducao(50);
         } else {
             getGameInfo().setPercentagemProducao(0);
         }
     }
-
 }

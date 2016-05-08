@@ -14,28 +14,9 @@ public class ForwardStarbases extends Technology {
         super(GameInfo, 4);
     }
 
-    public boolean CompraTecnologia() {
-        if (getGameInfo().getTechnologyDiscovered().contains(new CapitalShips(getGameInfo()))) {
-            if (IntegrarTechnologyDiscovered()) {
-                getGameInfo().removeTechnology(this); //exception para caso de ja ter sido comprado
-                return true;
-            }
-        }
-        return false;
-    }
-
     @Override
     public String toString() {
         return "Forward Starbases";
     }
 
-//    @Override
-//    public boolean equals(Object obj) {
-//        boolean sameSame = false;
-//
-//        if (obj != null && obj instanceof ForwardStarbases) {
-//            sameSame = this.toString().equals(((ForwardStarbases) obj).toString());
-//        }
-//        return sameSame;
-//    }
 }

@@ -1,19 +1,19 @@
 package MicroSpaceEmpire.modelo.logica;
 
-import MicroSpaceEmpire.modelo.Cartas.Events.Strike;
 import MicroSpaceEmpire.modelo.Dados;
 import MicroSpaceEmpire.modelo.Tecnologias.Technologies.InterspeciesCommerce;
 
 /**
+ * I.S.E.C.
  *
- * @author David
+ * @author DavidSoares [21220084] && JorgeNogueira [21200794]
  */
 public class Estado_2 extends Estado_0 {
 
     public Estado_2(Dados GameInfo) {
         super(GameInfo);
 
-        GameInfo.Recolhe();
+        GameInfo.RecolheMetaleRiqueza();
 
     }
 

@@ -7,8 +7,9 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 
 /**
+ * I.S.E.C.
  *
- * @author David
+ * @author DavidSoares [21220084] && JorgeNogueira [21200794]
  */
 public class MaquinaDeEstados {
 
@@ -42,6 +43,11 @@ public class MaquinaDeEstados {
         this.estado = estado;
     }
 
+// -------------------------- MENU INICIAL ---------------------------------- //
+    public void NovoJogo() {
+        setEstado(estado.NovoJogo());
+    }
+
     public IEstado CarregarJogo() {
         try {
             FileInputStream fileIn = new FileInputStream("Save.ser");
@@ -61,10 +67,7 @@ public class MaquinaDeEstados {
         return estado.CarregarJogo();
     }
 
-    public void NovoJogo() {
-        setEstado(estado.NovoJogo());
-    }
-
+// -------------------------- ETAPA 1 --------------------------------------- //
     public void ConquistarSistema() {
         setEstado(estado.ConquistarSistema());
     }
@@ -77,28 +80,40 @@ public class MaquinaDeEstados {
         setEstado(estado.ExplorarDistantSystem());
     }
 
-    public void Passar() {
-        setEstado(estado.Passar());
-    }
-
+// -------------------------- ETAPA 2 --------------------------------------- //
     public void RecolherMR() {
         setEstado(estado.DecMetalIncRiqueza());
-    }
-
-    public void DescobrirTecnologia() {
-        setEstado(estado.DescobrirTecnologia());
     }
 
     public void DescobrirTecnologia(String tech) {
         setEstado(estado.DescobrirTecnologia(tech));
     }
 
+    public void DescobrirTecnologia() {
+        setEstado(estado.DescobrirTecnologia());
+    }
+
     public void ConstruirForcaMilitar() {
         setEstado(estado.ConstruirForcaMilitar());
     }
 
-    public void DescobrirEConstruir() {
-        setEstado(estado.DescobrirEConstruir());
+// -------------------------- ETAPA 3 --------------------------------------- //
+    public void DecMetalIncRiqueza() {
+        setEstado(estado.DecMetalIncRiqueza());
+    }
+
+    public void DecRiquezaIncMetal() {
+        setEstado(estado.DecRiquezaIncMetal());
+    }
+// -------------------------- ETAPA 4 --------------------------------------- //
+
+    public void VerificaFim() {
+        setEstado(estado.VerificaFim());
+    }
+
+// ---------------------------- TODOS --------------------------------------- //
+    public void Batalha(int index) {
+        setEstado(estado.ConquistaUnaligned(index));
     }
 
     public void Sair() {
@@ -109,20 +124,7 @@ public class MaquinaDeEstados {
         return estado.GuardarJogo();
     }
 
-    public void DecMetalIncRiqueza() {
-        setEstado(estado.DecMetalIncRiqueza());
-    }
-
-    public void DecRiquezaIncMetal() {
-        setEstado(estado.DecRiquezaIncMetal());
-    }
-
-    public void VerificaFim() {
-        setEstado(estado.VerificaFim());
-    }
-    public void Batalha(int index)
-    {
-        
-        setEstado(estado.ElConquistador(index));
+    public void Passar() {
+        setEstado(estado.Passar());
     }
 }

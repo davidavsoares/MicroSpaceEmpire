@@ -20,11 +20,4 @@ public class HyperTelevision extends Technology {
         return "Hyper Television";
     }
 
-    public boolean CompraTecnologia() {
-        if (IntegrarTechnologyDiscovered()) {
-            getGameInfo().removeTechnology(this); //exception para caso de ja ter sido comprado
-            return true;
-        }
-        return false;
-    }
 }
