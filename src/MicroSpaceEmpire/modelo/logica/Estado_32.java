@@ -18,16 +18,17 @@ public class Estado_32 extends Estado_0 {
 
     @Override
     public IEstado DescobrirTecnologia(String tech) {
-        if (getGameInfo().getTechnology(tech).CompraTecnologia()) {
-            if (Repeticao) {
-                return new Estado_31(getGameInfo());
-            } else {
-                return new Estado_4(getGameInfo());
+        if (getGameInfo().getTechnology(tech) != null) {
+            if (getGameInfo().getTechnology(tech).CompraTecnologia()) {
+                if (Repeticao) {
+                    return new Estado_31(getGameInfo());
+                } else {
+                    return new Estado_4(getGameInfo());
+                }
             }
         } else if (Repeticao) {
             return new Estado_31(getGameInfo());
-        } else {
-            return new Estado_4(getGameInfo());
         }
+        return new Estado_4(getGameInfo());
     }
 }

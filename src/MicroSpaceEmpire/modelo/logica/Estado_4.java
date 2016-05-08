@@ -10,12 +10,12 @@ public class Estado_4 extends Estado_0 {
 
     public Estado_4(Dados GameInfo) {
         super(GameInfo);
-        //VerificaFim();
+        VerificaFim();
         RetirarEvento();
     }
 
     public void RetirarEvento() {
-        getGameInfo().getEventDeck().get(0).CorreEvento();
+        getGameInfo().getEventDeck().get(0).TrocaEvento();
     }
 
     public IEstado VerificaFim() {
@@ -28,5 +28,4 @@ public class Estado_4 extends Estado_0 {
         }
         return new Estado_1(getGameInfo());
     }
-
 }

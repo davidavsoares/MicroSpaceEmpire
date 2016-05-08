@@ -62,7 +62,8 @@ public class Dados implements java.io.Serializable {
         MaxProdution = 5;
         MaxStorage = 3;
         MaxMilitary = 3;
-        MilitaryStrength = 0;
+        MilitaryStrength = 2;
+        Wealth = 10;
         ANO = 1;
         PreparaEventos();
         PreparaSistemas();
@@ -86,6 +87,8 @@ public class Dados implements java.io.Serializable {
         (new SmallInvasionForce(this)).IntegrarEventDeck(); // Adiciona 'Small Invasion Force' ao Deck de eventos
         (new Strike(this)).IntegrarEventDeck();             // Adiciona 'Strike' ao Deck de eventos
         Collections.shuffle(EventDeck);                     // Baralha o Deck dos eventos
+        
+        
 
     }
 
@@ -345,10 +348,14 @@ public class Dados implements java.io.Serializable {
     }
 
     public boolean removeSystem(System o) {
-        if (o instanceof DistantSystem) {
-            return DistantSystemsDeck.remove(o);
+        if (isEmptyUnalignedSystems()) {
+            if (o instanceof DistantSystem) {
+                return DistantSystemsDeck.remove(o);
+            } else {
+                return NearSystemsDeck.remove(o);
+            }
         } else {
-            return NearSystemsDeck.remove(o);
+            return UnalignedSystems.remove(o);
         }
     }
 
@@ -366,6 +373,7 @@ public class Dados implements java.io.Serializable {
         String s;
 
         s = "\n\n" + "Império: " + Empire;                                     //Imprime as cartas que fazem parte do império
+        s += "\n" + "Ano: " + ANO;
         s += "\n" + "Unaligned Systems: " + UnalignedSystems;
         s += "\n" + "Tecnologias descobertas: " + TechnologyDiscovered;         //Imprime as cartas que fazem parte do império
         s += "\n" + "Evento actual: " + CurrentEvent;                           //Imprime a carta de evento actual
@@ -380,6 +388,15 @@ public class Dados implements java.io.Serializable {
 //        s += "\n\t(" + bolasBrancasRemovidas.size() + " bolas brancas):" + bolasBrancasRemovidas;
 //        s += "\n\t(" + bolasPretasRemovidas.size() + " bolas pretas):" + bolasPretasRemovidas;
 
+        return s;
+    }
+
+    public String getStrUnalignedSystems() {
+        String s;
+        s = "\n\n" + "Sistemas desalinhados: ";
+        for (int i = 0; i < UnalignedSystems.size(); i++) {
+            s += "\n" + (i + 1) + UnalignedSystems.get(i).toString();
+        }
         return s;
     }
 

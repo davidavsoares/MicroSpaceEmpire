@@ -20,6 +20,5 @@ public class PeaceQuiet extends Event {
     }
 
     public void CorreEvento() {
-        // não faz nada
     }
 }

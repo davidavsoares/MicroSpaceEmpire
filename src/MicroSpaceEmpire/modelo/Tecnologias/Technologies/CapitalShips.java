@@ -20,11 +20,12 @@ public class CapitalShips extends Technology {
         return "Capital Ships";
     }
 
+    @Override
     public boolean CompraTecnologia() {
-        getGameInfo().removeTechnology(this); //exception para caso de ja ter sido comprado
+        //getGameInfo().removeTechnology(this); //exception para caso de ja ter sido comprado
         if (IntegrarTechnologyDiscovered()) {
             getGameInfo().setMaxMilitary(5);
-            return true;
+            return getGameInfo().removeTechnology(this);
         }
         return false;
     }

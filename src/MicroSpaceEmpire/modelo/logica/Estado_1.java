@@ -15,22 +15,26 @@ public class Estado_1 extends Estado_0 {
 
     @Override
     public IEstado ConquistarSistema() {
-        if (!getGameInfo().isEmptyUnalignedSystems()) {
-            return new Estado_2(getGameInfo());
+        if (getGameInfo().isEmptyUnalignedSystems()) {
+            
+            return new Estado_1(getGameInfo());
         } else {
-            return this; //Exception
+            return new Estado_11(getGameInfo()); //Exception
         }
     }
 
     @Override
     public IEstado ExplorarNearSystem() {
-        getGameInfo().getNearSystemsDeck().get(0).Batalha();
-        return new Estado_2(getGameInfo());
+        if (getGameInfo().isEmptyUnalignedSystems()) {
+            getGameInfo().getNearSystemsDeck().get(0).Batalha();
+            return new Estado_2(getGameInfo());
+        }
+        return this;
     }
 
     @Override
     public IEstado ExplorarDistantSystem() {
-        if (getGameInfo().containsTechnologyDiscovered(new ForwardStarbases(getGameInfo()))) {
+        if (getGameInfo().containsTechnologyDiscovered(new ForwardStarbases(getGameInfo())) && getGameInfo().isEmptyUnalignedSystems()) {
             getGameInfo().getDistantSystemsDeck().get(0).Batalha();
             return new Estado_2(getGameInfo());
         } else {

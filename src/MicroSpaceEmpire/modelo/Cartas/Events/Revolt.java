@@ -40,7 +40,6 @@ public class Revolt extends Event {
         } else {
             getGameInfo().getEmpire().get(0).DesintegrarImperio();
         }
-
     }
 
 }

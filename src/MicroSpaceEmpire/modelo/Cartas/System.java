@@ -27,7 +27,7 @@ public abstract class System extends Carta {
     public abstract int getVictoryPoints();
 
     public abstract int getResistance();
-    
+
     public abstract void setResistance(int Resistance);
 
     public void IntegrarImperio() //Função polimorfica para fazer um planeta integrar o imperio
@@ -45,15 +45,17 @@ public abstract class System extends Carta {
 
     public void DesintegrarImperio() {
         getGameInfo().DesintegrarImperio(this).IntegrarUnaligned();
-        
+
     }
 
     public boolean ConquistaSistema() {        //Funcao que remove um sistema do deck e adiciona ao Imperio
         if (getGameInfo().getMilitaryStrength() + (DADO = (getGameInfo().Dice())) >= this.getResistance()) {
-            getGameInfo().removeSystem(this);
-            this.IntegrarImperio();
-            getGameInfo().setDADO(DADO);
-            return true;
+//            if (getGameInfo().isEmptyUnalignedSystems()) {
+                getGameInfo().removeSystem(this);
+                this.IntegrarImperio();
+                getGameInfo().setDADO(DADO);
+                return true;
+//            }
         }
         getGameInfo().setDADO(DADO);
         return false;

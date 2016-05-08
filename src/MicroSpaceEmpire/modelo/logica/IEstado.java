@@ -38,7 +38,8 @@ public interface IEstado {
 
     IEstado VerificaFim();
 //-----------OUTROS---------//
-
+    IEstado ElConquistador(int index);
+    
     IEstado Sair();
 
     IEstado GuardarJogo();

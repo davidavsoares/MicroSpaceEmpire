@@ -120,4 +120,9 @@ public class MaquinaDeEstados {
     public void VerificaFim() {
         setEstado(estado.VerificaFim());
     }
+    public void Batalha(int index)
+    {
+        
+        setEstado(estado.ElConquistador(index));
+    }
 }

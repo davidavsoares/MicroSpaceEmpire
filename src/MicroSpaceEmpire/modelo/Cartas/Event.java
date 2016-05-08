@@ -26,7 +26,11 @@ public abstract class Event extends Carta {
     public abstract void CorreEvento();
 
     public void TrocaEvento() {
-        getGameInfo().getEventDiscard().add(getGameInfo().getCurrentEvent());
+        if (getGameInfo().getCurrentEvent() != null) {
+            getGameInfo().getEventDiscard().add(getGameInfo().getCurrentEvent());
+        }
+        getGameInfo().getEventDeck().remove(this);
         getGameInfo().setCurrentEvent(this);
+        CorreEvento();
     }
 }

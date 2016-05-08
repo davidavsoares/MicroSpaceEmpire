@@ -61,7 +61,7 @@ public class Technology implements java.io.Serializable {
     public boolean IntegrarTechnologyDiscovered() {
         if (GameInfo.getWealth() >= Custo) {
             GameInfo.setWealth(GameInfo.getWealth() - Custo);
-            GameInfo.getTechnologyDiscovered().add(this);
+            IntegrarDescobertas();
             return true;
         }
         return false;

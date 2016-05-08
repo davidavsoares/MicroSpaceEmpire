@@ -30,6 +30,8 @@ public class InterfaceUtilizador {
                 iuMenuInicial();
             } else if (ME.getEstado() instanceof Estado_1) {
                 iuEstado_1();
+            } else if (ME.getEstado() instanceof Estado_11) {
+                iuEstado_11();
             } else if (ME.getEstado() instanceof Estado_2) {
                 iuEstado_2();
             } else if (ME.getEstado() instanceof Estado_3) {
@@ -122,6 +124,27 @@ public class InterfaceUtilizador {
                 ME.setEstado(ME.getEstado());
                 break;
 
+        }
+    }
+    
+    private void iuEstado_11() {
+        PrintGame();
+        int opcao;
+
+        System.out.println("\n\n---------------------------------");
+
+        System.out.println();
+        System.out.println(ME.getGameInfo().getStrUnalignedSystems());
+
+        while (!sc.hasNextInt()) {
+            sc.next();
+        }
+
+        opcao = sc.nextInt();
+        
+        if(opcao <= ME.getGameInfo().getUnalignedSystems().size())
+        {
+            ME.Batalha(opcao);
         }
     }
 

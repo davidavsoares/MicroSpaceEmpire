@@ -29,12 +29,10 @@ public class LargeInvasionForce extends Event {
         }
 
         if (Forca >= getGameInfo().getEmpire().get(getGameInfo().getEmpire().size() - 1).getResistance()) {
-            
+
             getGameInfo().getEmpire().get(getGameInfo().getEmpire().size() - 1).DesintegrarImperio();
-        }
-        else if(getGameInfo().getTechnologyDiscovered().contains(new PlanetaryDefenses(getGameInfo())))
-        {
-            getGameInfo().getEmpire().get(getGameInfo().getEmpire().size() - 1).setResistance(getGameInfo().getEmpire().get(getGameInfo().getEmpire().size() - 1).getResistance()+1);
+        } else if (getGameInfo().getTechnologyDiscovered().contains(new PlanetaryDefenses(getGameInfo()))) {
+            getGameInfo().getEmpire().get(getGameInfo().getEmpire().size() - 1).setResistance(getGameInfo().getEmpire().get(getGameInfo().getEmpire().size() - 1).getResistance() + 1);
         }
     }
 }

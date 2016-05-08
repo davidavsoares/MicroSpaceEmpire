@@ -77,7 +77,7 @@ public class Estado_0 implements IEstado, java.io.Serializable {
     }
 
     public boolean ConstroiForcaMilitar() {
-        if (getGameInfo().getMetal() >= 1 || getGameInfo().getWealth() >= 1) {
+        if (getGameInfo().getMetal() >= 1 && getGameInfo().getWealth() >= 1) {
             getGameInfo().setMetal(getGameInfo().getMetal() - 1);
             getGameInfo().setWealth(getGameInfo().getWealth() - 1);
             getGameInfo().setMilitaryStrength(getGameInfo().getMilitaryStrength() + 1);
@@ -135,6 +135,11 @@ public class Estado_0 implements IEstado, java.io.Serializable {
 
     @Override
     public IEstado VerificaFim() {
+        return this;
+    }
+
+    @Override
+    public IEstado ElConquistador(int index) {
         return this;
     }
 
