@@ -1,5 +1,4 @@
 package MicroSpaceEmpire.modelo.Tecnologias.Technologies;
-
 import MicroSpaceEmpire.modelo.Dados;
 import MicroSpaceEmpire.modelo.Tecnologias.Technology;
 
@@ -19,5 +18,9 @@ public class HyperTelevision extends Technology {
     public String toString() {
         return "Hyper Television";
     }
+
+    @Override
+    public void Usa() {
+}
 
 }

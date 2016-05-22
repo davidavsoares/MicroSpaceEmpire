@@ -19,4 +19,8 @@ public class ForwardStarbases extends Technology {
         return "Forward Starbases";
     }
 
+    @Override
+    public void Usa() {
+ }
+
 }

@@ -1,9 +1,6 @@
 package MicroSpaceEmpire.modelo.logica;
 
 import MicroSpaceEmpire.modelo.Dados;
-import java.io.FileOutputStream;
-import java.io.ObjectOutputStream;
-import java.io.IOException;
 
 /**
  * I.S.E.C.
@@ -49,8 +46,13 @@ public class Estado_0 implements IEstado, java.io.Serializable {
     public IEstado ExplorarDistantSystem() {
         return this;
     }
-//-----------ESTADO[2]---------//
 
+    @Override
+    public IEstado VoltarMenuAnterior() {
+        return this;
+    }
+
+//-----------ESTADO[2]---------//
     @Override
     public IEstado DecRiquezaIncMetal() {
         return this;
@@ -119,28 +121,17 @@ public class Estado_0 implements IEstado, java.io.Serializable {
     }
 
     @Override
-    public IEstado GuardarJogo() {
-        try {
-            FileOutputStream fileOut = new FileOutputStream("Save.ser");
-            ObjectOutputStream out = new ObjectOutputStream(fileOut);
-            out.writeObject(GameInfo);
-            out.writeObject(this);
-            out.close();
-            fileOut.close();
-        } catch (IOException i) {
-            i.printStackTrace();
-
-        }
-        return this;
-    }
-
-    @Override
     public IEstado VerificaFim() {
         return this;
     }
 
     @Override
     public IEstado ConquistaUnaligned(int index) {
+        return this;
+    }
+
+    @Override
+    public IEstado Fase_4() {
         return this;
     }
 

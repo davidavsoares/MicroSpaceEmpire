@@ -23,7 +23,7 @@ public class Revolt extends Event {
     @Override
     public void CorreEvento() {
         int Forca, ResistenciaExtra = 0;
-        if (!(getGameInfo().getANO() == 2 && getGameInfo().getEmpire().size() == 1)) {
+        if (!(getGameInfo().getANO() == 1 && getGameInfo().getEmpire().size() == 1)) { //O evento não causa efeitos caso: seja o 1 ano e so haja 1 sistema no imperio.
             if (getGameInfo().getANO() == 1) {
                 Forca = 1 + getGameInfo().Dice();
             } else {
@@ -37,9 +37,9 @@ public class Revolt extends Event {
             if (Forca >= (getGameInfo().getMenorResistencia().getResistance() + ResistenciaExtra)) {
                 getGameInfo().getMenorResistencia().SaiImperioEntraUnaligned();
             }
-        } else {
-            getGameInfo().getEmpire().get(0).SaiImperioEntraUnaligned();
         }
+        
+       
     }
 
 }

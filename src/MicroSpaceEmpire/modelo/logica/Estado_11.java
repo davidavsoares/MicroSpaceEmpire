@@ -18,4 +18,9 @@ public class Estado_11 extends Estado_0 {
         getGameInfo().getUnalignedSystems().get(index - 1).AtacarSistema();
         return new Estado_2(getGameInfo());
     }
+
+    @Override
+    public IEstado VoltarMenuAnterior() {
+        return new Estado_1(getGameInfo());
+    }
 }

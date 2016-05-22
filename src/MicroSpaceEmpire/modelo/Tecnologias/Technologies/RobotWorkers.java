@@ -19,4 +19,8 @@ public class RobotWorkers extends Technology {
     public String toString() {
         return "Robot Workers";
     }
+
+    @Override
+    public void Usa() {
+}
 }

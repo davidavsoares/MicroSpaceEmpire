@@ -19,9 +19,9 @@ public interface IEstado {
 
     IEstado ExplorarDistantSystem();
 
-    IEstado Passar();
-
     IEstado ConquistaUnaligned(int index);
+
+    IEstado VoltarMenuAnterior();
 //-----------ESTADO[2]---------//
 
     IEstado DecMetalIncRiqueza();
@@ -34,6 +34,8 @@ public interface IEstado {
     IEstado ConstruirForcaMilitar();
 
     IEstado DescobrirEConstruir();
+    
+    IEstado Fase_4();
 
 //-----------ESTADO[3.2]---------//
     IEstado DescobrirTecnologia(String tech);
@@ -42,8 +44,8 @@ public interface IEstado {
     IEstado VerificaFim();
 //-----------OUTROS---------//
 
-    IEstado Sair();
+    IEstado Passar();
 
-    IEstado GuardarJogo();
+    IEstado Sair();
 
 }

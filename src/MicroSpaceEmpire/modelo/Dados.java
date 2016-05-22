@@ -89,21 +89,7 @@ public class Dados implements java.io.Serializable {
         PreparaTecnologias();
     }
 
-    public void PreparaEventos() {
-
-        (new Asteroid(this)).IntegrarEventDeck();           // Adiciona 'Asteroid' ao Deck de eventos
-        (new DerelictShip(this)).IntegrarEventDeck();       // Adiciona 'Derelict Ship' ao Deck de eventos
-        (new LargeInvasionForce(this)).IntegrarEventDeck(); // Adiciona 'Large Invasion Force' ao Deck de eventos
-        (new Revolt(this)).IntegrarEventDeck();             // Adiciona 'Revolt' ao Deck de eventos
-        (new Revolt2(this)).IntegrarEventDeck();            // Adiciona 'Revolt2' ao Deck de eventos
-        (new SmallInvasionForce(this)).IntegrarEventDeck(); // Adiciona 'Small Invasion Force' ao Deck de eventos
-        (new Strike(this)).IntegrarEventDeck();             // Adiciona 'Strike' ao Deck de eventos
-        Collections.shuffle(EventDeck);                     // Baralha o Deck dos eventos
-
-        RemovedEvent = EventDeck.get(0);
-        EventDeck.remove(0);
-    }
-
+//--------------------------------------------Funcoes dos [SISTEMAS]----------//
     public void PreparaSistemas() {
 
 //---------------------------------------------------Sistema Inicial----------//
@@ -126,22 +112,28 @@ public class Dados implements java.io.Serializable {
         Collections.shuffle(NearSystemsDeck);           //Baralha o Deck dos sistemas proximos
     }
 
-    public void PreparaTecnologias() {
-        (new CapitalShips(this)).IntegrarTechnologies();
-        (new ForwardStarbases(this)).IntegrarTechnologies();
-        (new RobotWorkers(this)).IntegrarTechnologies();
-        (new PlanetaryDefenses(this)).IntegrarTechnologies();
-        (new HyperTelevision(this)).IntegrarTechnologies();
-        (new InterstellarDiplomacy(this)).IntegrarTechnologies();
-        (new InterspeciesCommerce(this)).IntegrarTechnologies();
-        (new InterstellarBanking(this)).IntegrarTechnologies();
+    public boolean removeSystem(System o) {
+        if (isEmptyUnalignedSystems()) {
+            if (o instanceof DistantSystem) {
+                return DistantSystemsDeck.remove(o);
+            } else {
+                return NearSystemsDeck.remove(o);
+            }
+        } else {
+            return UnalignedSystems.remove(o);
+        }
     }
 
-    public void setANO(int ANO) {
-        Dados.ANO = ANO;
+    public boolean getDiplomacy() {
+        return Diplomacy;
     }
 
-    public System getMenorResistencia() {
+    public void setDiplomacy(boolean Diplomacy) {
+        this.Diplomacy = Diplomacy;
+    }
+//[Imperio]-------------------------------------------------------------------//    
+
+    public System getMenorResistencia() {       //Funcao para obter o sistema com menor resistencia do império
         if (Empire.size() == 1) {
             return Empire.get(0);
         }
@@ -155,6 +147,140 @@ public class Dados implements java.io.Serializable {
         return Empire.get(index);
     }
 
+    public void RecolheMetaleRiqueza() {
+        setMetal(Metal + round(getMetalProduction() * PercentagemProducao / 100));
+        setWealth(Wealth + round(WealthProduction * PercentagemProducao / 100));
+
+        setPercentagemProducao(100);
+    }
+
+    public void setWealthProduction(int WealthProduction) {
+        this.WealthProduction = WealthProduction;
+        if (this.WealthProduction < 0) {
+            this.WealthProduction = 0;
+        } else if (this.WealthProduction > MaxProdution) {
+            this.WealthProduction = MaxProdution;
+        }
+    }
+
+    public void setMetalProduction(int MetalProduction) {
+        this.MetalProduction = MetalProduction;
+        if (this.MetalProduction < 0) {
+            this.MetalProduction = 0;
+        } else if (this.MetalProduction > MaxProdution) {
+            this.MetalProduction = MaxProdution;
+        }
+    }
+
+    public ArrayList<System> getEmpire() {      //Funcao que permite adicionar um sistema ao império
+        return Empire;
+    }
+
+//[Near Sistems]--------------------------------------------------------------// 
+    public ArrayList<System> getNearSystemsDeck() {       //Funcao que permite adicionar um evento ao Deck correspondente
+        return NearSystemsDeck;
+    }
+
+    public boolean isEmptyNearSystemsDeck() {
+        return NearSystemsDeck.isEmpty();
+    }
+//[Distant Sistems]-----------------------------------------------------------// 
+
+    public ArrayList<System> getDistantSystemsDeck() {       //Funcao que permite adicionar um evento ao Deck correspondente
+        return DistantSystemsDeck;
+    }
+
+    public boolean isEmptyDistantSystemsDeck() {
+        return DistantSystemsDeck.isEmpty();
+    }
+//[Unaligned Sistems]---------------------------------------------------------//
+
+    public ArrayList<System> getUnalignedSystems() {        //Funcao que permite adicionar um sistema aos sistemas desalinhados
+        return UnalignedSystems;
+    }
+
+    public String getStrUnalignedSystems() {
+        String s;
+        s = "\n\n" + "Sistemas desalinhados: ";
+        for (int i = 0; i < UnalignedSystems.size(); i++) {
+            s += "\n" + (i + 1) + " " + UnalignedSystems.get(i).toString();
+        }
+        return s;
+    }
+
+    public boolean isEmptyUnalignedSystems() {
+        return UnalignedSystems.isEmpty();
+    }
+
+//[TECNOLOGIAS]-----------------------------Funcoes de [TECNOLOGIAS]----------//
+    public void PreparaTecnologias() {
+        (new CapitalShips(this)).IntegrarTechnologies();
+        (new ForwardStarbases(this)).IntegrarTechnologies();
+        (new RobotWorkers(this)).IntegrarTechnologies();
+        (new PlanetaryDefenses(this)).IntegrarTechnologies();
+        (new HyperTelevision(this)).IntegrarTechnologies();
+        (new InterstellarDiplomacy(this)).IntegrarTechnologies();
+        (new InterspeciesCommerce(this)).IntegrarTechnologies();
+        (new InterstellarBanking(this)).IntegrarTechnologies();
+    }
+
+    public ArrayList<Technology> getTechnologies() {
+        return Technologies;
+    }
+
+    public ArrayList<Technology> getTechnologyDiscovered() {
+        return TechnologyDiscovered;
+    }
+
+    public boolean isEmptyTechnologies() {
+        return Technologies.isEmpty();
+    }
+
+    public boolean isEmptyTechnologyDiscovered() {
+        return TechnologyDiscovered.isEmpty();
+    }
+
+    public boolean containsTechnologyDiscovered(Technology o) {
+        return TechnologyDiscovered.contains(o);
+    }
+
+    public boolean removeTechnology(Technology o) {
+        return Technologies.remove(o);
+    }
+
+    public Technology getTechnology(String tech) {
+        for (Technology Tech : Technologies) {
+            if (tech.equalsIgnoreCase(Tech.toString())) {
+                return Tech;
+            }
+        }
+        return null; //CRIAR EXCEPTION
+    }
+//----------------------------------------------Funcoes de [EVENTOS]----------//
+
+    public void PreparaEventos() {
+
+        (new Asteroid(this)).IntegrarEventDeck();           // Adiciona 'Asteroid' ao Deck de eventos
+        (new DerelictShip(this)).IntegrarEventDeck();       // Adiciona 'Derelict Ship' ao Deck de eventos
+        (new LargeInvasionForce(this)).IntegrarEventDeck(); // Adiciona 'Large Invasion Force' ao Deck de eventos
+        (new Revolt(this)).IntegrarEventDeck();             // Adiciona 'Revolt' ao Deck de eventos
+        (new Revolt2(this)).IntegrarEventDeck();            // Adiciona 'Revolt2' ao Deck de eventos
+        (new SmallInvasionForce(this)).IntegrarEventDeck(); // Adiciona 'Small Invasion Force' ao Deck de eventos
+        (new Strike(this)).IntegrarEventDeck();             // Adiciona 'Strike' ao Deck de eventos
+        Collections.shuffle(EventDeck);                     // Baralha o Deck dos eventos
+
+        RemovedEvent = EventDeck.get(0);
+        EventDeck.remove(0);
+    }
+
+    public ArrayList<Event> getEventDeck() {       //Funcao que permite adicionar um evento ao Deck correspondente
+        return EventDeck;
+    }
+
+    public ArrayList<Event> getEventDiscard() {             //Funcao que permite adicionar um evento á lista dos já utilizados
+        return EventDiscard;
+    }
+
     public void ReiniciarEventos() {
         EventDiscard.add(RemovedEvent);
         EventDiscard.add(CurrentEvent);
@@ -165,20 +291,33 @@ public class Dados implements java.io.Serializable {
         EventDiscard.removeAll(EventDiscard);
     }
 
+    public boolean isEmptyEventDeck() {
+        return EventDeck.isEmpty();
+    }
+
+    public boolean isEmptyEventDiscard() {
+        return EventDiscard.isEmpty();
+    }
+
+    public Event getCurrentEvent() {
+        return CurrentEvent;
+    }
+
+    public void setCurrentEvent(Event CurrentEvent) {
+        this.CurrentEvent = CurrentEvent;
+    }
+
+//-------------------------------------------------Funcoes de [JOGO]----------//   
+    public void setANO(int ANO) {
+        Dados.ANO = ANO;
+    }
+
     public int getPercentagemProducao() {
         return PercentagemProducao;
     }
 
     public void setPercentagemProducao(int PercentagemProducao) {
         this.PercentagemProducao = PercentagemProducao;
-    }
-
-    public boolean getDiplomacy() {
-        return Diplomacy;
-    }
-
-    public void setDiplomacy(boolean Diplomacy) {
-        this.Diplomacy = Diplomacy;
     }
 
     public int getMaxMilitary() {
@@ -195,13 +334,6 @@ public class Dados implements java.io.Serializable {
 
     public void setMaxStorage(int MaxStorage) {
         this.MaxStorage = MaxStorage;
-    }
-
-    public void RecolheMetaleRiqueza() {
-        setMetal(Metal + round(getMetalProduction() * PercentagemProducao / 100));
-        setWealth(Wealth + round(WealthProduction * PercentagemProducao / 100));
-
-        setPercentagemProducao(100);
     }
 
     public void setMetal(int metal) {
@@ -251,34 +383,8 @@ public class Dados implements java.io.Serializable {
         }
     }
 
-    public Event getCurrentEvent() {
-        return CurrentEvent;
-    }
-
-    public void setCurrentEvent(Event CurrentEvent) {
-        this.CurrentEvent = CurrentEvent;
-    }
-
     public int getWealth() {
         return Wealth;
-    }
-
-    public void setWealthProduction(int WealthProduction) {
-        this.WealthProduction = WealthProduction;
-        if (this.WealthProduction < 0) {
-            this.WealthProduction = 0;
-        } else if (this.WealthProduction > MaxProdution) {
-            this.WealthProduction = MaxProdution;
-        }
-    }
-
-    public void setMetalProduction(int MetalProduction) {
-        this.MetalProduction = MetalProduction;
-        if (this.MetalProduction < 0) {
-            this.MetalProduction = 0;
-        } else if (this.MetalProduction > MaxProdution) {
-            this.MetalProduction = MaxProdution;
-        }
     }
 
     public int getVictoryPoints() {
@@ -301,98 +407,9 @@ public class Dados implements java.io.Serializable {
         return MilitaryStrength;
     }
 
-    public ArrayList<System> getEmpire() {      //Funcao que permite adicionar um sistema ao império
-        return Empire;
-    }
-
-    public ArrayList<Event> getEventDeck() {       //Funcao que permite adicionar um evento ao Deck correspondente
-        return EventDeck;
-    }
-
-    public ArrayList<System> getNearSystemsDeck() {       //Funcao que permite adicionar um evento ao Deck correspondente
-        return NearSystemsDeck;
-    }
-
-    public ArrayList<System> getDistantSystemsDeck() {       //Funcao que permite adicionar um evento ao Deck correspondente
-        return DistantSystemsDeck;
-    }
-
-    public ArrayList<System> getUnalignedSystems() {        //Funcao que permite adicionar um sistema aos sistemas desalinhados
-        return UnalignedSystems;
-    }
-
-    public ArrayList<Technology> getTechnologies() {
-        return Technologies;
-    }
-
     public int Dice() {
         int dice = (int) (Math.random() * 6 + 1);
         return dice;
-    }
-
-    public ArrayList<Technology> getTechnologyDiscovered() {
-        return TechnologyDiscovered;
-    }
-
-    public ArrayList<Event> getEventDiscard() {             //Funcao que permite adicionar um evento á lista dos já utilizados
-        return EventDiscard;
-    }
-
-    public boolean isEmptyUnalignedSystems() {
-        return UnalignedSystems.isEmpty();
-    }
-
-    public boolean isEmptyDistantSystemsDeck() {
-        return DistantSystemsDeck.isEmpty();
-    }
-
-    public boolean isEmptyEventDeck() {
-        return EventDeck.isEmpty();
-    }
-
-    public boolean isEmptyEventDiscard() {
-        return EventDiscard.isEmpty();
-    }
-
-    public boolean isEmptyNearSystemsDeck() {
-        return NearSystemsDeck.isEmpty();
-    }
-
-    public boolean isEmptyTechnologies() {
-        return Technologies.isEmpty();
-    }
-
-    public boolean isEmptyTechnologyDiscovered() {
-        return TechnologyDiscovered.isEmpty();
-    }
-
-    public boolean containsTechnologyDiscovered(Technology o) {
-        return TechnologyDiscovered.contains(o);
-    }
-
-    public boolean removeTechnology(Technology o) {
-        return Technologies.remove(o);
-    }
-
-    public boolean removeSystem(System o) {
-        if (isEmptyUnalignedSystems()) {
-            if (o instanceof DistantSystem) {
-                return DistantSystemsDeck.remove(o);
-            } else {
-                return NearSystemsDeck.remove(o);
-            }
-        } else {
-            return UnalignedSystems.remove(o);
-        }
-    }
-
-    public Technology getTechnology(String tech) {
-        for (Technology Tech : Technologies) {
-            if (tech.equalsIgnoreCase(Tech.toString())) {
-                return Tech;
-            }
-        }
-        return null; //CRIAR EXCEPTION
     }
 
     public String CalculaVictoryPoints() {
@@ -425,6 +442,7 @@ public class Dados implements java.io.Serializable {
         s += "\nTotal:   " + VictoryPoints;
         return s;
     }
+//------------------------------------------------Funcoes de [Dados]----------//
 
     @Override
     public String toString() {
@@ -452,14 +470,4 @@ public class Dados implements java.io.Serializable {
 
         return s;
     }
-
-    public String getStrUnalignedSystems() {
-        String s;
-        s = "\n\n" + "Sistemas desalinhados: ";
-        for (int i = 0; i < UnalignedSystems.size(); i++) {
-            s += "\n" + (i + 1) + " " + UnalignedSystems.get(i).toString();
-        }
-        return s;
-    }
-
 }

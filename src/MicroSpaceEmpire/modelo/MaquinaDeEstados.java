@@ -3,8 +3,10 @@ package MicroSpaceEmpire.modelo;
 import MicroSpaceEmpire.modelo.logica.IEstado;
 import MicroSpaceEmpire.modelo.logica.MenuInicial;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 /**
  * I.S.E.C.
@@ -80,6 +82,10 @@ public class MaquinaDeEstados {
         setEstado(estado.ExplorarDistantSystem());
     }
 
+    public void VoltarMenuAnterior() {
+        setEstado(estado.VoltarMenuAnterior());
+    }
+
 // -------------------------- ETAPA 2 --------------------------------------- //
     public void RecolherMR() {
         setEstado(estado.DecMetalIncRiqueza());
@@ -120,8 +126,18 @@ public class MaquinaDeEstados {
         setEstado(getEstado().Sair());
     }
 
-    public IEstado GuardarJogo() {
-        return estado.GuardarJogo();
+    public void GuardarJogo() {
+        try {
+            FileOutputStream fileOut = new FileOutputStream("Save.ser");
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(GameInfo);
+            out.writeObject(estado);
+            out.close();
+            fileOut.close();
+        } catch (IOException i) {
+            i.printStackTrace();
+
+        }
     }
 
     public void Passar() {

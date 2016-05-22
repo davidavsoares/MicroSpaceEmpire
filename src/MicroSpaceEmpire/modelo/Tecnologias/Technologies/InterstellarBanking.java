@@ -19,4 +19,9 @@ public class InterstellarBanking extends Technology {
     public String toString() {
         return "Interstellar Banking";
     }
+
+    @Override
+    public void Usa() {
+        getGameInfo().setMaxStorage(5);
+}
 }

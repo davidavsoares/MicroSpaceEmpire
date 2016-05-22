@@ -30,6 +30,7 @@ public abstract class Technology implements java.io.Serializable {
     public void IntegrarDescobertas() //Função polimorfica para fazer um planeta integrar o imperio
     {
         GameInfo.getTechnologyDiscovered().add(this);
+        Usa();
     }
 
     @Override
@@ -79,6 +80,8 @@ public abstract class Technology implements java.io.Serializable {
     public Dados getGameInfo() {
         return GameInfo;
     }
+    
+    public abstract void Usa();
 
 
 }

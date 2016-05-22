@@ -19,4 +19,8 @@ public class InterspeciesCommerce extends Technology {
         return "Interspecies Commerce";
     }
 
+    @Override
+    public void Usa() {
+}
+
 }

@@ -10,26 +10,28 @@ import MicroSpaceEmpire.modelo.Dados;
 public abstract class System extends Carta {
 
     private int DADO;
-    
 
     public System(Dados GameInfo) {
         super(GameInfo);
 
     }
 // -------------------------- ETAPA 1 --------------------------------------- //
+
     public void AtacarSistema() {
-        if (!ConquistarSistema()) {
+        if (getGameInfo().getDiplomacy()) {
+            getGameInfo().removeSystem(this);
+            IntegrarImperio();
+        } else if (!ConquistarSistema()) {
             ExplorarSistema();
         }
     }
 
     public boolean ConquistarSistema() {        //Funcao que tenta conquistar um sistema
-        if (getGameInfo().getMilitaryStrength() + (DADO = (getGameInfo().Dice())) >= this.getResistance() || getGameInfo().getDiplomacy()) {
+        if (getGameInfo().getMilitaryStrength() + (DADO = (getGameInfo().Dice())) >= this.getResistance()) {
 //  VER VALIDACOES DE SISTEMA ESTAR VAZIO!!!            if (getGameInfo().isEmptyUnalignedSystems()) {
             getGameInfo().removeSystem(this);
             this.IntegrarImperio();
             getGameInfo().setDADO(DADO);
-            getGameInfo().setDiplomacy(false);
             return true;
 //            }
         }
@@ -59,7 +61,13 @@ public abstract class System extends Carta {
     }
 
     public void SaiImperioEntraUnaligned() {
-        getGameInfo().getEmpire().add(DesintegrarImperio());
+        //getGameInfo().getEmpire().add(DesintegrarImperio());
+        getGameInfo().getUnalignedSystems().add(DesintegrarImperio());
+    }
+
+    public void SaiUnalignedEntraImperio() {
+        getGameInfo().getUnalignedSystems().remove(this);
+        IntegrarImperio();
     }
 
 //------------------SISTEMAS DESALINHADOS-------------------------------------//

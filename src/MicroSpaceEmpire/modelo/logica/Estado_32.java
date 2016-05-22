@@ -7,7 +7,7 @@ import MicroSpaceEmpire.modelo.Dados;
  *
  * @author DavidSoares [21220084] && JorgeNogueira [21200794]
  */
-public class Estado_32 extends Estado_0 {
+public class Estado_32 extends Estado_3 {
 
     boolean Repeticao;
 
@@ -24,12 +24,25 @@ public class Estado_32 extends Estado_0 {
                 if (Repeticao) {
                     return new Estado_31(getGameInfo());
                 } else {
-                    return new Estado_4(getGameInfo());
+                    //return new Fase_4(getGameInfo());
+                    return super.Fase_4();
                 }
+            } else {
+                return this;
             }
-        } else if (Repeticao) {
-            return new Estado_31(getGameInfo());
         }
-        return new Estado_4(getGameInfo());
+
+        if (Repeticao) {
+            return new Estado_31(getGameInfo());
+        } else {
+            //return new Fase_4(getGameInfo());
+            return super.Fase_4();
+        }
+//        return this;
+    }
+
+    @Override
+    public IEstado VoltarMenuAnterior() {
+        return new Estado_3(getGameInfo());
     }
 }

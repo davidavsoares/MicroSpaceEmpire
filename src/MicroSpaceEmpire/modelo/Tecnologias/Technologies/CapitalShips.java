@@ -19,4 +19,9 @@ public class CapitalShips extends Technology {
     public String toString() {
         return "Capital Ships";
     }
+
+    @Override
+    public void Usa() {
+       getGameInfo().setMaxMilitary(5);
+}
 }

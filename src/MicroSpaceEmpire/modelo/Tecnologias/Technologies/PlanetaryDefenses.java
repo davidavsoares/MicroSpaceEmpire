@@ -19,4 +19,8 @@ public class PlanetaryDefenses extends Technology {
     public String toString() {
         return "Planetary Defenses";
     }
+
+    @Override
+    public void Usa() {
+    }
 }
