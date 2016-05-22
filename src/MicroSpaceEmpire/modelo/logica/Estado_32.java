@@ -1,6 +1,9 @@
 package MicroSpaceEmpire.modelo.logica;
 
 import MicroSpaceEmpire.modelo.Dados;
+import MicroSpaceEmpire.modelo.StringException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * I.S.E.C.
@@ -19,17 +22,21 @@ public class Estado_32 extends Estado_3 {
 
     @Override
     public IEstado DescobrirTecnologia(String tech) {
-        if (getGameInfo().getTechnology(tech) != null) {
-            if (getGameInfo().getTechnology(tech).CompraTecnologia()) {
-                if (Repeticao) {
-                    return new Estado_31(getGameInfo());
+        try {
+            if (getGameInfo().getTechnology(tech) != null) {
+                if (getGameInfo().getTechnology(tech).CompraTecnologia()) {
+                    if (Repeticao) {
+                        return new Estado_31(getGameInfo());
+                    } else {
+                        //return new Fase_4(getGameInfo());
+                        return super.Fase_4();
+                    }
                 } else {
-                    //return new Fase_4(getGameInfo());
-                    return super.Fase_4();
+                    return this;
                 }
-            } else {
-                return this;
             }
+        } catch (StringException ex) {
+            Logger.getLogger(Estado_32.class.getName()).log(Level.SEVERE, null, ex);
         }
         if (Repeticao) {
             return new Estado_31(getGameInfo());
