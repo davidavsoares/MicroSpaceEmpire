@@ -31,18 +31,15 @@ public class Estado_32 extends Estado_3 {
                 return this;
             }
         }
-
         if (Repeticao) {
             return new Estado_31(getGameInfo());
         } else {
-            //return new Fase_4(getGameInfo());
             return super.Fase_4();
         }
-//        return this;
     }
 
     @Override
     public IEstado VoltarMenuAnterior() {
-        return new Estado_3(getGameInfo());
+        return new Estado_3(getGameInfo(), Repeticao);
     }
 }

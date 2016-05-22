@@ -10,9 +10,11 @@ import MicroSpaceEmpire.modelo.Cartas.Systems.NearSystems.*;
 import MicroSpaceEmpire.modelo.Cartas.Systems.StartingSystems.HomeWorld;
 import MicroSpaceEmpire.modelo.Tecnologias.Technology;
 import MicroSpaceEmpire.modelo.Tecnologias.Technologies.*;
-import static java.lang.Math.round;
 import java.util.ArrayList;
 import java.util.Collections;
+import static java.lang.Math.round;
+import static java.lang.Math.round;
+import static java.lang.Math.round;
 import static java.lang.Math.round;
 
 /**
@@ -28,7 +30,7 @@ public class Dados implements java.io.Serializable {
     private final ArrayList<System> DistantSystemsDeck;         //Sistemas distantes (Face voltada para baixo)
     private final ArrayList<System> Empire;                     //Sistemas pertencentes ao império
     private final ArrayList<System> UnalignedSystems;           //Sistemas desalinhados 
-    private final ArrayList<Technology> Technologies;           //Tecnologias não desenvolvidas
+    private final ArrayList<Technology> TechnologiesAvaliable;           //Tecnologias não desenvolvidas
     private final ArrayList<Technology> TechnologyDiscovered;   //Tecnologias compradas
     private final ArrayList<Event> EventDeck;                   //Eventos (Face voltada para baixo)
     private final ArrayList<Event> EventDiscard;                //Eventos já utilizados
@@ -50,7 +52,6 @@ public class Dados implements java.io.Serializable {
     private int PercentagemProducao;                            //Percentagem de producao de metal e riqueza
 
     private boolean Diplomacy = false;
-    private boolean Greve = false;
 
     public Dados() {
 
@@ -61,7 +62,7 @@ public class Dados implements java.io.Serializable {
         EventDeck = new ArrayList<>();                  //Cria  um array com os eventos
         EventDiscard = new ArrayList<>();               //Cria  um array com os eventos já utilizados
         TechnologyDiscovered = new ArrayList<>();       //Cria um array com as tecnologias descobertas
-        Technologies = new ArrayList<>();               //Cria  um array com as tecnologias
+        TechnologiesAvaliable = new ArrayList<>();      //Cria  um array com as tecnologias
 
         PreparaJogo();                                  //Chama a funcao que prepara inicialmente o jogo       
     }
@@ -73,14 +74,14 @@ public class Dados implements java.io.Serializable {
         WealthProduction = 0;
         MetalProduction = 0;
         MilitaryStrength = 0;
-        Wealth = 0;
-        VictoryPoints = 0;
-        Metal = 0;
+        Wealth = 20;
+        Metal = 20;
         DADO = 0;
         MaxStorage = 3;
         MaxMilitary = 3;
         MaxProdution = 3;
         PercentagemProducao = 100;
+        VictoryPoints = 0;
 
         PreparaEventos();
 
@@ -225,7 +226,7 @@ public class Dados implements java.io.Serializable {
     }
 
     public ArrayList<Technology> getTechnologies() {
-        return Technologies;
+        return TechnologiesAvaliable;
     }
 
     public ArrayList<Technology> getTechnologyDiscovered() {
@@ -233,28 +234,26 @@ public class Dados implements java.io.Serializable {
     }
 
     public boolean isEmptyTechnologies() {
-        return Technologies.isEmpty();
-    }
-
-    public boolean isEmptyTechnologyDiscovered() {
-        return TechnologyDiscovered.isEmpty();
+        return TechnologiesAvaliable.isEmpty();
     }
 
     public boolean containsTechnologyDiscovered(Technology o) {
         return TechnologyDiscovered.contains(o);
     }
 
-    public boolean removeTechnology(Technology o) {
-        return Technologies.remove(o);
-    }
-
-    public Technology getTechnology(String tech) {
-        for (Technology Tech : Technologies) {
+//    public boolean removeTechnology(Technology o) {
+//        return TechnologiesAvaliable.remove(o);
+//    }
+    public Technology getTechnology(String tech) throws StringException {
+        if (TechnologiesAvaliable.isEmpty()) {
+            throw new StringException("There are no more technologies avaliable to discover");
+        }
+        for (Technology Tech : TechnologiesAvaliable) {
             if (tech.equalsIgnoreCase(Tech.toString())) {
                 return Tech;
             }
         }
-        return null; //CRIAR EXCEPTION
+        throw new StringException("Technology already discovered");
     }
 //----------------------------------------------Funcoes de [EVENTOS]----------//
 
@@ -320,9 +319,9 @@ public class Dados implements java.io.Serializable {
         this.PercentagemProducao = PercentagemProducao;
     }
 
-    public int getMaxMilitary() {
-        return MaxMilitary;
-    }
+    /*    public int getMaxMilitary() {
+    return MaxMilitary;
+    }*/
 
     public void setMaxMilitary(int MaxMilitary) {
         this.MaxMilitary = MaxMilitary;
@@ -387,11 +386,11 @@ public class Dados implements java.io.Serializable {
         return Wealth;
     }
 
-    public int getVictoryPoints() {
-        return VictoryPoints;
-    }
+//    public int getVictoryPoints() {
+//        return VictoryPoints;
+//    }
 
-    public void setVictoryPoints(int VictoryPoints) {
+    public void AdicionaVictoryPoints(int VictoryPoints) {
         this.VictoryPoints += VictoryPoints;
     }
 
@@ -414,32 +413,32 @@ public class Dados implements java.io.Serializable {
 
     public String CalculaVictoryPoints() {
         String s;
-        s = "\n\n" + "--------Victory Points---------";
+        s = "\n\n" + "           -------------Victory Points-----------------\n\n";
         // Obtem victory points dos sistemas no imperio //
         for (int i = 0; i < Empire.size(); i++) {
-            setVictoryPoints(Empire.get(i).getVictoryPoints());
+            AdicionaVictoryPoints(Empire.get(i).getVictoryPoints());
         }
-        s += "\n" + "Pontos de império:    " + getVictoryPoints();
+        s += "\n" + "           Pontos de império:    " + VictoryPoints;
 
         // Obtem victory points das tecnologias //
-        setVictoryPoints(TechnologyDiscovered.size());
-        s += "\n" + "Pontos de tecnologias descobertas: " + TechnologyDiscovered.size();
+        AdicionaVictoryPoints(TechnologyDiscovered.size());
+        s += "\n" + "           Pontos de tecnologias descobertas: " + TechnologyDiscovered.size();
         // Obtem victory points de exploracao //
-        if (isEmptyNearSystemsDeck() && isEmptyDistantSystemsDeck()) {
-            s += "\n" + "Bónus de Exploração:   1";
-            setVictoryPoints(1);
+        if (NearSystemsDeck.isEmpty() && DistantSystemsDeck.isEmpty()) {
+            s += "\n" + "           Bónus de Exploração:   1";
+            AdicionaVictoryPoints(1);
             // Obtem victory points senhor da guerra //
             if (isEmptyUnalignedSystems()) {
-                s += "\n" + "Bónus senhora da guerra:   3";
-                setVictoryPoints(3);
+                s += "\n" + "           Bónus senhora da guerra:   3";
+                AdicionaVictoryPoints(3);
             }
         }
         // Obtem victory points bonus cientifico //
         if (isEmptyTechnologies()) {
-            s += "\n" + "Bónus cientifico:  1";
-            setVictoryPoints(1);
+            s += "\n" + "           Bónus cientifico:  1";
+            AdicionaVictoryPoints(1);
         }
-        s += "\nTotal:   " + VictoryPoints;
+        s += "\n           Total:   " + VictoryPoints;
         return s;
     }
 //------------------------------------------------Funcoes de [Dados]----------//
@@ -452,19 +451,19 @@ public class Dados implements java.io.Serializable {
         s += "\n\n" + "Império:          " + Empire;                                     //Imprime as cartas que fazem parte do império
         s += "\n" + "Sistemas desalinhados: " + UnalignedSystems;
 
-        s += "\n\n" + "Tecnologias: " + Technologies;
+        s += "\n\n" + "Tecnologias: " + TechnologiesAvaliable;
         s += "\n" + "Tecnologias descobertas: " + TechnologyDiscovered;         //Imprime as cartas que fazem parte do império
 
         s += "\n\n" + "Evento actual:       [" + CurrentEvent + "]";                           //Imprime a carta de evento actual
         s += "\n" + "Eventos descartados: " + EventDiscard;                     //Imprime os eventos que já ocorreram
 
-        s += "\n\n" + "[Força Militar:        " + MilitaryStrength + "]";
-
-        s += "\n" + "[Producao de Riqueza:  " + WealthProduction + "]   ";
-        s += "[Riqueza: " + Wealth + "]";
+        s += "\n\n" + "[Producao de Riqueza:  " + WealthProduction + "]   ";
+        s += "[Riqueza:         " + Wealth + " of " + MaxProdution + "]   ";
 
         s += "\n" + "[Produção de metal:    " + MetalProduction + "]   ";
-        s += "[Metal:   " + Metal + "]";
+        s += "[Metal:           " + Metal + " of " + MaxProdution + "]   ";
+
+        s += "\n" + "                            [Força Militar:   " + MilitaryStrength + " of " + MaxMilitary + "]   ";
 
         s += "\n\n" + "[Valor saido no dado:  " + DADO + "]";
 

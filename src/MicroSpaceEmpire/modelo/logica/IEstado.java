@@ -33,8 +33,8 @@ public interface IEstado {
 
     IEstado ConstruirForcaMilitar();
 
-    IEstado DescobrirEConstruir();
-    
+//    IEstado DescobrirEConstruir();
+
     IEstado Fase_4();
 
 //-----------ESTADO[3.2]---------//

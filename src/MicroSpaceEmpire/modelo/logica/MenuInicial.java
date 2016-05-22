@@ -11,8 +11,10 @@ public class MenuInicial extends Estado_0 {
 
     public MenuInicial(Dados GameInfo) {
         super(GameInfo);
+
     }
 
+    @Override
     public IEstado CarregarJogo() {
         return this;
     }
@@ -21,4 +23,5 @@ public class MenuInicial extends Estado_0 {
     public IEstado NovoJogo() {
         return new Estado_1(getGameInfo());
     }
+
 }

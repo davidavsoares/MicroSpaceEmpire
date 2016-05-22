@@ -1,0 +1,45 @@
+
+////LET THE GAME BEGGIN
+//             else if (ME.getEstado() instanceof Estado_4) {
+//                // iuEstado_4(); //Menu de estado eliminado, segundo a prof Armanda, nao interessa ter um menu para este estado
+//                ME.VerificaFim();   //Implementado para nao ter que pedir nada ao utilizador
+//            }
+////END
+
+
+
+//    private void iuEstado_4() {
+//        PrintGame();
+//        int opcao;
+//        
+//        System.out.println("\n\n---------------------------------");
+//        
+//        System.out.println();
+//        System.out.println("1 - Avançar");
+//        System.out.println("9 - Guardar jogo");
+//        System.out.println("0 - Sair");
+//        System.out.print("> ");
+//        
+//        while (!sc.hasNextInt()) {
+//            sc.next();
+//        }
+//        
+//        opcao = sc.nextInt();
+//        switch (opcao) {
+//            
+//            case 1:
+//                ME.VerificaFim();
+//                break;
+//            case 9:
+//                ME.GuardarJogo();
+//                break;
+//            case 0:
+//                ME.Sair();
+//                break;
+//            default:
+//                ME.setEstado(ME.getEstado());
+//                break;
+//            
+//        }
+//        
+//    }

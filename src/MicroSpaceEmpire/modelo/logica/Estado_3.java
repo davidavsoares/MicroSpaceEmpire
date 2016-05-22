@@ -16,6 +16,11 @@ public class Estado_3 extends Estado_0 {
         GameInfo.setDiplomacy(false);
     }
 
+    Estado_3(Dados gameInfo, boolean Repeticao) {
+        super(gameInfo);
+        this.Repeticao = Repeticao;
+    }
+
 //    public boolean isRepeticao() {
 //        return Repeticao;
 //    }
@@ -35,24 +40,34 @@ public class Estado_3 extends Estado_0 {
 
     @Override
     public IEstado Passar() {
-        return new Estado_4(getGameInfo());
+        return Fase_4();
     }
 
     @Override
     public IEstado Fase_4() {
         getGameInfo().getEventDeck().get(0).TrocaEvento();
-                if (getGameInfo().getEmpire().isEmpty()) {
-            return new Fim(getGameInfo());
+        if (getGameInfo().getEmpire().isEmpty()) {
+            return new MenuInicial(new Dados());
         } else if (getGameInfo().getANO() == 1 && getGameInfo().isEmptyEventDeck()) {
             getGameInfo().setANO(2);
             getGameInfo().ReiniciarEventos();
             RetirarEvento();
             return new Estado_1(getGameInfo());
         } else if (getGameInfo().getANO() == 2 && getGameInfo().isEmptyEventDeck()) {
-            return new Fim(getGameInfo());
+            return new MenuInicial(new Dados());
         }
         RetirarEvento();
         return new Estado_1(getGameInfo());
     }
 
+    public boolean ConstroiForcaMilitar() {
+        if (getGameInfo().getMetal() >= 1 && getGameInfo().getWealth() >= 1) {
+            getGameInfo().setMetal(getGameInfo().getMetal() - 1);
+            getGameInfo().setWealth(getGameInfo().getWealth() - 1);
+            getGameInfo().setMilitaryStrength(getGameInfo().getMilitaryStrength() + 1);
+            return false;
+        } else {
+            return true;
+        }
+    }
 }

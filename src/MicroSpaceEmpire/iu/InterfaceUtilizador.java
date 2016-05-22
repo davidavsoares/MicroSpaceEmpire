@@ -3,6 +3,9 @@ package MicroSpaceEmpire.iu;
 import MicroSpaceEmpire.modelo.MaquinaDeEstados;
 import java.util.Scanner;
 import MicroSpaceEmpire.modelo.logica.*;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * I.S.E.C.
@@ -11,8 +14,9 @@ import MicroSpaceEmpire.modelo.logica.*;
  */
 public class InterfaceUtilizador {
 
-    private MaquinaDeEstados ME;
-    private Scanner sc;
+    private final MaquinaDeEstados ME;
+    private final Scanner sc;
+    private boolean JaJogou = false;
 
     public InterfaceUtilizador(MaquinaDeEstados ME) {
         this.ME = ME;
@@ -41,24 +45,24 @@ public class InterfaceUtilizador {
                 iuEstado_32();
             } else if (ME.getEstado() instanceof Estado_3) {
                 iuEstado_3();
-            } else if (ME.getEstado() instanceof Estado_4) {
-                // iuEstado_4(); //Menu de estado eliminado, segundo a prof Armanda, nao interessa ter um menu para este estado
-                ME.VerificaFim();   //Implementado para nao ter que pedir nada ao utilizador
             }
-
         }
-        System.out.println(ME.getGameInfo().CalculaVictoryPoints());
-        System.out.println();
-        System.out.println("************** Fim do jogo *****************");
+        CalculaPontuacao();
 
     }
 
     private void iuMenuInicial() {
+        if (JaJogou) {
+            CalculaPontuacao();
+        }
+        JaJogou = true;
         int opcao;
-        System.out.println("Seleccione uma opção:");
-        System.out.println("1-Iniciar");
-        System.out.println("2-Carregar jogo");
-        System.out.println("0-Sair");
+        System.out.println("        Micro Space Empire  ");
+        System.out.println("----------------------------------");
+        System.out.println();
+        System.out.println("1 - Iniciar novo jogo");
+        System.out.println("2 - Carregar jogo");
+        System.out.println("0 - Sair");
         System.out.print("> ");
 
         while (!sc.hasNextInt()) {
@@ -86,8 +90,7 @@ public class InterfaceUtilizador {
         PrintGame();
         int opcao;
 
-        System.out.println("\n\n---------------------------------");
-
+        System.out.println("\n\n----------------------------------");
         System.out.println();
         System.out.println("1 - Explorar sistema proximo");
         System.out.println("2 - Explorar sistema distante");
@@ -133,8 +136,7 @@ public class InterfaceUtilizador {
         PrintGame();
         int opcao;
 
-        System.out.println("\n\n---------------------------------");
-
+        System.out.println("\n\n----------------------------------");
         System.out.println();
         System.out.println(ME.getGameInfo().getStrUnalignedSystems());
         System.out.println("10 - Voltar ao menu anterior");
@@ -156,8 +158,7 @@ public class InterfaceUtilizador {
         PrintGame();
         int opcao;
 
-        System.out.println("\n\n---------------------------------");
-
+        System.out.println("\n\n----------------------------------");
         System.out.println();
         System.out.println("1 - Transformar metal em riqueza");
         System.out.println("2 - Transformar riqueza em metal");
@@ -191,17 +192,14 @@ public class InterfaceUtilizador {
             default:
                 ME.setEstado(ME.getEstado());
                 break;
-
         }
-
     }
 
     private void iuEstado_3() {
         PrintGame();
         int opcao;
 
-        System.out.println("\n\n---------------------------------");
-
+        System.out.println("\n\n----------------------------------");
         System.out.println();
         System.out.println("1 - Construir força militar");
         System.out.println("2 - Descobrir tecnologia");
@@ -213,7 +211,6 @@ public class InterfaceUtilizador {
         while (!sc.hasNextInt()) {
             sc.next();
         }
-
         opcao = sc.nextInt();
         switch (opcao) {
 
@@ -232,20 +229,17 @@ public class InterfaceUtilizador {
             default:
                 ME.setEstado(ME.getEstado());
                 break;
-
         }
-
     }
 
     private void iuEstado_31() {
         PrintGame();
         int opcao;
 
-        System.out.println("\n\n---------------------------------");
+        System.out.println("\n\n----------------------------------");
         System.out.println();
         System.out.println("1 - Avançar");
         System.out.println("2 - Construir força militar");
-//        System.out.println("9 - Guardar jogo");
         System.out.println("0 - Sair");
         System.out.print("> ");
 
@@ -262,9 +256,6 @@ public class InterfaceUtilizador {
             case 2:
                 ME.ConstruirForcaMilitar();
                 break;
-//            case 9:
-//                ME.GuardarJogo();
-//                break;
             case 0:
                 ME.Sair();
                 break;
@@ -280,7 +271,7 @@ public class InterfaceUtilizador {
         PrintGame();
         int opcao;
 
-        System.out.println("\n\n---------------------------------");
+        System.out.println("\n\n----------------------------------");
         System.out.println();
         System.out.println("1 - Descobrir Capital Ships           (3)");
         System.out.println("2 - Descobrir Forward Starbases       (4)");
@@ -290,7 +281,6 @@ public class InterfaceUtilizador {
         System.out.println("6 - Descobrir Interstellar Diplomacy  (5)");
         System.out.println("7 - Descobrir Interspecies Commerce   (2)");
         System.out.println("8 - Descobrir Interstellar Banking    (3)");
-//        System.out.println("9 - Guardar jogo");
         System.out.println("0 - Sair");
         System.out.println("10 - Voltar ao menu anterior");
         System.out.print("> ");
@@ -326,9 +316,6 @@ public class InterfaceUtilizador {
             case 8:
                 ME.DescobrirTecnologia("Interstellar Banking");
                 break;
-//            case 9:
-//                ME.GuardarJogo();
-//                break;
             case 0:
                 ME.Sair();
                 break;
@@ -338,44 +325,26 @@ public class InterfaceUtilizador {
             default:
                 ME.setEstado(ME.getEstado());
                 break;
+        }
+    }
 
+    private void CalculaPontuacao() {
+
+        for (int i = 0; i < 100; ++i) {
+            System.out.println();
+        }
+        System.out.println(ME.getGameInfo().CalculaVictoryPoints());
+        System.out.println();
+        System.out.println("           ************** Fim do jogo *****************");
+        System.out.println("\n\n\n\n\n\n");
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(InterfaceUtilizador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        for (int i = 0; i < 100; ++i) {
+            System.out.println();
         }
 
     }
-
-//    private void iuEstado_4() {
-//        PrintGame();
-//        int opcao;
-//        
-//        System.out.println("\n\n---------------------------------");
-//        
-//        System.out.println();
-//        System.out.println("1 - Avançar");
-//        System.out.println("9 - Guardar jogo");
-//        System.out.println("0 - Sair");
-//        System.out.print("> ");
-//        
-//        while (!sc.hasNextInt()) {
-//            sc.next();
-//        }
-//        
-//        opcao = sc.nextInt();
-//        switch (opcao) {
-//            
-//            case 1:
-//                ME.VerificaFim();
-//                break;
-//            case 9:
-//                ME.GuardarJogo();
-//                break;
-//            case 0:
-//                ME.Sair();
-//                break;
-//            default:
-//                ME.setEstado(ME.getEstado());
-//                break;
-//            
-//        }
-//        
-//    }
 }

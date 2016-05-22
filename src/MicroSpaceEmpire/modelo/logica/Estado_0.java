@@ -10,7 +10,7 @@ import MicroSpaceEmpire.modelo.Dados;
 public class Estado_0 implements IEstado, java.io.Serializable {
 
     private static final long serialVersionUID = 42L;
-    private Dados GameInfo;
+    private final Dados GameInfo;
 
     public Estado_0(Dados GameInfo) {
         this.GameInfo = GameInfo;
@@ -74,21 +74,21 @@ public class Estado_0 implements IEstado, java.io.Serializable {
         return this;
     }
 
-    @Override
-    public IEstado DescobrirEConstruir() {
-        return this;
-    }
+//    @Override
+//    public IEstado DescobrirEConstruir() {
+//        return this;
+//    }
 
-    public boolean ConstroiForcaMilitar() {
-        if (getGameInfo().getMetal() >= 1 && getGameInfo().getWealth() >= 1) {
-            getGameInfo().setMetal(getGameInfo().getMetal() - 1);
-            getGameInfo().setWealth(getGameInfo().getWealth() - 1);
-            getGameInfo().setMilitaryStrength(getGameInfo().getMilitaryStrength() + 1);
-            return false;
-        } else {
-            return true;
-        }
-    }
+//    public boolean ConstroiForcaMilitar() {
+//        if (getGameInfo().getMetal() >= 1 && getGameInfo().getWealth() >= 1) {
+//            getGameInfo().setMetal(getGameInfo().getMetal() - 1);
+//            getGameInfo().setWealth(getGameInfo().getWealth() - 1);
+//            getGameInfo().setMilitaryStrength(getGameInfo().getMilitaryStrength() + 1);
+//            return false;
+//        } else {
+//            return true;
+//        }
+//    }
 
     //-----------ESTADO[3.2]---------//
     @Override
@@ -110,10 +110,10 @@ public class Estado_0 implements IEstado, java.io.Serializable {
     public IEstado Passar() {
         return this;
     }
-
-    public void ContarPontos() {
-
-    }
+//
+//    public void ContarPontos() {
+//
+//    }
 
     @Override
     public IEstado Sair() {

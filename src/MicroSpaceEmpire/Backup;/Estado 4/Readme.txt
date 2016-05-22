@@ -1,0 +1,1 @@
+O estado 4 deixou de ser utilizado, passando a suas funcoes a ser chamadas no estado_3.
