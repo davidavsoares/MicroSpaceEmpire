@@ -2,18 +2,16 @@ package MicroSpaceEmpire.modelo;
 
 import MicroSpaceEmpire.modelo.Cartas.Systems.DistantSystems.Canopus;
 import MicroSpaceEmpire.modelo.Cartas.Event;
-import MicroSpaceEmpire.modelo.Cartas.System;
+import MicroSpaceEmpire.modelo.Cartas.Sistema;
 import MicroSpaceEmpire.modelo.Cartas.Events.*;
 import MicroSpaceEmpire.modelo.Cartas.Systems.DistantSystem;
 import MicroSpaceEmpire.modelo.Cartas.Systems.DistantSystems.*;
 import MicroSpaceEmpire.modelo.Cartas.Systems.NearSystems.*;
 import MicroSpaceEmpire.modelo.Cartas.Systems.StartingSystems.HomeWorld;
-import MicroSpaceEmpire.modelo.Tecnologias.Technology;
+import MicroSpaceEmpire.modelo.Tecnologias.Technology_SuperClasse;
 import MicroSpaceEmpire.modelo.Tecnologias.Technologies.*;
 import java.util.ArrayList;
 import java.util.Collections;
-import static java.lang.Math.round;
-import static java.lang.Math.round;
 import static java.lang.Math.round;
 import static java.lang.Math.round;
 
@@ -26,12 +24,12 @@ public class Dados implements java.io.Serializable {
 
     private static final long serialVersionUID = 42L;           //Permite Guardar e Carregar o jogo
 
-    private final ArrayList<System> NearSystemsDeck;            //Sistemas proximos (Face voltada para baixo)
-    private final ArrayList<System> DistantSystemsDeck;         //Sistemas distantes (Face voltada para baixo)
-    private final ArrayList<System> Empire;                     //Sistemas pertencentes ao império
-    private final ArrayList<System> UnalignedSystems;           //Sistemas desalinhados 
-    private final ArrayList<Technology> TechnologiesAvaliable;           //Tecnologias não desenvolvidas
-    private final ArrayList<Technology> TechnologyDiscovered;   //Tecnologias compradas
+    private final ArrayList<Sistema> NearSystemsDeck;            //Sistemas proximos (Face voltada para baixo)
+    private final ArrayList<Sistema> DistantSystemsDeck;         //Sistemas distantes (Face voltada para baixo)
+    private final ArrayList<Sistema> Empire;                     //Sistemas pertencentes ao império
+    private final ArrayList<Sistema> UnalignedSystems;           //Sistemas desalinhados 
+    private final ArrayList<Technology_SuperClasse> TechnologiesAvaliable;           //Tecnologias não desenvolvidas
+    private final ArrayList<Technology_SuperClasse> TechnologyDiscovered;   //Tecnologias compradas
     private final ArrayList<Event> EventDeck;                   //Eventos (Face voltada para baixo)
     private final ArrayList<Event> EventDiscard;                //Eventos já utilizados
 
@@ -64,18 +62,18 @@ public class Dados implements java.io.Serializable {
         TechnologyDiscovered = new ArrayList<>();       //Cria um array com as tecnologias descobertas
         TechnologiesAvaliable = new ArrayList<>();      //Cria  um array com as tecnologias
 
-        PreparaJogo();                                  //Chama a funcao que prepara inicialmente o jogo       
+       // PreparaJogo();                                  //Chama a funcao que prepara inicialmente o jogo       
     }
 
-    private void PreparaJogo() {
+    public void PreparaJogo() {
         RemovedEvent = null;
         CurrentEvent = null;
         ANO = 1;
         WealthProduction = 0;
         MetalProduction = 0;
         MilitaryStrength = 0;
-        Wealth = 20;
-        Metal = 20;
+        Wealth = 0;
+        Metal = 0;
         DADO = 0;
         MaxStorage = 3;
         MaxMilitary = 3;
@@ -113,7 +111,7 @@ public class Dados implements java.io.Serializable {
         Collections.shuffle(NearSystemsDeck);           //Baralha o Deck dos sistemas proximos
     }
 
-    public boolean removeSystem(System o) {
+    public boolean removeSystem(Sistema o) {
         if (isEmptyUnalignedSystems()) {
             if (o instanceof DistantSystem) {
                 return DistantSystemsDeck.remove(o);
@@ -134,7 +132,7 @@ public class Dados implements java.io.Serializable {
     }
 //[Imperio]-------------------------------------------------------------------//    
 
-    public System getMenorResistencia() {       //Funcao para obter o sistema com menor resistencia do império
+    public Sistema getMenorResistencia() {       //Funcao para obter o sistema com menor resistencia do império
         if (Empire.size() == 1) {
             return Empire.get(0);
         }
@@ -173,12 +171,12 @@ public class Dados implements java.io.Serializable {
         }
     }
 
-    public ArrayList<System> getEmpire() {      //Funcao que permite adicionar um sistema ao império
+    public ArrayList<Sistema> getEmpire() {      //Funcao que permite adicionar um sistema ao império
         return Empire;
     }
 
 //[Near Sistems]--------------------------------------------------------------// 
-    public ArrayList<System> getNearSystemsDeck() {       //Funcao que permite adicionar um evento ao Deck correspondente
+    public ArrayList<Sistema> getNearSystemsDeck() {       //Funcao que permite adicionar um evento ao Deck correspondente
         return NearSystemsDeck;
     }
 
@@ -187,7 +185,7 @@ public class Dados implements java.io.Serializable {
     }
 //[Distant Sistems]-----------------------------------------------------------// 
 
-    public ArrayList<System> getDistantSystemsDeck() {       //Funcao que permite adicionar um evento ao Deck correspondente
+    public ArrayList<Sistema> getDistantSystemsDeck() {       //Funcao que permite adicionar um evento ao Deck correspondente
         return DistantSystemsDeck;
     }
 
@@ -196,7 +194,7 @@ public class Dados implements java.io.Serializable {
     }
 //[Unaligned Sistems]---------------------------------------------------------//
 
-    public ArrayList<System> getUnalignedSystems() {        //Funcao que permite adicionar um sistema aos sistemas desalinhados
+    public ArrayList<Sistema> getUnalignedSystems() {        //Funcao que permite adicionar um sistema aos sistemas desalinhados
         return UnalignedSystems;
     }
 
@@ -225,11 +223,11 @@ public class Dados implements java.io.Serializable {
         (new InterstellarBanking(this)).IntegrarTechnologies();
     }
 
-    public ArrayList<Technology> getTechnologies() {
+    public ArrayList<Technology_SuperClasse> getTechnologies() {
         return TechnologiesAvaliable;
     }
 
-    public ArrayList<Technology> getTechnologyDiscovered() {
+    public ArrayList<Technology_SuperClasse> getTechnologyDiscovered() {
         return TechnologyDiscovered;
     }
 
@@ -237,18 +235,18 @@ public class Dados implements java.io.Serializable {
         return TechnologiesAvaliable.isEmpty();
     }
 
-    public boolean containsTechnologyDiscovered(Technology o) {
+    public boolean containsTechnologyDiscovered(Technology_SuperClasse o) {
         return TechnologyDiscovered.contains(o);
     }
 
-//    public boolean removeTechnology(Technology o) {
+//    public boolean removeTechnology(Technology_SuperClasse o) {
 //        return TechnologiesAvaliable.remove(o);
 //    }
-    public Technology getTechnology(String tech) throws StringException {
+    public Technology_SuperClasse getTechnology(String tech) throws StringException {
         if (TechnologiesAvaliable.isEmpty()) {
             throw new StringException("There are no more technologies avaliable to discover");
         }
-        for (Technology Tech : TechnologiesAvaliable) {
+        for (Technology_SuperClasse Tech : TechnologiesAvaliable) {
             if (tech.equalsIgnoreCase(Tech.toString())) {
                 return Tech;
             }
@@ -346,7 +344,7 @@ public class Dados implements java.io.Serializable {
 
     public int getMetalProduction() {
         int somatorio = 0;
-        for (System imperio : Empire) {
+        for (Sistema imperio : Empire) {
             somatorio += imperio.getMetalProduction();
         }
         return somatorio;
@@ -354,7 +352,7 @@ public class Dados implements java.io.Serializable {
 
     public int getWealthProduction() {
         int somatorio = 0;
-        for (System imperio : Empire) {
+        for (Sistema imperio : Empire) {
             somatorio += imperio.getWealthProduction();
         }
         return somatorio;

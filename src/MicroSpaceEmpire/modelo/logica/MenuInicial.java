@@ -7,7 +7,7 @@ import MicroSpaceEmpire.modelo.Dados;
  *
  * @author DavidSoares [21220084] && JorgeNogueira [21200794]
  */
-public class MenuInicial extends Estado_0 {
+public class MenuInicial extends Estado_Base {
 
     public MenuInicial(Dados GameInfo) {
         super(GameInfo);
@@ -20,7 +20,8 @@ public class MenuInicial extends Estado_0 {
     }
 
     @Override
-    public IEstado NovoJogo() {
+    public IEstado NovoJogo() {         // chamar construtor no novo jogo
+        getGameInfo().PreparaJogo();
         return new Estado_1(getGameInfo());
     }
 

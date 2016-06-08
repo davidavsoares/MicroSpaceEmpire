@@ -7,7 +7,7 @@ import MicroSpaceEmpire.modelo.Dados;
  *
  * @author DavidSoares [21220084] && JorgeNogueira [21200794]
  */
-public class Estado_11 extends Estado_0 {
+public class Estado_11 extends Estado_Base {
 
     public Estado_11(Dados GameInfo) {
         super(GameInfo);

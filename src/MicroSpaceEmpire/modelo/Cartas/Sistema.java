@@ -7,11 +7,11 @@ import MicroSpaceEmpire.modelo.Dados;
  *
  * @author DavidSoares [21220084] && JorgeNogueira [21200794]
  */
-public abstract class System extends Carta {
+public abstract class Sistema extends Carta {
 
     private int DADO;
 
-    public System(Dados GameInfo) {
+    public Sistema(Dados GameInfo) {
         super(GameInfo);
 
     }
@@ -53,7 +53,7 @@ public abstract class System extends Carta {
         getGameInfo().setWealthProduction(getGameInfo().getWealthProduction());
     }
 
-    public System DesintegrarImperio() {
+    public Sistema DesintegrarImperio() {
         if (getGameInfo().getEmpire().remove(this));
         {
             return this;
@@ -76,7 +76,7 @@ public abstract class System extends Carta {
         getGameInfo().getUnalignedSystems().add(this);
     }
 
-    public System DesintegrarUnaligned() {                      //Função que remove um sistem do array de desalinhados e o devolve
+    public Sistema DesintegrarUnaligned() {                      //Função que remove um sistem do array de desalinhados e o devolve
         if (getGameInfo().getUnalignedSystems().remove(this));
         {
             return this;

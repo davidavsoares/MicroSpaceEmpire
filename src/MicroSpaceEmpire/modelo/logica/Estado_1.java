@@ -8,7 +8,7 @@ import MicroSpaceEmpire.modelo.Tecnologias.Technologies.ForwardStarbases;
  *
  * @author DavidSoares [21220084] && JorgeNogueira [21200794]
  */
-public class Estado_1 extends Estado_0 {
+public class Estado_1 extends Estado_Base {
 
     public Estado_1(Dados GameInfo) {
         super(GameInfo);

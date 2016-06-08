@@ -7,12 +7,12 @@ import MicroSpaceEmpire.modelo.Dados;
  *
  * @author DavidSoares [21220084] && JorgeNogueira [21200794]
  */
-public class Estado_0 implements IEstado, java.io.Serializable {
+public class Estado_Base implements IEstado, java.io.Serializable {
 
     private static final long serialVersionUID = 42L;
     private final Dados GameInfo;
 
-    public Estado_0(Dados GameInfo) {
+    public Estado_Base(Dados GameInfo) {
         this.GameInfo = GameInfo;
     }
 

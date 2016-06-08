@@ -7,6 +7,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import MicroSpaceEmpire.modelo.Cartas.*;
 
 /**
  * I.S.E.C.
@@ -111,11 +113,11 @@ public class MaquinaDeEstados {
     public void DecRiquezaIncMetal() {
         setEstado(estado.DecRiquezaIncMetal());
     }
-// -------------------------- ETAPA 4 --------------------------------------- //
-
-    public void VerificaFim() {
-        setEstado(estado.VerificaFim());
-    }
+//// -------------------------- ETAPA 4 --------------------------------------- //
+//
+//    public void VerificaFim() {
+//        setEstado(estado.VerificaFim());
+//    }
 
 // ---------------------------- TODOS --------------------------------------- //
     public void Batalha(int index) {
@@ -142,5 +144,12 @@ public class MaquinaDeEstados {
 
     public void Passar() {
         setEstado(estado.Passar());
+    }
+
+    public ArrayList<Sistema> getEmpire() {
+        
+//        ArrayList<System> ola = new ArrayList<>();
+//                ola = getGameInfo().getEmpire();
+        return getGameInfo().getEmpire();
     }
 }

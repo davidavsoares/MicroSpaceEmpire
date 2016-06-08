@@ -3,11 +3,14 @@ package MicroSpaceEmpire.modelo.logica;
 import MicroSpaceEmpire.modelo.Dados;
 
 /**
+ * ESTE ESTADO NAO ESTA A SER UTILIZADO NO JOGO, APENAS ESTA AQUI POR UMA QUESTAO DE BACKUP
+ */
+/**
  * I.S.E.C.
  *
  * @author DavidSoares [21220084] && JorgeNogueira [21200794]
  */
-public class Estado_4 extends Estado_0 {        // Alterar verica fim porque esta a fazer 2x
+public class Estado_4 extends Estado_Base {        // Alterar verica fim porque esta a fazer 2x
 
     public Estado_4(Dados GameInfo) {
         super(GameInfo);

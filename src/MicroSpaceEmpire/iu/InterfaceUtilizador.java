@@ -3,7 +3,6 @@ package MicroSpaceEmpire.iu;
 import MicroSpaceEmpire.modelo.MaquinaDeEstados;
 import java.util.Scanner;
 import MicroSpaceEmpire.modelo.logica.*;
-import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -139,14 +138,14 @@ public class InterfaceUtilizador {
         System.out.println("\n\n----------------------------------");
         System.out.println();
         System.out.println(ME.getGameInfo().getStrUnalignedSystems());
-        System.out.println("10 - Voltar ao menu anterior");
+        System.out.println(ME.getGameInfo().getUnalignedSystems().size() + 1 + " - Voltar ao menu anterior");
 
         while (!sc.hasNextInt()) {
             sc.next();
         }
 
         opcao = sc.nextInt();
-        if (opcao == 10) {
+        if (opcao == ME.getGameInfo().getUnalignedSystems().size() + 1) {
             ME.VoltarMenuAnterior();
         }
         if (opcao <= ME.getGameInfo().getUnalignedSystems().size()) {

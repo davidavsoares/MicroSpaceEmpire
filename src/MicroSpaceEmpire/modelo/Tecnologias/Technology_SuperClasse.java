@@ -8,7 +8,7 @@ import java.util.Objects;
  *
  * @author DavidSoares [21220084] && JorgeNogueira [21200794]
  */
-public abstract class Technology implements java.io.Serializable {
+public abstract class Technology_SuperClasse implements java.io.Serializable {
 
     private static final long serialVersionUID = 42L;
     private Dados GameInfo;
@@ -18,11 +18,11 @@ public abstract class Technology implements java.io.Serializable {
         return Custo;
     }
 
-    public Technology(Dados GameInfo) {
+    public Technology_SuperClasse(Dados GameInfo) {
         this.GameInfo = GameInfo;
     }
 
-    public Technology(Dados GameInfo, int Custo) {
+    public Technology_SuperClasse(Dados GameInfo, int Custo) {
         this.GameInfo = GameInfo;
         this.Custo = Custo;
     }
@@ -51,7 +51,7 @@ public abstract class Technology implements java.io.Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Technology other = (Technology) obj;
+        final Technology_SuperClasse other = (Technology_SuperClasse) obj;
         if (!Objects.equals(this.GameInfo, other.GameInfo)) {
             return false;
         }
@@ -72,7 +72,7 @@ public abstract class Technology implements java.io.Serializable {
         GameInfo.getTechnologies().add(this);
     }
 
-    public Technology DesintegrarTechnologies() {
+    public Technology_SuperClasse DesintegrarTechnologies() {
         GameInfo.getTechnologies().remove(this);
         return this;
     }
