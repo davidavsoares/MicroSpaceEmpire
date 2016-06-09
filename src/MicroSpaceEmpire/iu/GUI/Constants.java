@@ -42,4 +42,9 @@ public interface Constants {
     static final int BETWEEN_PANELS_Y = (int)(DIM_Y_FRAME*0.03);
     static final int SUPERIOR_BORDERS = (int)(0.02*DIM_Y_FRAME);
     static final int INFERIOR_BORDERS = (int)(0.01*DIM_Y_FRAME);
+    
+    //Tamanho do painel de recursos
+    static final int RESOURCES_PANEL_X = 2*CARD_X + BETWEEN_PANELS_X;
+    static final int RESOURCES_PANEL_Y = 2*CARD_Y + BETWEEN_PANELS_Y;
+    
 }

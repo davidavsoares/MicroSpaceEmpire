@@ -34,13 +34,13 @@ public class UnalignedSystemPanel extends JPanel implements Constants {
         g.drawImage(MicroSpaceEmpirePanel.getSystemBackImage(), 0, 0, CARD_X, CARD_Y, this);
         ArrayList<Sistema> UnalignedSystems = observableGame.getUnalignedSystems();
 
-        int x = BORDER_X, y = BORDER_Y;
+        int x = 0, y = 0;
 
         for (Carta sistema : UnalignedSystems) {
 
-            if (x + CARD_X + BORDER_X > getWidth()) {
-                x = BORDER_X;
-                y += CARD_Y + GAP_Y_BALLS;
+            if (x + CARD_X + BETWEEN_PANELS_X > getWidth()) {
+                x = 0;
+                y += CARD_Y + BETWEEN_PANELS_Y;
             }
             
             if (sistema instanceof HomeWorld) {
@@ -67,7 +67,7 @@ public class UnalignedSystemPanel extends JPanel implements Constants {
                 g.drawImage(MicroSpaceEmpirePanel.getPolarisImage(), x, y, CARD_X, CARD_Y, this);
             }
 
-            x += CARD_X + GAP_X_BALLS;
+            x += CARD_X + BETWEEN_PANELS_X;
 
         }
     }
