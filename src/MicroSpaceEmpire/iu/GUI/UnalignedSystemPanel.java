@@ -12,14 +12,14 @@ import java.awt.Graphics;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 
-public class EmpirePanel extends JPanel implements Constants {
+public class UnalignedSystemPanel extends JPanel implements Constants {
 
-    private ObservableGame ob;
+    private ObservableGame observableGame;
 //    private BlackAndWhitePanel blackAndWhitePanel;
 
-    public EmpirePanel(ObservableGame ob) {
+    public UnalignedSystemPanel(ObservableGame observableGame) {
 
-        this.ob = ob;
+        this.observableGame = observableGame;
 
         setOpaque(false);
         setMaximumSize(new Dimension(CARD_X, CARD_Y));
@@ -32,17 +32,17 @@ public class EmpirePanel extends JPanel implements Constants {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(MicroSpaceEmpirePanel.getSystemBackImage(), 0, 0, CARD_X, CARD_Y, this);
-        ArrayList<Sistema> Empire = ob.getEmpire();
+        ArrayList<Sistema> UnalignedSystems = observableGame.getUnalignedSystems();
 
         int x = BORDER_X, y = BORDER_Y;
 
-        for (Carta sistema : Empire) {
+        for (Carta sistema : UnalignedSystems) {
 
             if (x + CARD_X + BORDER_X > getWidth()) {
                 x = BORDER_X;
                 y += CARD_Y + GAP_Y_BALLS;
             }
-
+            
             if (sistema instanceof HomeWorld) {
                 g.drawImage(MicroSpaceEmpirePanel.getHomeWorldImage(), x, y, CARD_X, CARD_Y, this);
             } else if (sistema instanceof Cygnus) {

@@ -1,6 +1,7 @@
 package MicroSpaceEmpire.iu;
 
 import MicroSpaceEmpire.modelo.MaquinaDeEstados;
+import MicroSpaceEmpire.modelo.ObservableGame;
 import java.util.Scanner;
 import MicroSpaceEmpire.modelo.logica.*;
 import java.util.logging.Level;
@@ -17,6 +18,11 @@ public class InterfaceUtilizador {
     private final Scanner sc;
     private boolean JaJogou = false;
 
+    public InterfaceUtilizador(ObservableGame ob) {
+        this.ME = ob.getMaquinaDeEstados();
+        sc = new Scanner(System.in);
+    }
+    
     public InterfaceUtilizador(MaquinaDeEstados ME) {
         this.ME = ME;
         sc = new Scanner(System.in);

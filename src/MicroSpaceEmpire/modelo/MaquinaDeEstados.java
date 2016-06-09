@@ -147,9 +147,27 @@ public class MaquinaDeEstados {
     }
 
     public ArrayList<Sistema> getEmpire() {
-        
+
 //        ArrayList<System> ola = new ArrayList<>();
 //                ola = getGameInfo().getEmpire();
         return getGameInfo().getEmpire();
+    }
+
+    public ArrayList<Sistema> getUnalignedSystems() {
+        return getGameInfo().getUnalignedSystems();
+    }
+    
+    
+    public ArrayList<Event> getEventDeck() {
+        return GameInfo.getEventDeck();
+    }
+    public Event getCurrentEvent()
+    {
+        return GameInfo.getCurrentEvent();
+    }
+    
+    public int getDice()
+    {
+        return GameInfo.getDice();
     }
 }

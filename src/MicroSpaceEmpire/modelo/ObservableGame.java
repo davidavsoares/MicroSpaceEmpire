@@ -1,5 +1,7 @@
 package MicroSpaceEmpire.modelo;
 
+import MicroSpaceEmpire.modelo.Cartas.Carta;
+import MicroSpaceEmpire.modelo.Cartas.Event;
 import MicroSpaceEmpire.modelo.Cartas.Sistema;
 import java.util.ArrayList;
 import java.util.Observable;
@@ -8,17 +10,15 @@ import java.util.Observable;
 //import model.data.WhiteBall;
 //import model.states.IStates;
 
-public class ObservableGame extends Observable
-{
+public class ObservableGame extends Observable {
+
     MaquinaDeEstados ME;
-    
-    public ObservableGame()
-    {
+
+    public ObservableGame() {
         ME = new MaquinaDeEstados();
     }
-    
-    public Dados getDataGame()
-    {
+
+    public Dados getDataGame() {
         return ME.getGameInfo();
     }
 
@@ -29,13 +29,19 @@ public class ObservableGame extends Observable
 //        setChanged();
 //        notifyObservers();
 //    }
-    
-    public void setMaquinaDeEstados(MaquinaDeEstados ME)
-    {
+    public void setMaquinaDeEstados(MaquinaDeEstados ME) {
         this.ME = ME;
-        
+
         setChanged();
         notifyObservers();
+    }
+
+    public MaquinaDeEstados getMaquinaDeEstados() {
+        return ME;
+    }
+
+    public int getDice() {
+        return ME.getDice();
     }
 
 //    public IEstado getState() {
@@ -51,9 +57,16 @@ public class ObservableGame extends Observable
 //    
 //    //------------------------------ Methods that enable accessing the data/status of the game ----------------------------
 //    
-    public ArrayList<Sistema> getEmpire() 
-    {
+    public ArrayList<Sistema> getEmpire() {
         return ME.getEmpire();
+    }
+
+    public ArrayList<Sistema> getUnalignedSystems() {
+        return ME.getUnalignedSystems();
+    }
+
+    public ArrayList<Event> getEventDeck() {
+        return ME.getEventDeck();
     }
 //   
 //    public List<WhiteBall> getCollectedWhiteBalls() 
@@ -61,10 +74,10 @@ public class ObservableGame extends Observable
 //        return gModel.getCollectedWhiteBalls();
 //    }
 //    
-//    public int getScore()
-//    {
-//        return gModel.getScore();
-//    }
+
+    public Event getCurrentEvent() {
+        return ME.getCurrentEvent();
+    }
 //    
 //    public int getBettedValue()
 //    {
@@ -103,13 +116,13 @@ public class ObservableGame extends Observable
 //        notifyObservers();
 //    }
 //    
-//    public void finish()
-//    {
-//        gModel.finish();
-//        
-//        setChanged();
-//        notifyObservers();
-//    }
+
+    public void Sair() {
+        ME.Sair();
+
+        setChanged();
+        notifyObservers();
+    }
 //    
 //    public void bet(int nBalls)
 //    {

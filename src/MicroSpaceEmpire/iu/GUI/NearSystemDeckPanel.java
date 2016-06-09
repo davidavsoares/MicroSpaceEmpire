@@ -16,7 +16,7 @@ public class NearSystemDeckPanel extends JPanel implements Constants {
         
         this.observableGame = observableGame;
         
-        setBackground(Color.GRAY);
+        setOpaque(false);
         setMaximumSize(new Dimension(CARD_X, CARD_Y));
         setPreferredSize(new Dimension(CARD_X, CARD_Y));
         setMinimumSize(new Dimension(CARD_X, CARD_Y));

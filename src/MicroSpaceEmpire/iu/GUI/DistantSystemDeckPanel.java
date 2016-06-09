@@ -2,7 +2,6 @@
 package MicroSpaceEmpire.iu.GUI;
 
 import MicroSpaceEmpire.modelo.ObservableGame;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import javax.swing.JPanel;
@@ -16,7 +15,7 @@ public class DistantSystemDeckPanel extends JPanel implements Constants {
         
         this.observableGame = observableGame;
         
-        setBackground(Color.GRAY);
+       setOpaque(false);
         setMaximumSize(new Dimension(CARD_X, CARD_Y));
         setPreferredSize(new Dimension(CARD_X, CARD_Y));
         setMinimumSize(new Dimension(CARD_X, CARD_Y));

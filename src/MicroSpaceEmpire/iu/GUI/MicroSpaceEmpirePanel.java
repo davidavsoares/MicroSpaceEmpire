@@ -24,7 +24,10 @@ public class MicroSpaceEmpirePanel extends JPanel implements Observer, Constants
             //SISTEMAS PROXIMOS
             CygnusImage = null, EpsilonEridaniImage = null, ProcyonImage = null, ProximaImage = null, SiriusImage = null, TauCetiImage = null, Wolf359Image = null,
             //SISTEMAS DISTANTES
-            CanopusImage = null, GalaxysEdgeImage = null, PolarisImage = null;
+            CanopusImage = null, GalaxysEdgeImage = null, PolarisImage = null,
+            Dice1Image = null, Dice2Image = null, Dice3Image = null, Dice4Image = null, Dice5Image = null, Dice6Image = null,
+            //BACKGROUND
+            BackgroundImage = null;
 
     public static BufferedImage getAsteroidImage() {
         return AsteroidImage;
@@ -110,6 +113,30 @@ public class MicroSpaceEmpirePanel extends JPanel implements Observer, Constants
         return PolarisImage;
     }
 
+    public static BufferedImage getDice1Image() {
+        return Dice1Image;
+    }
+
+    public static BufferedImage getDice2Image() {
+        return Dice2Image;
+    }
+
+    public static BufferedImage getDice3Image() {
+        return Dice3Image;
+    }
+
+    public static BufferedImage getDice4Image() {
+        return Dice4Image;
+    }
+
+    public static BufferedImage getDice5Image() {
+        return Dice5Image;
+    }
+
+    public static BufferedImage getDice6Image() {
+        return Dice6Image;
+    }
+
     static {
         try {
             //CARREGA IMAGENS DE EVENTOS
@@ -137,7 +164,15 @@ public class MicroSpaceEmpirePanel extends JPanel implements Observer, Constants
             CanopusImage = ImageIO.read(Resources.getResourceFile("images/System/Distant System/Canopus.jpg"));
             GalaxysEdgeImage = ImageIO.read(Resources.getResourceFile("images/System/Distant System/GalaxysEdge.jpg"));
             PolarisImage = ImageIO.read(Resources.getResourceFile("images/System/Distant System/Polaris.jpg"));
-
+            //CARREGA IMAGENS DO DADO
+            Dice1Image = ImageIO.read(Resources.getResourceFile("images/Dice/Dice1.png"));
+            Dice2Image = ImageIO.read(Resources.getResourceFile("images/Dice/Dice2.png"));
+            Dice3Image = ImageIO.read(Resources.getResourceFile("images/Dice/Dice3.png"));
+            Dice4Image = ImageIO.read(Resources.getResourceFile("images/Dice/Dice4.png"));
+            Dice5Image = ImageIO.read(Resources.getResourceFile("images/Dice/Dice5.png"));
+            Dice6Image = ImageIO.read(Resources.getResourceFile("images/Dice/Dice6.png"));
+            //CARREGA O FUNDO
+            BackgroundImage = ImageIO.read(Resources.getResourceFile("images/space.jpg"));
         } catch (IOException e) {
             System.out.println("Error loading images ");
         }
@@ -162,6 +197,8 @@ public class MicroSpaceEmpirePanel extends JPanel implements Observer, Constants
 
         this.observableGame = jogo;
         this.observableGame.addObserver(this);
+        
+        
 
         setupComponents();
         setupLayout();
@@ -197,7 +234,7 @@ public class MicroSpaceEmpirePanel extends JPanel implements Observer, Constants
     }
 
     private void setupLayout() {
-
+        
         Box LeftBox = Box.createVerticalBox();
 
         LeftBox.add(Box.createVerticalGlue());
@@ -249,5 +286,6 @@ public class MicroSpaceEmpirePanel extends JPanel implements Observer, Constants
 //        bagLabel.setText("White balls: " + nb + "   Black balls: " + np);
 //        scoreLabel.setText("Score: " + observableGame.getScore());
     }
+
 
 }

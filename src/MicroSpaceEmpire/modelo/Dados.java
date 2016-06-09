@@ -370,6 +370,9 @@ public class Dados implements java.io.Serializable {
     public void setDADO(int DADO) {
         this.DADO = DADO;
     }
+    public int getDice()
+    {return DADO;
+    }
 
     public void setMilitaryStrength(int MilitaryStrength) {
         this.MilitaryStrength = MilitaryStrength;
