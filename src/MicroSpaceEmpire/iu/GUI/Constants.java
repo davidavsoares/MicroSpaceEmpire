@@ -14,9 +14,12 @@ public interface Constants {
     //Micro Space Empire
     static final int CARD_X = (int) (DIM_X_FRAME * 0.115);       //para 1366 * 768 permite ter 8 cartas na horizontal
     static final int CARD_Y = (int) (DIM_Y_FRAME * 0.3);
+    
+    static final int RESOURCES_Y = (int) (CARD_Y * 0.25);
+    static final int RESOURCES_X = RESOURCES_Y;
 
-    static final int DICE_X = 80;
-    static final int DICE_Y = 80;
+    static final int DICE_X = RESOURCES_Y;
+    static final int DICE_Y = RESOURCES_Y;
 
     //Relacoes de tamanho entre paineis, considerando 2% de altura em cima e 1% de largura
     static final int BETWEEN_PANELS_X = (int) ((DIM_X_FRAME * 0.06) / 7);

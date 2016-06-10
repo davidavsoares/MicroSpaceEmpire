@@ -16,7 +16,7 @@ public class MicroSpaceEmpirePanel extends JPanel implements Observer, Constants
     private ObservableGame ob;
     private NearSystemDeckPanel NSDPanel;
     private DistantSystemDeckPanel DSDPanel;
-    private ResourcesPanel RSPanel;
+    private InfoPanel RSPanel;
     private EmpirePanel EPPanel;
     private UnalignedSystemPanel USPanel;
     private CurrentEventPanel CEPanel;
@@ -251,7 +251,7 @@ public class MicroSpaceEmpirePanel extends JPanel implements Observer, Constants
         
         DSDPanel = new DistantSystemDeckPanel(ob);
         
-        RSPanel = new ResourcesPanel(ob);
+        RSPanel = new InfoPanel(ob);
         
         EPPanel = new EmpirePanel(ob);
         
