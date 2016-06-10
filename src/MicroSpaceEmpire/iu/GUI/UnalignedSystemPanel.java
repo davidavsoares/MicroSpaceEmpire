@@ -34,6 +34,7 @@ public class UnalignedSystemPanel extends JPanel implements Constants {
         ArrayList<Sistema> UnalignedSystems = observableGame.getUnalignedSystems();
 
         int x = 0, y = 0;
+
         for (Carta sistema : UnalignedSystems) {
 
             if (x + CARD_X + BETWEEN_PANELS_X > getWidth()) {

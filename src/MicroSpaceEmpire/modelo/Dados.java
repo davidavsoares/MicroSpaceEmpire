@@ -13,20 +13,6 @@ import MicroSpaceEmpire.modelo.Tecnologias.Technologies.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import static java.lang.Math.round;
-import static java.lang.Math.round;
-import static java.lang.Math.round;
-import static java.lang.Math.round;
-import static java.lang.Math.round;
-import static java.lang.Math.round;
-import static java.lang.Math.round;
-import static java.lang.Math.round;
-import static java.lang.Math.round;
-import static java.lang.Math.round;
-import static java.lang.Math.round;
-import static java.lang.Math.round;
-import static java.lang.Math.round;
-import static java.lang.Math.round;
-import static java.lang.Math.round;
 
 /**
  * I.S.E.C.
@@ -75,7 +61,9 @@ public class Dados implements java.io.Serializable {
         TechnologyDiscovered = new ArrayList<>();       //Cria um array com as tecnologias descobertas
         TechnologiesAvaliable = new ArrayList<>();      //Cria  um array com as tecnologias
 
-        // PreparaJogo();                                  //Chama a funcao que prepara inicialmente o jogo       
+        UnalignedSystems.add(new Proxima(this));//PARA TESTES!!!
+
+        //PreparaJogo();                                  //Chama a funcao que prepara inicialmente o jogo       
     }
 
     public void PreparaJogo() {

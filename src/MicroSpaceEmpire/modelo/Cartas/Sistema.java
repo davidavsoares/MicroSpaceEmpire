@@ -61,7 +61,6 @@ public abstract class Sistema extends Carta {
     }
 
     public void SaiImperioEntraUnaligned() {
-        //getGameInfo().getEmpire().add(DesintegrarImperio());
         getGameInfo().getUnalignedSystems().add(DesintegrarImperio());
     }
 

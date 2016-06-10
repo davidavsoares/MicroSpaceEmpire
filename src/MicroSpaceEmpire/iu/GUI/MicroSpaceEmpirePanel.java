@@ -28,7 +28,7 @@ public class MicroSpaceEmpirePanel extends JPanel implements Observer, Constants
             PeaceQuietImage = null, RevoltImage = null, Revolt2Image = null, SmallInvasionForceImage = null,
             StrikeImage = null, EventBackImage = null,
             //SISTEMAS
-            HomeWorldImage = null, SystemBackImage = null,
+            HomeWorldImage = null, NearSystemBackImage = null, DistantSystemBackImage = null,
             //SISTEMAS PROXIMOS
             CygnusImage = null, EpsilonEridaniImage = null, ProcyonImage = null, ProximaImage = null, SiriusImage = null, TauCetiImage = null, Wolf359Image = null,
             //SISTEMAS DISTANTES
@@ -83,8 +83,12 @@ public class MicroSpaceEmpirePanel extends JPanel implements Observer, Constants
         return HomeWorldImage;
     }
     
-    public static BufferedImage getSystemBackImage() {
-        return SystemBackImage;
+    public static BufferedImage getNearSystemBackImage() {
+        return NearSystemBackImage;
+    }
+    
+    public static BufferedImage getDistantSystemBackImage() {
+        return DistantSystemBackImage;
     }
     
     public static BufferedImage getCygnusImage() {
@@ -185,7 +189,8 @@ public class MicroSpaceEmpirePanel extends JPanel implements Observer, Constants
 
             //CARREGA IMAGENS DE SISTEMAS
             HomeWorldImage = ImageIO.read(Resources.getResourceFile("images/System/HomeWorld.jpg"));
-            SystemBackImage = ImageIO.read(Resources.getResourceFile("images/System/SystemBack.jpg"));
+            NearSystemBackImage = ImageIO.read(Resources.getResourceFile("images/System/NearSystemBack.jpg"));
+            DistantSystemBackImage = ImageIO.read(Resources.getResourceFile("images/System/DistantSystemBack.jpg"));
 
             //CARREGA IMAGENS DE SISTEMAS PROXIMOS
             CygnusImage = ImageIO.read(Resources.getResourceFile("images/System/Near Systems/Cygnus.jpg"));
@@ -266,7 +271,7 @@ public class MicroSpaceEmpirePanel extends JPanel implements Observer, Constants
 
         TopBox.add(NSDPanel, BorderLayout.WEST);
         TopBox.add(DSDPanel, BorderLayout.EAST);
-       // TopBox.setBorder(new Border());
+
         Oeste.add(TopBox, BorderLayout.NORTH);
         Oeste.add(RSPanel, BorderLayout.CENTER);
         
