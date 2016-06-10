@@ -31,7 +31,6 @@ public class UnalignedSystemPanel extends JPanel implements Constants {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(MicroSpaceEmpirePanel.getSystemBackImage(), 0, 0, CARD_X, CARD_Y, this);
         ArrayList<Sistema> UnalignedSystems = observableGame.getUnalignedSystems();
 
         int x = 0, y = 0;

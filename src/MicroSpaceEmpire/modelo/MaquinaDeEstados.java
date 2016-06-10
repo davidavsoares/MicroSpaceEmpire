@@ -156,18 +156,36 @@ public class MaquinaDeEstados {
     public ArrayList<Sistema> getUnalignedSystems() {
         return getGameInfo().getUnalignedSystems();
     }
-    
-    
+
     public ArrayList<Event> getEventDeck() {
         return GameInfo.getEventDeck();
     }
-    public Event getCurrentEvent()
-    {
+
+    public Event getCurrentEvent() {
         return GameInfo.getCurrentEvent();
     }
-    
-    public int getDice()
-    {
+
+    public int getDice() {
         return GameInfo.getDice();
+    }
+
+    public int getMetalProduction() {
+        return GameInfo.getMetalProduction();
+    }
+
+    public int getWealthProduction() {
+        return GameInfo.getWealthProduction();
+    }
+
+    public int getMetalStorage() {
+        return GameInfo.getMetalStorage();
+    }
+
+    public int getWealthStorage() {
+        return GameInfo.getWealthStorage();
+    }
+
+    public int getMilitaryStrength() {
+        return GameInfo.getMilitaryStrength();
     }
 }

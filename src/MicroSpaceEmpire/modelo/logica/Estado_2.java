@@ -20,11 +20,11 @@ public class Estado_2 extends Estado_Base {
     @Override
     public IEstado DecMetalIncRiqueza() {
         if (getGameInfo().containsTechnologyDiscovered(new InterspeciesCommerce(getGameInfo()))) {
-            if (getGameInfo().getMetal() < 2 || getGameInfo().getWealth() == getGameInfo().getMaxStorage()) {
+            if (getGameInfo().getMetalStorage() < 2 || getGameInfo().getWealthStorage() == getGameInfo().getMaxStorage()) {
                 return this;
             } else {
-                getGameInfo().setMetal(getGameInfo().getMetal() - 2);
-                getGameInfo().setWealth(getGameInfo().getWealth() + 1);
+                getGameInfo().setMetalStorage(getGameInfo().getMetalStorage() - 2);
+                getGameInfo().setWealthStorage(getGameInfo().getWealthStorage() + 1);
                 return new Estado_3(getGameInfo());
             }
         } else {
@@ -35,12 +35,12 @@ public class Estado_2 extends Estado_Base {
     @Override
     public IEstado DecRiquezaIncMetal() {
         if (getGameInfo().containsTechnologyDiscovered(new InterspeciesCommerce(getGameInfo()))) {
-            if (getGameInfo().getWealth() < 2 || getGameInfo().getMetal() == getGameInfo().getMaxStorage()) {
+            if (getGameInfo().getWealthStorage() < 2 || getGameInfo().getMetalStorage() == getGameInfo().getMaxStorage()) {
                 return this;
             } else {
-                getGameInfo().setMetal(getGameInfo().getMetal() + 1);
+                getGameInfo().setMetalStorage(getGameInfo().getMetalStorage() + 1);
 
-                getGameInfo().setWealth(getGameInfo().getWealth() - 2);
+                getGameInfo().setWealthStorage(getGameInfo().getWealthStorage() - 2);
                 return new Estado_3(getGameInfo());
             }
         } else {

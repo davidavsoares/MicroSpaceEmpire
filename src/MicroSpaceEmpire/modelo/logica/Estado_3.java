@@ -61,9 +61,9 @@ public class Estado_3 extends Estado_Base {
     }
 
     public boolean ConstroiForcaMilitar() {
-        if (getGameInfo().getMetal() >= 1 && getGameInfo().getWealth() >= 1) {
-            getGameInfo().setMetal(getGameInfo().getMetal() - 1);
-            getGameInfo().setWealth(getGameInfo().getWealth() - 1);
+        if (getGameInfo().getMetalStorage() >= 1 && getGameInfo().getWealthStorage() >= 1) {
+            getGameInfo().setMetalStorage(getGameInfo().getMetalStorage() - 1);
+            getGameInfo().setWealthStorage(getGameInfo().getWealthStorage() - 1);
             getGameInfo().setMilitaryStrength(getGameInfo().getMilitaryStrength() + 1);
             return false;
         } else {

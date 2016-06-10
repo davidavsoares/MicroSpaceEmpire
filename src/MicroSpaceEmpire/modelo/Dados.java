@@ -14,6 +14,19 @@ import java.util.ArrayList;
 import java.util.Collections;
 import static java.lang.Math.round;
 import static java.lang.Math.round;
+import static java.lang.Math.round;
+import static java.lang.Math.round;
+import static java.lang.Math.round;
+import static java.lang.Math.round;
+import static java.lang.Math.round;
+import static java.lang.Math.round;
+import static java.lang.Math.round;
+import static java.lang.Math.round;
+import static java.lang.Math.round;
+import static java.lang.Math.round;
+import static java.lang.Math.round;
+import static java.lang.Math.round;
+import static java.lang.Math.round;
 
 /**
  * I.S.E.C.
@@ -40,9 +53,9 @@ public class Dados implements java.io.Serializable {
     private int WealthProduction;                               //Producao de riqueza
     private int MetalProduction;                                //Producao de metal
     private int MilitaryStrength;                               //Capacidade militar
-    private int Wealth;                                         //Riqueza
+    private int WealthStorage;                                         //Riqueza
     private int VictoryPoints;                                  //Pontos de victoria
-    private int Metal;                                          //Metal em Stock
+    private int MetalStorage;                                          //Metal em Stock
     private int DADO;                                           //Valor que saiu no dado
     private int MaxStorage;                                     //Capacidade de armazenamento
     private int MaxMilitary;                                    //Capacidade militar maxima
@@ -62,7 +75,7 @@ public class Dados implements java.io.Serializable {
         TechnologyDiscovered = new ArrayList<>();       //Cria um array com as tecnologias descobertas
         TechnologiesAvaliable = new ArrayList<>();      //Cria  um array com as tecnologias
 
-       // PreparaJogo();                                  //Chama a funcao que prepara inicialmente o jogo       
+        // PreparaJogo();                                  //Chama a funcao que prepara inicialmente o jogo       
     }
 
     public void PreparaJogo() {
@@ -72,8 +85,8 @@ public class Dados implements java.io.Serializable {
         WealthProduction = 0;
         MetalProduction = 0;
         MilitaryStrength = 0;
-        Wealth = 0;
-        Metal = 0;
+        WealthStorage = 0;
+        MetalStorage = 0;
         DADO = 0;
         MaxStorage = 3;
         MaxMilitary = 3;
@@ -147,8 +160,8 @@ public class Dados implements java.io.Serializable {
     }
 
     public void RecolheMetaleRiqueza() {
-        setMetal(Metal + round(getMetalProduction() * PercentagemProducao / 100));
-        setWealth(Wealth + round(WealthProduction * PercentagemProducao / 100));
+        setMetalStorage(MetalStorage + round(getMetalProduction() * PercentagemProducao / 100));
+        setWealthStorage(WealthStorage + round(WealthProduction * PercentagemProducao / 100));
 
         setPercentagemProducao(100);
     }
@@ -320,7 +333,6 @@ public class Dados implements java.io.Serializable {
     /*    public int getMaxMilitary() {
     return MaxMilitary;
     }*/
-
     public void setMaxMilitary(int MaxMilitary) {
         this.MaxMilitary = MaxMilitary;
     }
@@ -333,12 +345,12 @@ public class Dados implements java.io.Serializable {
         this.MaxStorage = MaxStorage;
     }
 
-    public void setMetal(int metal) {
-        this.Metal = metal;
-        if (this.Metal < 0) {
-            this.Metal = 0;
-        } else if (Metal > MaxStorage) {
-            this.Metal = this.MaxStorage;
+    public void setMetalStorage(int metal) {
+        this.MetalStorage = metal;
+        if (this.MetalStorage < 0) {
+            this.MetalStorage = 0;
+        } else if (MetalStorage > MaxStorage) {
+            this.MetalStorage = this.MaxStorage;
         }
     }
 
@@ -358,20 +370,29 @@ public class Dados implements java.io.Serializable {
         return somatorio;
     }
 
-    public void setWealth(int Wealth) {
-        this.Wealth = Wealth;
-        if (this.Wealth < 0) {
-            this.Wealth = 0;
-        } else if (this.Wealth > MaxStorage) {
-            this.Wealth = MaxStorage;
+    public void setWealthStorage(int WealthStorage) {
+        this.WealthStorage = WealthStorage;
+        if (this.WealthStorage < 0) {
+            this.WealthStorage = 0;
+        } else if (this.WealthStorage > MaxStorage) {
+            this.WealthStorage = MaxStorage;
         }
     }
 
     public void setDADO(int DADO) {
         this.DADO = DADO;
     }
-    public int getDice()
-    {return DADO;
+
+    public int getDice() {
+        return DADO;
+    }
+
+    public int getWealthStorage() {
+        return WealthStorage;
+    }
+
+    public int getMetalStorage() {
+        return MetalStorage;
     }
 
     public void setMilitaryStrength(int MilitaryStrength) {
@@ -383,20 +404,8 @@ public class Dados implements java.io.Serializable {
         }
     }
 
-    public int getWealth() {
-        return Wealth;
-    }
-
-//    public int getVictoryPoints() {
-//        return VictoryPoints;
-//    }
-
     public void AdicionaVictoryPoints(int VictoryPoints) {
         this.VictoryPoints += VictoryPoints;
-    }
-
-    public int getMetal() {
-        return Metal;
     }
 
     public int getANO() {
@@ -459,10 +468,10 @@ public class Dados implements java.io.Serializable {
         s += "\n" + "Eventos descartados: " + EventDiscard;                     //Imprime os eventos que já ocorreram
 
         s += "\n\n" + "[Producao de Riqueza:  " + WealthProduction + "]   ";
-        s += "[Riqueza:         " + Wealth + " of " + MaxProdution + "]   ";
+        s += "[Riqueza:         " + WealthStorage + " of " + MaxProdution + "]   ";
 
         s += "\n" + "[Produção de metal:    " + MetalProduction + "]   ";
-        s += "[Metal:           " + Metal + " of " + MaxProdution + "]   ";
+        s += "[Metal:           " + MetalStorage + " of " + MaxProdution + "]   ";
 
         s += "\n" + "                            [Força Militar:   " + MilitaryStrength + " of " + MaxMilitary + "]   ";
 

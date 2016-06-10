@@ -1,7 +1,6 @@
 package MicroSpaceEmpire.iu.GUI;
 
 import MicroSpaceEmpire.modelo.ObservableGame;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import javax.swing.JPanel;
@@ -9,11 +8,10 @@ import javax.swing.JPanel;
 public class EventDiscardPanel extends JPanel implements Constants {
 
     private ObservableGame ob;
-//    private BlackAndWhitePanel blackAndWhitePanel;
 
-    public EventDiscardPanel(ObservableGame observableGame) {
+    public EventDiscardPanel(ObservableGame ob) {
 
-        this.ob = observableGame;
+        this.ob = ob;
 
         setOpaque(false);
         setMaximumSize(new Dimension(CARD_X, CARD_Y));

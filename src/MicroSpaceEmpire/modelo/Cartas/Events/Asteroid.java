@@ -20,6 +20,6 @@ public class Asteroid extends Event {
     }
 
     public void CorreEvento() {
-        getGameInfo().setWealth(getGameInfo().getWealth() + 1);
+        getGameInfo().setWealthStorage(getGameInfo().getWealthStorage() + 1);
     }
 }

@@ -9,7 +9,6 @@ import javax.swing.JPanel;
 public class EventDeckPanel extends JPanel implements Constants {
 
     private ObservableGame ob;
-//    private BlackAndWhitePanel blackAndWhitePanel;
 
     public EventDeckPanel(ObservableGame ob) {
 
@@ -26,7 +25,7 @@ public class EventDeckPanel extends JPanel implements Constants {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         if (!ob.getEventDeck().isEmpty()) {
-            g.drawImage(MicroSpaceEmpirePanel.getSystemBackImage(), 0, 0, CARD_X, CARD_Y, this);
+            g.drawImage(MicroSpaceEmpirePanel.getEventBackImage(), 0, 0, CARD_X, CARD_Y, this);
         }
     }
 

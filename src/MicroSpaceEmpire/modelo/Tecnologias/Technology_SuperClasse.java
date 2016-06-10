@@ -59,8 +59,8 @@ public abstract class Technology_SuperClasse implements java.io.Serializable {
     }
 
     public boolean CompraTecnologia() {
-        if (GameInfo.getWealth() >= Custo) {
-            GameInfo.setWealth(GameInfo.getWealth() - Custo);
+        if (GameInfo.getWealthStorage() >= Custo) {
+            GameInfo.setWealthStorage(GameInfo.getWealthStorage() - Custo);
             DesintegrarTechnologies();
             IntegrarDescobertas();
             return true;

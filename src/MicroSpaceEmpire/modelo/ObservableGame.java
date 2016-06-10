@@ -1,14 +1,9 @@
 package MicroSpaceEmpire.modelo;
 
-import MicroSpaceEmpire.modelo.Cartas.Carta;
 import MicroSpaceEmpire.modelo.Cartas.Event;
 import MicroSpaceEmpire.modelo.Cartas.Sistema;
 import java.util.ArrayList;
 import java.util.Observable;
-//import model.data.Ball;
-//import model.data.DataGame;
-//import model.data.WhiteBall;
-//import model.states.IStates;
 
 public class ObservableGame extends Observable {
 
@@ -68,15 +63,30 @@ public class ObservableGame extends Observable {
     public ArrayList<Event> getEventDeck() {
         return ME.getEventDeck();
     }
-//   
-//    public List<WhiteBall> getCollectedWhiteBalls() 
-//    {
-//        return gModel.getCollectedWhiteBalls();
-//    }
-//    
 
     public Event getCurrentEvent() {
         return ME.getCurrentEvent();
+    }
+    
+    
+    public int getMetalProduction() {
+        return ME.getMetalProduction();
+    }
+
+    public int getWealthProduction() {
+        return ME.getWealthProduction();
+    }
+
+    public int getMetalStorage() {
+        return ME.getMetalStorage();
+    }
+
+    public int getWealthStorage() {
+        return ME.getWealthStorage();
+    }
+
+    public int getMilitaryStrength() {
+        return ME.getMilitaryStrength();
     }
 //    
 //    public int getBettedValue()

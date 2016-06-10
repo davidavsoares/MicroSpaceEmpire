@@ -41,7 +41,6 @@ public class EmpirePanel extends JPanel implements Constants {
                 x = 0;
                 y += CARD_Y + BETWEEN_PANELS_Y;
             }
-
             if (sistema instanceof HomeWorld) {
                 g.drawImage(MicroSpaceEmpirePanel.getHomeWorldImage(), x, y, CARD_X, CARD_Y, this);
             } else if (sistema instanceof Cygnus) {
