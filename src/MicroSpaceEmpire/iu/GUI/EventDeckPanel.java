@@ -1,7 +1,6 @@
 package MicroSpaceEmpire.iu.GUI;
 
 import MicroSpaceEmpire.modelo.ObservableGame;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import javax.swing.JPanel;
@@ -14,7 +13,7 @@ public class EventDeckPanel extends JPanel implements Constants {
 
         this.ob = ob;
 
-       setOpaque(false);
+        setOpaque(false);
         setMaximumSize(new Dimension(CARD_X, CARD_Y));
         setPreferredSize(new Dimension(CARD_X, CARD_Y));
         setMinimumSize(new Dimension(CARD_X, CARD_Y));

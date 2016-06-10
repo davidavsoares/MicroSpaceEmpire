@@ -1,21 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package MicroSpaceEmpire.iu.GUI;
 
 import MicroSpaceEmpire.modelo.ObservableGame;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.util.Observable;
+import java.util.Observer;
 import javax.swing.JPanel;
 
 /**
  *
  * @author kalin
  */
-public class InfoPanel extends JPanel implements Constants {
+public class InfoPanel extends JPanel implements Constants, Observer {
 
     private ObservableGame ob;
     private DicePanel DP;
@@ -27,14 +24,13 @@ public class InfoPanel extends JPanel implements Constants {
     private Menu11Panel M11P;
     private Menu1Panel M1P;
     private MenuInicialPanel MIP;
-    
+
     public InfoPanel(ObservableGame observableGame) {
         setOpaque(false);
         this.ob = observableGame;
         this.setLayout(new BorderLayout());
-        this.setPreferredSize(new Dimension((CARD_X*2),(CARD_Y*2)));
-        
-        
+        this.setPreferredSize(new Dimension((CARD_X * 2), (CARD_Y * 2)));
+
         DP = new DicePanel(ob);
         RP = new ResourcesPanel(ob);
         TP = new TechnologyPanel(ob);
@@ -44,19 +40,20 @@ public class InfoPanel extends JPanel implements Constants {
         M11P = new Menu11Panel(ob);
         M1P = new Menu1Panel(ob);
         MIP = new MenuInicialPanel(ob);
-        
+
         JPanel WestPanel = new JPanel(new BorderLayout());
         WestPanel.add(RP, BorderLayout.CENTER);
         WestPanel.add(DP, BorderLayout.SOUTH);
         WestPanel.setAlignmentY(CENTER_ALIGNMENT);
         WestPanel.setOpaque(false);
+        
         this.add(WestPanel, BorderLayout.WEST);
-        //this.add(TP, BorderLayout.CENTER);
-        //this.add(M31P, BorderLayout.CENTER);
-        //this.add(M3P, BorderLayout.CENTER);
-        //this.add(M2P, BorderLayout.CENTER);
-        //this.add(M11P, BorderLayout.CENTER);
-        //this.add(M1P, BorderLayout.CENTER);
+        this.add(TP, BorderLayout.CENTER);
+        this.add(M31P, BorderLayout.CENTER);
+        this.add(M3P, BorderLayout.CENTER);
+        this.add(M2P, BorderLayout.CENTER);
+        this.add(M11P, BorderLayout.CENTER);
+        this.add(M1P, BorderLayout.CENTER);
         this.add(MIP, BorderLayout.CENTER);
     }
 
@@ -64,4 +61,9 @@ public class InfoPanel extends JPanel implements Constants {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
     }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        
+        }
 }

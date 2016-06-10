@@ -14,7 +14,7 @@ public interface Constants {
     //Micro Space Empire
     static final int CARD_X = (int) (DIM_X_FRAME * 0.115);       //para 1366 * 768 permite ter 8 cartas na horizontal
     static final int CARD_Y = (int) (DIM_Y_FRAME * 0.3);
-    
+
     static final int RESOURCES_Y = (int) (CARD_Y * 0.25);
     static final int RESOURCES_X = RESOURCES_Y;
 
@@ -42,16 +42,17 @@ public interface Constants {
         "images/Resources/MetalStorage4.png", "images/Resources/MetalStorage5.png"};
 
     static final String MetalProductionImage[] = {
-        "images/Resources/MetalProduction+1.png", "images/Resources/MetalProduction+2.png",
-        "images/Resources/MetalProduction+3.png", "images/Resources/MetalProduction+4.png",
-        "images/Resources/MetalProduction+5.png"};
+        "images/Resources/MetalProduction+0.png", "images/Resources/MetalProduction+1.png",
+        "images/Resources/MetalProduction+2.png", "images/Resources/MetalProduction+3.png",
+        "images/Resources/MetalProduction+4.png", "images/Resources/MetalProduction+5.png"};
 
     static final String WealthStorageImage[] = {
         "images/Resources/WealthStorage0.png", "images/Resources/WealthStorage1.png",
         "images/Resources/WealthStorage2.png", "images/Resources/WealthStorage3.png",
         "images/Resources/WealthStorage4.png", "images/Resources/WealthStorage5.png"};
 
-    static final String WealthProductionImage[] = {"images/Resources/WealthProduction+1.png",
+    static final String WealthProductionImage[] = {
+        "images/Resources/WealthProduction+0.png", "images/Resources/WealthProduction+1.png",
         "images/Resources/WealthProduction+2.png", "images/Resources/WealthProduction+3.png",
         "images/Resources/WealthProduction+4.png", "images/Resources/WealthProduction+5.png"};
 

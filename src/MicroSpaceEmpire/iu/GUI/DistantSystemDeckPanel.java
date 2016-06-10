@@ -23,7 +23,7 @@ public class DistantSystemDeckPanel extends JPanel implements Constants {
         ImageIcon CardImg;
         Image img = MicroSpaceEmpirePanel.getDistantSystemBackImage();
         CardImg = new ImageIcon(img.getScaledInstance(CARD_X, CARD_Y, java.awt.Image.SCALE_SMOOTH));
-        
+
         this.ob = ob;
         this.setLayout(new BorderLayout());
         this.setOpaque(false);

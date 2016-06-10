@@ -1,19 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package MicroSpaceEmpire.iu.GUI;
 
 import MicroSpaceEmpire.modelo.ObservableGame;
 import MicroSpaceEmpire.modelo.logica.Estado_1;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Graphics;
 import java.awt.GridLayout;
-import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Observable;
+import java.util.Observer;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -23,7 +18,7 @@ import javax.swing.JTextArea;
  *
  * @author kalin
  */
-public class Menu1Panel extends JPanel implements Constants {
+public class Menu1Panel extends JPanel implements Constants, Observer {
     private ObservableGame ob;
     private JButton PassarB;
     private JButton ConquistarB;
@@ -80,14 +75,13 @@ public class Menu1Panel extends JPanel implements Constants {
         this.add(Separador2);
         this.add(PassarB);
         this.add(Separador3);
-
-    }
-    
-    @Override
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
         
-        //setVisible(ob.getMaquinaDeEstados().getEstado() instanceof Estado_1);
+        update(ob, null);
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        setVisible(ob.getMaquinaDeEstados().getEstado() instanceof Estado_1);
     }
     
 }

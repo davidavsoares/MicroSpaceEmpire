@@ -1,17 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package MicroSpaceEmpire.iu.GUI;
 
 import MicroSpaceEmpire.modelo.ObservableGame;
 import MicroSpaceEmpire.modelo.logica.Estado_31;
 import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Observable;
+import java.util.Observer;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -21,7 +17,8 @@ import javax.swing.JTextArea;
  *
  * @author kalin
  */
-public class Menu31Panel extends JPanel implements Constants {
+public class Menu31Panel extends JPanel implements Constants, Observer {
+
     private ObservableGame ob;
     private JButton AvancarB;
     private JButton CFMilitarB;
@@ -29,16 +26,15 @@ public class Menu31Panel extends JPanel implements Constants {
     private JLabel Separador;
     private JLabel Separador2;
     private JLabel Separador3;
-    
-    public Menu31Panel(ObservableGame ob)
-    {
+
+    public Menu31Panel(ObservableGame ob) {
         this.ob = ob;
-        this.setLayout(new GridLayout(0,1));
+        this.setLayout(new GridLayout(0, 1));
         this.setOpaque(false);
-        
+
         String x = "\n---------------------------------------------------\nPode construir força militar\npremindo Construir Força Militar\nou avançar premindo Avançar";
         String CF = "Construir Força Militar";
-        
+
         AvancarB = new JButton("Avancar");
         AvancarB.setForeground(Color.BLACK);
         CFMilitarB = new JButton(CF);
@@ -52,39 +48,34 @@ public class Menu31Panel extends JPanel implements Constants {
         Separador2.setForeground(Color.WHITE);
         Separador3 = new JLabel("---------------------------------------------------");
         Separador3.setForeground(Color.WHITE);
-        
-        CFMilitarB.addActionListener(new ActionListener(){        
+
+        CFMilitarB.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent ev)
-            {
+            public void actionPerformed(ActionEvent ev) {
                 ob.getMaquinaDeEstados().ConstruirForcaMilitar();
             }
         });
-        
-        AvancarB.addActionListener(new ActionListener(){        
+
+        AvancarB.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent ev)
-            {
+            public void actionPerformed(ActionEvent ev) {
                 ob.getMaquinaDeEstados().Passar();
             }
         });
-        
+
         this.add(Dados);
         this.add(Separador);
         this.add(CFMilitarB);
         this.add(Separador2);
         this.add(AvancarB);
         this.add(Separador3);
-        
-        
+
+        update(ob, null);
     }
-    
-    
+
     @Override
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        
+    public void update(Observable o, Object arg) {
         setVisible(ob.getMaquinaDeEstados().getEstado() instanceof Estado_31);
     }
-    
+
 }

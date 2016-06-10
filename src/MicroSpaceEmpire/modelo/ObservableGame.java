@@ -17,13 +17,6 @@ public class ObservableGame extends Observable {
         return ME.getGameInfo();
     }
 
-//    public void setDataGame(DataGame dataGame)
-//    {
-//        gModel.setDataGame(dataGame);
-//        
-//        setChanged();
-//        notifyObservers();
-//    }
     public void setMaquinaDeEstados(MaquinaDeEstados ME) {
         this.ME = ME;
 
@@ -39,19 +32,6 @@ public class ObservableGame extends Observable {
         return ME.getDice();
     }
 
-//    public IEstado getState() {
-//        return ME.getState();
-//    }
-//
-////    public void setState(IStates state) {
-////        gModel.setState(state);
-////        
-////        setChanged();
-////        notifyObservers();
-////    }    
-//    
-//    //------------------------------ Methods that enable accessing the data/status of the game ----------------------------
-//    
     public ArrayList<Sistema> getEmpire() {
         return ME.getEmpire();
     }
@@ -67,8 +47,7 @@ public class ObservableGame extends Observable {
     public Event getCurrentEvent() {
         return ME.getCurrentEvent();
     }
-    
-    
+
     public int getMetalProduction() {
         return ME.getMetalProduction();
     }
@@ -88,44 +67,6 @@ public class ObservableGame extends Observable {
     public int getMilitaryStrength() {
         return ME.getMilitaryStrength();
     }
-//    
-//    public int getBettedValue()
-//    {
-//        return gModel.getBettedValue();
-//    }
-//    
-//    public int getNWhiteBallsInBag(){
-//        return gModel.getNWhiteBallsInBag();
-//    }
-//    
-//    public int getNBlackBallsInBag(){
-//        return gModel.getNBlackBallsInBag();
-//    }
-//            
-//    public int getNWhiteBallsRemovedFromGame(){
-//        return gModel.getNWhiteBallsRemovedFromGame();
-//    }
-//    
-//    public int getNBlackBallsRemovedFromGame(){
-//        return gModel.getNBlackBallsRemovedFromGame();
-//    }
-//
-//    @Override
-//    public String toString()
-//    {   
-//        return gModel.toString();
-//    }
-//    
-//    //--------------------- Methods that trigger events/actions in the finite state machine  -----------------------
-//    
-//    public void start()
-//    {
-//        gModel.start();
-//        
-//        setChanged();
-//        notifyObservers();
-//    }
-//    
 
     public void Sair() {
         ME.Sair();
@@ -133,28 +74,9 @@ public class ObservableGame extends Observable {
         setChanged();
         notifyObservers();
     }
-//    
-//    public void bet(int nBalls)
-//    {
-//        gModel.bet(nBalls);
-//        
-//        setChanged();
-//        notifyObservers();
-//    }
-//    
-//    public void removeOneBallFromCollectedWhiteBalls()
-//    {
-//        gModel.removeOneBallFromCollectedWhiteBalls();
-//        
-//        setChanged();
-//        notifyObservers();
-//    }
-//    
-//    public void getTwoBallsFromBag()
-//    {
-//        gModel.getTwoBallsFromBag();
-//        
-//        setChanged();
-//        notifyObservers();
-//    }
+
+    public void ExplorarNearSystem() {
+        ME.ExplorarNearSystem();
+    }
+
 }
