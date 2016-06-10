@@ -55,21 +55,21 @@ public class Menu3Panel extends JPanel implements Constants, Observer {
         CFMilitarB.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ev) {
-                ob.getMaquinaDeEstados().ConstruirForcaMilitar();
+                ob.ConstruirForcaMilitar();
             }
         });
 
         DTechB.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ev) {
-                ob.getMaquinaDeEstados().DescobrirTecnologia();
+                ob.DescobrirTecnologia();
             }
         });
 
         AvancarB.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ev) {
-                ob.getMaquinaDeEstados().Passar();
+                ob.Passar();
             }
         });
 
@@ -86,7 +86,7 @@ public class Menu3Panel extends JPanel implements Constants, Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        setVisible(ob.getMaquinaDeEstados().getEstado() instanceof Estado_3);
+        setVisible(ob.getEstado() instanceof Estado_3);
     }
 
 }

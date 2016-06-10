@@ -56,21 +56,21 @@ public class Menu2Panel extends JPanel implements Constants, Observer {
         TMRB.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ev) {
-                ob.getMaquinaDeEstados().DecMetalIncRiqueza();
+                ob.DecMetalIncRiqueza();
             }
         });
 
         TRMB.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ev) {
-                ob.getMaquinaDeEstados().DecRiquezaIncMetal();
+                ob.DecRiquezaIncMetal();
             }
         });
 
         AvancarB.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ev) {
-                ob.getMaquinaDeEstados().Passar();
+                ob.Passar();
             }
         });
 
@@ -87,7 +87,7 @@ public class Menu2Panel extends JPanel implements Constants, Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        setVisible(ob.getMaquinaDeEstados().getEstado() instanceof Estado_2);
+        setVisible(ob.getEstado() instanceof Estado_2);
     }
 
 }

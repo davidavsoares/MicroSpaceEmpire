@@ -63,7 +63,7 @@ public class Menu1Panel extends JPanel implements Constants, Observer {
             @Override
             public void actionPerformed(ActionEvent ev)
             {
-                ob.getMaquinaDeEstados().Passar();
+                ob.Passar();
             }
         });
         
@@ -81,7 +81,7 @@ public class Menu1Panel extends JPanel implements Constants, Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        setVisible(ob.getMaquinaDeEstados().getEstado() instanceof Estado_1);
+        setVisible(ob.getEstado() instanceof Estado_1);
     }
     
 }

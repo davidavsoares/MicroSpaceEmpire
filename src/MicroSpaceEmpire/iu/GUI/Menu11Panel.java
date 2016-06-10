@@ -54,7 +54,7 @@ public class Menu11Panel extends JPanel implements Constants, Observer {
         Retornar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ev) {
-                ob.getMaquinaDeEstados().VoltarMenuAnterior();
+                ob.VoltarMenuAnterior();
             }
         });
 
@@ -68,7 +68,7 @@ public class Menu11Panel extends JPanel implements Constants, Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        setVisible(ob.getMaquinaDeEstados().getEstado() instanceof Estado_11);
+        setVisible(ob.getEstado() instanceof Estado_11);
     }
 
 }

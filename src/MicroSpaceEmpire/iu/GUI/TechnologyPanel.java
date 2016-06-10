@@ -96,63 +96,63 @@ public class TechnologyPanel extends JPanel implements Constants, Observer {
         Retornar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ev) {
-                ob.getMaquinaDeEstados().VoltarMenuAnterior();
+                ob.VoltarMenuAnterior();
             }
         });
 
         CShipsB.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ev) {
-                ob.getMaquinaDeEstados().DescobrirTecnologia("Capital Ships");
+                ob.DescobrirTecnologia("Capital Ships");
             }
         });
 
         FStarbasesB.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ev) {
-                ob.getMaquinaDeEstados().DescobrirTecnologia("Forward Starbases");
+                ob.DescobrirTecnologia("Forward Starbases");
             }
         });
 
         RWorkersB.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ev) {
-                ob.getMaquinaDeEstados().DescobrirTecnologia("Robot Workers");
+                ob.DescobrirTecnologia("Robot Workers");
             }
         });
 
         PDefensesB.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ev) {
-                ob.getMaquinaDeEstados().DescobrirTecnologia("Planetary Defenses");
+                ob.DescobrirTecnologia("Planetary Defenses");
             }
         });
 
         HTelevisionB.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ev) {
-                ob.getMaquinaDeEstados().DescobrirTecnologia("Hyper Television");
+                ob.DescobrirTecnologia("Hyper Television");
             }
         });
 
         IDiplomacyB.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ev) {
-                ob.getMaquinaDeEstados().DescobrirTecnologia("Interstellar Diplomacy");
+                ob.DescobrirTecnologia("Interstellar Diplomacy");
             }
         });
 
         ICommerceB.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ev) {
-                ob.getMaquinaDeEstados().DescobrirTecnologia("Interspecies Commerce");
+                ob.DescobrirTecnologia("Interspecies Commerce");
             }
         });
 
         IBankingB.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ev) {
-                ob.getMaquinaDeEstados().DescobrirTecnologia("Interstellar Banking");
+                ob.DescobrirTecnologia("Interstellar Banking");
             }
         });
 
@@ -175,7 +175,7 @@ public class TechnologyPanel extends JPanel implements Constants, Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        setVisible(ob.getMaquinaDeEstados().getEstado() instanceof Estado_32);
+        setVisible(ob.getEstado() instanceof Estado_32);
     }
 
 }

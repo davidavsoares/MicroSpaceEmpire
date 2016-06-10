@@ -49,14 +49,14 @@ public class MenuInicialPanel extends JPanel implements Constants, Observer {
         NJogoB.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ev) {
-                ob.getMaquinaDeEstados().NovoJogo();
+                ob.NovoJogo();
             }
         });
 
         SairB.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ev) {
-                ob.getMaquinaDeEstados().Sair();
+                ob.Sair();
             }
         });
 
@@ -71,7 +71,7 @@ public class MenuInicialPanel extends JPanel implements Constants, Observer {
 
     @Override
     public void update(Observable t, Object o) {
-        setVisible(ob.getMaquinaDeEstados().getEstado() instanceof MenuInicial);
+        setVisible(ob.getEstado() instanceof MenuInicial);
     }
 
 }

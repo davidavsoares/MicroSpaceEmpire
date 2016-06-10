@@ -2,6 +2,7 @@ package MicroSpaceEmpire.modelo;
 
 import MicroSpaceEmpire.modelo.Cartas.Event;
 import MicroSpaceEmpire.modelo.Cartas.Sistema;
+import MicroSpaceEmpire.modelo.logica.IEstado;
 import java.util.ArrayList;
 import java.util.Observable;
 
@@ -19,7 +20,6 @@ public class ObservableGame extends Observable {
 
     public void setMaquinaDeEstados(MaquinaDeEstados ME) {
         this.ME = ME;
-
         setChanged();
         notifyObservers();
     }
@@ -70,13 +70,79 @@ public class ObservableGame extends Observable {
 
     public void Sair() {
         ME.Sair();
-
         setChanged();
         notifyObservers();
     }
 
     public void ExplorarNearSystem() {
         ME.ExplorarNearSystem();
+        setChanged();
+        notifyObservers();
+    }
+    public void ExplorarDistantSystem() {
+        ME.ExplorarNearSystem();
+        setChanged();
+        notifyObservers();
+    }
+    
+    public void VoltarMenuAnterior()
+    {
+        ME.VoltarMenuAnterior();
+        setChanged();
+        notifyObservers();
+    }
+    
+    public void Passar()
+    {
+        ME.Passar();
+        setChanged();
+        notifyObservers();
+    }
+    
+    public void DecRiquezaIncMetal()
+    {
+        ME.DecRiquezaIncMetal();
+        setChanged();
+        notifyObservers();
+    }
+    
+    public void DecMetalIncRiqueza()
+    {
+        ME.DecMetalIncRiqueza();
+        setChanged();
+        notifyObservers();
+    }
+    
+    public void ConstruirForcaMilitar()
+    {
+        ME.ConstruirForcaMilitar();
+        setChanged();
+        notifyObservers();
+    }
+    
+    public void DescobrirTecnologia()
+    {
+        ME.DescobrirTecnologia();
+        setChanged();
+        notifyObservers();
+    }
+    
+    public void NovoJogo()
+    {
+        ME.NovoJogo();
+        setChanged();
+        notifyObservers();
+    }
+    public void DescobrirTecnologia(String Tech)
+    {
+        ME.DescobrirTecnologia(Tech);
+        setChanged();
+        notifyObservers();
+    }
+    
+    public IEstado getEstado()
+    {
+        return ME.getEstado();
     }
 
 }
