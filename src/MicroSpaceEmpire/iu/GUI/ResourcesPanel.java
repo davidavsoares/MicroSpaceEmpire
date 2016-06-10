@@ -43,15 +43,15 @@ public class ResourcesPanel extends JPanel implements Constants {
         this.setOpaque(false);
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         
-        JLabel WProductionL = new JLabel("Wealth Production");
+        JLabel WProductionL = new JLabel(" Wealth Production");
         WProductionL.setForeground(Color.WHITE);
-        JLabel MProductionL = new JLabel("Metal Production");
+        JLabel MProductionL = new JLabel("  Metal Production");
         MProductionL.setForeground(Color.WHITE);
-        JLabel MStrengthL = new JLabel("Military Strength");
+        JLabel MStrengthL = new JLabel("  Military Strength");
         MStrengthL.setForeground(Color.WHITE);
-        JLabel WStorageL = new JLabel("Wealth Storage");
+        JLabel WStorageL = new JLabel("  Wealth Storage");
         WStorageL.setForeground(Color.WHITE);
-        JLabel MStorageL = new JLabel("Metal Storage");
+        JLabel MStorageL = new JLabel("   Metal Storage");
         MStorageL.setForeground(Color.WHITE);
         
         JPanel WProductionP = new JPanel(new BorderLayout());
