@@ -2,7 +2,6 @@
 package MicroSpaceEmpire.iu.GUI;
 
 import MicroSpaceEmpire.modelo.ObservableGame;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import javax.swing.JPanel;
@@ -28,6 +27,7 @@ public class NearSystemDeckPanel extends JPanel implements Constants {
         super.paintComponent(g);
         //VALIDACAO VAZIO
         g.drawImage(MicroSpaceEmpirePanel.getSystemBackImage(), 0, 0,CARD_X, CARD_Y, this);
+        
 
     }
 

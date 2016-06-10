@@ -8,14 +8,13 @@ import javax.swing.JPanel;
 
 public class DistantSystemDeckPanel extends JPanel implements Constants {
 
-    private ObservableGame observableGame;
-//    private BlackAndWhitePanel blackAndWhitePanel;
+    private ObservableGame ob;
 
-    public DistantSystemDeckPanel(ObservableGame observableGame) {
+    public DistantSystemDeckPanel(ObservableGame ob) {
         
-        this.observableGame = observableGame;
+        this.ob = ob;
         
-       setOpaque(false);
+        setOpaque(false);
         setMaximumSize(new Dimension(CARD_X, CARD_Y));
         setPreferredSize(new Dimension(CARD_X, CARD_Y));
         setMinimumSize(new Dimension(CARD_X, CARD_Y));

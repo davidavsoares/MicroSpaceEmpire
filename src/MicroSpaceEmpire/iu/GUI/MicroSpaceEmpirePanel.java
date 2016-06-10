@@ -12,7 +12,7 @@ import java.awt.Graphics;
 //import javafx.scene.layout.BackgroundImage;
 
 public class MicroSpaceEmpirePanel extends JPanel implements Observer, Constants {
-
+    
     private ObservableGame ob;
     private NearSystemDeckPanel NSDPanel;
     private DistantSystemDeckPanel DSDPanel;
@@ -42,99 +42,99 @@ public class MicroSpaceEmpirePanel extends JPanel implements Observer, Constants
             //DADO
             Dice[] = new BufferedImage[DiceImage.length],
             BackgroundImage = null;
-
+    
     public static BufferedImage getAsteroidImage() {
         return AsteroidImage;
     }
-
+    
     public static BufferedImage getDerelictShipImage() {
         return DerelictShipImage;
     }
-
+    
     public static BufferedImage getLargeInvasionForceImage() {
         return LargeInvasionForceImage;
     }
-
+    
     public static BufferedImage getPeaceQuietImage() {
         return PeaceQuietImage;
     }
-
+    
     public static BufferedImage getRevoltImage() {
         return RevoltImage;
     }
-
+    
     public static BufferedImage getRevolt2Image() {
         return Revolt2Image;
     }
-
+    
     public static BufferedImage getSmallInvasionForceImage() {
         return SmallInvasionForceImage;
     }
-
+    
     public static BufferedImage getStrikeImage() {
         return StrikeImage;
     }
-
+    
     public static BufferedImage getEventBackImage() {
         return EventBackImage;
     }
-
+    
     public static BufferedImage getHomeWorldImage() {
         return HomeWorldImage;
     }
-
+    
     public static BufferedImage getSystemBackImage() {
         return SystemBackImage;
     }
-
+    
     public static BufferedImage getCygnusImage() {
         return CygnusImage;
     }
-
+    
     public static BufferedImage getEpsilonEridaniImage() {
         return EpsilonEridaniImage;
     }
-
+    
     public static BufferedImage getProcyonImage() {
         return ProcyonImage;
     }
-
+    
     public static BufferedImage getProximaImage() {
         return ProximaImage;
     }
-
+    
     public static BufferedImage getSiriusImage() {
         return SiriusImage;
     }
-
+    
     public static BufferedImage getTauCetiImage() {
         return TauCetiImage;
     }
-
+    
     public static BufferedImage getWolf359Image() {
         return Wolf359Image;
     }
-
+    
     public static BufferedImage getCanopusImage() {
         return CanopusImage;
     }
-
+    
     public static BufferedImage getGalaxysEdgeImage() {
         return GalaxysEdgeImage;
     }
-
+    
     public static BufferedImage getPolarisImage() {
         return PolarisImage;
     }
-
+    
     public ObservableGame getOb() {
         return ob;
     }
-
+    
     public NearSystemDeckPanel getNSDPanel() {
         return NSDPanel;
     }
-
+    
     public DistantSystemDeckPanel getDSDPanel() {
         return DSDPanel;
     }
@@ -149,27 +149,27 @@ public class MicroSpaceEmpirePanel extends JPanel implements Observer, Constants
     public static BufferedImage getMetalStorage(int index) {
         return MetalStorage[index];//ob.getMetalStorage()
     }
-
+    
     public static BufferedImage getMetalProduction(int index) {
         return MetalProduction[index];//ob.getMetalProduction() - 1
     }
-
+    
     public static BufferedImage getWealthStorage(int index) {
         return WealthStorage[index];//ob.getWealthStorage()
     }
-
+    
     public static BufferedImage getWealthProduction(int index) {
         return WealthProduction[index];//ob.getWealthProduction() - 1
     }
-
+    
     public static BufferedImage getMilitaryStrength(int index) {
         return MilitaryStrength[index];//ob.getMilitaryStrength()
     }
-
+    
     public static BufferedImage getDice(int index) {
         return Dice[index];
     }
-
+    
     static {
         try {
             //CARREGA IMAGENS DE EVENTOS
@@ -205,13 +205,13 @@ public class MicroSpaceEmpirePanel extends JPanel implements Observer, Constants
 
             //CARREGA IMAGENS DE RECURSOS E DADO
             for (int i = 0; i < 6; i++) {
-
+                
                 Dice[i] = ImageIO.read(Resources.getResourceFile(DiceImage[i]));
-
+                
                 MetalStorage[i] = ImageIO.read(Resources.getResourceFile(MetalStorageImage[i]));
                 WealthStorage[i] = ImageIO.read(Resources.getResourceFile(WealthStorageImage[i]));
                 MilitaryStrength[i] = ImageIO.read(Resources.getResourceFile(MilitaryStrengthImage[i]));
-
+                
                 if (i < 5) {
                     MetalProduction[i] = ImageIO.read(Resources.getResourceFile(MetalProductionImage[i]));
                     WealthProduction[i] = ImageIO.read(Resources.getResourceFile(WealthProductionImage[i]));
@@ -221,18 +221,18 @@ public class MicroSpaceEmpirePanel extends JPanel implements Observer, Constants
             System.out.println("Error loading images ");
         }
     }
-
+    
     public MicroSpaceEmpirePanel(ObservableGame ob) {
-
+        
         this.ob = ob;
         this.ob.addObserver(this);
-
+        
         setupComponents();
         setupLayout();
 
 //        update(jogo, null);
     }
-
+    
     private void setupComponents() {
 
 //        NSDLabel = new JLabel("Near System Deck");
@@ -243,51 +243,55 @@ public class MicroSpaceEmpirePanel extends JPanel implements Observer, Constants
 //        DSDLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 //        DSDLabel.setFont(new Font("Arial", Font.BOLD, 12));
         NSDPanel = new NearSystemDeckPanel(ob);
-
+        
         DSDPanel = new DistantSystemDeckPanel(ob);
-
+        
         RSPanel = new ResourcesPanel(ob);
-
+        
         EPPanel = new EmpirePanel(ob);
-
+        
         USPanel = new UnalignedSystemPanel(ob);
-
+        
         CEPanel = new CurrentEventPanel(ob);
-
+        
     }
-
+    
     private void setupLayout() {
-
+        
         setLayout(new BorderLayout());
+        
         JPanel Oeste = new JPanel(new BorderLayout());
         JPanel Este = new JPanel(new BorderLayout());
+        JPanel TopBox = new JPanel(new BorderLayout());
 
-        Box TopBox = Box.createHorizontalBox();
-        TopBox.add(NSDPanel);
-        TopBox.add(DSDPanel);
-
+        TopBox.add(NSDPanel, BorderLayout.WEST);
+        TopBox.add(DSDPanel, BorderLayout.EAST);
+       // TopBox.setBorder(new Border());
         Oeste.add(TopBox, BorderLayout.NORTH);
-        Oeste.add(RSPanel, BorderLayout.SOUTH);
-
+        Oeste.add(RSPanel, BorderLayout.CENTER);
+        
+        Este.setOpaque(false);
+        Oeste.setOpaque(false);
+        
         Este.add(USPanel, BorderLayout.NORTH);
         Este.add(CEPanel, BorderLayout.SOUTH);
-
+        
         this.add(EPPanel, BorderLayout.CENTER);
         this.add(Este, BorderLayout.EAST);
         this.add(Oeste, BorderLayout.WEST);
-
+        
         validate();
     }
-
+    
     @Override
     public void update(Observable ob, Object arg) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g); //To change body of generated methods, choose Tools | Templates.
         g.drawImage(BackgroundImage, 0, 0, null);
     }
-
+    
 }

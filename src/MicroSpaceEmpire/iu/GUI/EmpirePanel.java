@@ -6,7 +6,6 @@ import MicroSpaceEmpire.modelo.Cartas.Systems.DistantSystems.*;
 import MicroSpaceEmpire.modelo.Cartas.Systems.NearSystems.*;
 import MicroSpaceEmpire.modelo.Cartas.Systems.StartingSystems.HomeWorld;
 import MicroSpaceEmpire.modelo.ObservableGame;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.util.ArrayList;
@@ -15,7 +14,6 @@ import javax.swing.JPanel;
 public class EmpirePanel extends JPanel implements Constants {
 
     private ObservableGame ob;
-//    private BlackAndWhitePanel blackAndWhitePanel;
 
     public EmpirePanel(ObservableGame ob) {
 
@@ -34,7 +32,7 @@ public class EmpirePanel extends JPanel implements Constants {
         ArrayList<Sistema> Empire = ob.getEmpire();
 
         int x = 0, y = 0;
-
+        
         for (Carta sistema : Empire) {
 
             if (x + CARD_X + BETWEEN_PANELS_X > getWidth()) {

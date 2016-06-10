@@ -13,17 +13,17 @@ import javax.swing.JPanel;
  *
  * @author kalin
  */
-public class ResourcesPanel extends JPanel implements Constants{
-    private ObservableGame observableGame;
-    
-    public ResourcesPanel(ObservableGame observableGame)
-    {
-        this.observableGame = observableGame;
+public class ResourcesPanel extends JPanel implements Constants {
+
+    private ObservableGame ob;
+
+    public ResourcesPanel(ObservableGame observableGame) {
+        setOpaque(false);
+        this.ob = observableGame;
     }
-    
+
     @Override
-    public void paintComponent(Graphics g) 
-    {    
+    public void paintComponent(Graphics g) {
         super.paintComponent(g);
     }
 }
