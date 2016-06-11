@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.util.Observable;
 import java.util.Observer;
+import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
 /**
@@ -48,14 +49,19 @@ public class InfoPanel extends JPanel implements Constants, Observer {
         WestPanel.setAlignmentY(CENTER_ALIGNMENT);
         WestPanel.setOpaque(false);
         
+        JPanel CenterPanel = new JPanel();
+        CenterPanel.setLayout(new BoxLayout(CenterPanel,BoxLayout.Y_AXIS));
+        CenterPanel.setOpaque(false);
+        
+        CenterPanel.add(TP);
+        CenterPanel.add(M31P);
+        CenterPanel.add(M3P);
+        CenterPanel.add(M2P);
+        CenterPanel.add(M11P);
+        CenterPanel.add(M1P);
+        CenterPanel.add(MIP);
         this.add(WestPanel, BorderLayout.WEST);
-        this.add(TP, BorderLayout.CENTER);
-        this.add(M31P, BorderLayout.CENTER);
-        this.add(M3P, BorderLayout.CENTER);
-        this.add(M2P, BorderLayout.CENTER);
-        this.add(M11P, BorderLayout.CENTER);
-        this.add(M1P, BorderLayout.CENTER);
-        this.add(MIP, BorderLayout.CENTER);
+        this.add(CenterPanel, BorderLayout.CENTER);
     }
 
     @Override

@@ -61,7 +61,7 @@ public class Dados implements java.io.Serializable {
         TechnologyDiscovered = new ArrayList<>();       //Cria um array com as tecnologias descobertas
         TechnologiesAvaliable = new ArrayList<>();      //Cria  um array com as tecnologias
 
-        UnalignedSystems.add(new Proxima(this));//PARA TESTES!!!
+        //UnalignedSystems.add(new Proxima(this));//PARA TESTES!!!
 
         //PreparaJogo();                                  //Chama a funcao que prepara inicialmente o jogo       
     }
