@@ -9,6 +9,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import MicroSpaceEmpire.modelo.Cartas.*;
+import MicroSpaceEmpire.modelo.Tecnologias.Technology_SuperClasse;
 
 /**
  * I.S.E.C.
@@ -155,6 +156,11 @@ public class MaquinaDeEstados {
 
     public ArrayList<Sistema> getUnalignedSystems() {
         return getGameInfo().getUnalignedSystems();
+    }
+    
+    public ArrayList<Technology_SuperClasse> getTechnologyDiscovered()
+    {
+        return getGameInfo().getTechnologyDiscovered();
     }
 
     public ArrayList<Event> getEventDeck() {

@@ -2,6 +2,7 @@ package MicroSpaceEmpire.modelo;
 
 import MicroSpaceEmpire.modelo.Cartas.Event;
 import MicroSpaceEmpire.modelo.Cartas.Sistema;
+import MicroSpaceEmpire.modelo.Tecnologias.Technology_SuperClasse;
 import MicroSpaceEmpire.modelo.logica.IEstado;
 import java.util.ArrayList;
 import java.util.Observable;
@@ -142,7 +143,7 @@ public class ObservableGame extends Observable {
     
     public void Batalha(int opcao)
     {
-        ME.Batalha(opcao);
+        ME.Batalha(opcao + 1);
         setChanged();
         notifyObservers();
     }
@@ -152,6 +153,11 @@ public class ObservableGame extends Observable {
         ME.ConquistarSistema();
         setChanged();
         notifyObservers();
+    }
+    
+    public ArrayList<Technology_SuperClasse> getTechnologyDiscovered()
+    {
+        return ME.getTechnologyDiscovered();
     }
     
     public IEstado getEstado()

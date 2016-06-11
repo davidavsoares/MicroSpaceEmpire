@@ -20,71 +20,71 @@ import javax.swing.JTextArea;
  * @author kalin
  */
 public class Menu1Panel extends JPanel implements Constants, Observer {
+
     private ObservableGame ob;
     private JButton PassarB;
     private JButton ConquistarB;
-    
+
     private JLabel Separador;
     private JLabel Separador2;
     private JLabel Separador3;
-    
+
     private JTextArea Dados;
-    
-    public Menu1Panel(ObservableGame ob)
-    {
+
+    public Menu1Panel(ObservableGame ob) {
         this.ob = ob;
         this.ob.addObserver(this);
-        this.setLayout(new GridLayout(0,1,0,10));
+        this.setLayout(new GridLayout(0, 1, 0, 10));
         this.setOpaque(false);
-        
+
         JPanel Cont = new JPanel();
         Cont.setOpaque(false);
-        
+
         PassarB = new JButton("Passar");
         PassarB.setForeground(Color.BLACK);
-        PassarB.setPreferredSize(new Dimension(50,30));
-        PassarB.setMaximumSize(new Dimension(50,30));
-        
+        PassarB.setPreferredSize(new Dimension(50, 30));
+        PassarB.setMaximumSize(new Dimension(50, 30));
+
         ConquistarB = new JButton("Conquistar");
         ConquistarB.setForeground(Color.BLACK);
-        ConquistarB.setPreferredSize(new Dimension(50,30));
-        ConquistarB.setMaximumSize(new Dimension(50,30));
-        
+        ConquistarB.setPreferredSize(new Dimension(50, 30));
+        ConquistarB.setMaximumSize(new Dimension(50, 30));
+
         Separador = new JLabel("---------------------------------------------------");
         Separador.setForeground(Color.WHITE);
         Separador2 = new JLabel("---------------------------------------------------");
         Separador2.setForeground(Color.WHITE);
         Separador3 = new JLabel("---------------------------------------------------");
         Separador3.setForeground(Color.WHITE);
-        
+
         Dados = new JTextArea("\n Pode conquistar um sistema\n que esteja nos unaligned \n systems no canto superior direito\n premindo Conquistar\n ou passar premindo Passar ");
         Dados.setForeground(Color.WHITE);
         Dados.setOpaque(false);
-        
-        PassarB.addActionListener(new ActionListener(){        
+
+        PassarB.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent ev)
-            {
+            public void actionPerformed(ActionEvent ev) {
+                //setVisible(false);
                 ob.Passar();
             }
         });
-        ConquistarB.addActionListener(new ActionListener(){        
+        ConquistarB.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent ev)
-            {
+            public void actionPerformed(ActionEvent ev) {
+                //setVisible(false);
                 ob.ConquistarSistema();
             }
         });
-        
+
         Cont.add(Dados);
-        
+
         this.add(Cont);
         this.add(Separador);
         this.add(ConquistarB);
         //this.add(Separador2);
         this.add(PassarB);
         this.add(Separador3);
-        
+
         update(ob, null);
     }
 
@@ -92,10 +92,10 @@ public class Menu1Panel extends JPanel implements Constants, Observer {
     public void update(Observable o, Object arg) {
         setVisible(ob.getEstado() instanceof Estado_1);
     }
-    
+
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
     }
-    
+
 }

@@ -1,6 +1,15 @@
 package MicroSpaceEmpire.iu.GUI;
 
 import MicroSpaceEmpire.modelo.ObservableGame;
+import MicroSpaceEmpire.modelo.Tecnologias.Technologies.CapitalShips;
+import MicroSpaceEmpire.modelo.Tecnologias.Technologies.ForwardStarbases;
+import MicroSpaceEmpire.modelo.Tecnologias.Technologies.HyperTelevision;
+import MicroSpaceEmpire.modelo.Tecnologias.Technologies.InterspeciesCommerce;
+import MicroSpaceEmpire.modelo.Tecnologias.Technologies.InterstellarBanking;
+import MicroSpaceEmpire.modelo.Tecnologias.Technologies.InterstellarDiplomacy;
+import MicroSpaceEmpire.modelo.Tecnologias.Technologies.PlanetaryDefenses;
+import MicroSpaceEmpire.modelo.Tecnologias.Technologies.RobotWorkers;
+import MicroSpaceEmpire.modelo.Tecnologias.Technology_SuperClasse;
 import MicroSpaceEmpire.modelo.logica.Estado_32;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -9,11 +18,15 @@ import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 
 /**
@@ -108,6 +121,8 @@ public class TechnologyPanel extends JPanel implements Constants, Observer {
                 ob.DescobrirTecnologia("Capital Ships");
             }
         });
+        CShipsB.setToolTipText("Tecnologia de 1ª geração : Permite força militar até um maximo de 5");
+        
 
         FStarbasesB.addActionListener(new ActionListener() {
             @Override
@@ -115,13 +130,14 @@ public class TechnologyPanel extends JPanel implements Constants, Observer {
                 ob.DescobrirTecnologia("Forward Starbases");
             }
         });
-
+        FStarbasesB.setToolTipText("Tecnologia de 2ª geração : Necessária para explorar sistemas distantes");
         RWorkersB.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ev) {
                 ob.DescobrirTecnologia("Robot Workers");
             }
         });
+        RWorkersB.setToolTipText("Tecnologia de 1ª geração : Recebe metade da produção durante uma greve");
 
         PDefensesB.addActionListener(new ActionListener() {
             @Override
@@ -129,34 +145,35 @@ public class TechnologyPanel extends JPanel implements Constants, Observer {
                 ob.DescobrirTecnologia("Planetary Defenses");
             }
         });
-
+        PDefensesB.setToolTipText("Tecnologia de 2ª geração : Adiciona 1 unidade de resistencia durante uma invasao");
         HTelevisionB.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ev) {
                 ob.DescobrirTecnologia("Hyper Television");
             }
         });
-
+        HTelevisionB.setToolTipText("Tecnologia de 1ª geração : Adiciona 1 unidade de resistencia durante uma revolta");
         IDiplomacyB.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ev) {
                 ob.DescobrirTecnologia("Interstellar Diplomacy");
             }
         });
-
+        IDiplomacyB.setToolTipText("Tecnologia de 2ª geração : Proxima conquista é garantida");
         ICommerceB.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ev) {
                 ob.DescobrirTecnologia("Interspecies Commerce");
             }
         });
-
+        ICommerceB.setToolTipText("Tecnologia de 1ª geração : Permite trocar 2 unidades de 1 recurso por 1 unidade de outro");
         IBankingB.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ev) {
                 ob.DescobrirTecnologia("Interstellar Banking");
             }
         });
+        IBankingB.setToolTipText("Tecnologia de 2ª geração : Permite armazenamento de recursos até um maximo de 5");
 
         this.add(InfL);
         this.add(CShipsB);
@@ -178,6 +195,36 @@ public class TechnologyPanel extends JPanel implements Constants, Observer {
     @Override
     public void update(Observable o, Object arg) {
         setVisible(ob.getEstado() instanceof Estado_32);
+
+        ArrayList<Technology_SuperClasse> Techs = ob.getTechnologyDiscovered();
+
+        for (Technology_SuperClasse tech : Techs) {
+            if (tech instanceof CapitalShips) {
+                CShipsB.setEnabled(false);
+            }
+            if (tech instanceof ForwardStarbases) {
+                FStarbasesB.setEnabled(false);
+            }
+            if (tech instanceof HyperTelevision) {
+                HTelevisionB.setEnabled(false);
+            }
+            if (tech instanceof InterspeciesCommerce) {
+                ICommerceB.setEnabled(false);
+            }
+            if (tech instanceof InterstellarBanking) {
+                IBankingB.setEnabled(false);
+            }
+            if (tech instanceof InterstellarDiplomacy) {
+                IDiplomacyB.setEnabled(false);
+            }
+            if (tech instanceof PlanetaryDefenses) {
+                PDefensesB.setEnabled(false);
+            }
+            if (tech instanceof RobotWorkers) {
+                RWorkersB.setEnabled(false);
+            }
+        }
+
     }
 
     @Override

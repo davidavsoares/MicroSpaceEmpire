@@ -54,7 +54,7 @@ public class InfoPanel extends JPanel implements Constants, Observer {
         CenterPanel.setOpaque(false);
         
         CenterPanel.add(TP);
-        CenterPanel.add(M31P);
+        //CenterPanel.add(M31P);
         CenterPanel.add(M3P);
         CenterPanel.add(M2P);
         CenterPanel.add(M11P);

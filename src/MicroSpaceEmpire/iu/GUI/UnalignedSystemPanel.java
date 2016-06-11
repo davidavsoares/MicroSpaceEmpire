@@ -9,12 +9,9 @@ import MicroSpaceEmpire.modelo.Cartas.Systems.NearSystems.*;
 import MicroSpaceEmpire.modelo.Cartas.Systems.StartingSystems.HomeWorld;
 import MicroSpaceEmpire.modelo.ObservableGame;
 import MicroSpaceEmpire.modelo.logica.Estado_11;
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Image;
-import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -80,6 +77,8 @@ public class UnalignedSystemPanel extends JPanel implements Constants, Observer{
                 {
                     if (US.get(i) instanceof HomeWorld)
                     {
+                        HW.setEnabled(false);
+                        HW.setVisible(false);
                         ob.Batalha(i);
                     }
                 }
@@ -101,6 +100,8 @@ public class UnalignedSystemPanel extends JPanel implements Constants, Observer{
                 {
                     if (US.get(i) instanceof Cygnus)
                     {
+                        NSC.setEnabled(false);
+                        NSC.setVisible(false);
                         ob.Batalha(i);
                     }
                 }
@@ -121,6 +122,8 @@ public class UnalignedSystemPanel extends JPanel implements Constants, Observer{
                 {
                     if (US.get(i) instanceof EpsilonEridani)
                     {
+                        NSEE.setEnabled(false);
+                        NSEE.setVisible(false);
                         ob.Batalha(i);
                     }
                 }
@@ -141,6 +144,8 @@ public class UnalignedSystemPanel extends JPanel implements Constants, Observer{
                 {
                     if (US.get(i) instanceof Procyon)
                     {
+                        NSP.setEnabled(false);
+                        NSP.setVisible(false);
                         ob.Batalha(i);
                     }
                 }
@@ -161,6 +166,8 @@ public class UnalignedSystemPanel extends JPanel implements Constants, Observer{
                 {
                     if (US.get(i) instanceof Proxima)
                     {
+                        NSPr.setEnabled(false);
+                        NSPr.setVisible(false);
                         ob.Batalha(i);
                     }
                 }
@@ -181,6 +188,8 @@ public class UnalignedSystemPanel extends JPanel implements Constants, Observer{
                 {
                     if (US.get(i) instanceof Sirius)
                     {
+                        NSS.setEnabled(false);
+                        NSS.setVisible(false);
                         ob.Batalha(i);
                     }
                 }
@@ -201,6 +210,8 @@ public class UnalignedSystemPanel extends JPanel implements Constants, Observer{
                 {
                     if (US.get(i) instanceof TauCeti)
                     {
+                        NSTC.setEnabled(false);
+                        NSTC.setVisible(false);
                         ob.Batalha(i);
                     }
                 }
@@ -221,6 +232,8 @@ public class UnalignedSystemPanel extends JPanel implements Constants, Observer{
                 {
                     if (US.get(i) instanceof Wolf359)
                     {
+                        NSW.setEnabled(false);
+                        NSW.setVisible(false);
                         ob.Batalha(i);
                     }
                 }
@@ -241,6 +254,8 @@ public class UnalignedSystemPanel extends JPanel implements Constants, Observer{
                 {
                     if (US.get(i) instanceof Canopus)
                     {
+                        DSC.setEnabled(false);
+                        DSC.setVisible(false);
                         ob.Batalha(i);
                     }
                 }
@@ -261,6 +276,8 @@ public class UnalignedSystemPanel extends JPanel implements Constants, Observer{
                 {
                     if (US.get(i) instanceof GalaxysEdge)
                     {
+                        DSG.setEnabled(false);
+                        DSG.setVisible(false);
                         ob.Batalha(i);
                     }
                 }

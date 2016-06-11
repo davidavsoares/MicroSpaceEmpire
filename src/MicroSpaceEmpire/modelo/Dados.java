@@ -75,7 +75,7 @@ public class Dados implements java.io.Serializable {
         MilitaryStrength = 0;
         WealthStorage = 0;
         MetalStorage = 0;
-        DADO = 1;
+        DADO = 0;
         MaxStorage = 3;
         MaxMilitary = 3;
         MaxProdution = 3;

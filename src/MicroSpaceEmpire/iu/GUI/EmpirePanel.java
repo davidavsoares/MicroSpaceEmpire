@@ -6,26 +6,50 @@ import MicroSpaceEmpire.modelo.Cartas.Systems.DistantSystems.*;
 import MicroSpaceEmpire.modelo.Cartas.Systems.NearSystems.*;
 import MicroSpaceEmpire.modelo.Cartas.Systems.StartingSystems.HomeWorld;
 import MicroSpaceEmpire.modelo.ObservableGame;
-import MicroSpaceEmpire.modelo.logica.Estado_11;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 
 public class EmpirePanel extends JPanel implements Constants, Observer {
 
     private ObservableGame ob;
+    private JPanel coluna1, coluna2, coluna3, coluna4;
+
+    private JPanel HW;
+    private JPanel NSC;
+    private JPanel NSEE;
+    private JPanel NSP;
+    private JPanel NSPr;
+    private JPanel NSS;
+    private JPanel NSTC;
+    private JPanel NSW;
+
+    private JPanel DSC;
+    private JPanel DSG;
+    private JPanel DSP;
 
     public EmpirePanel(ObservableGame ob) {
 
         this.ob = ob;
+        ob.addObserver(this);
 
         setOpaque(false);
-        setMaximumSize(new Dimension(CARD_X, CARD_Y));
-        setPreferredSize(new Dimension(CARD_X, CARD_Y));
+        //setMaximumSize(new Dimension(CARD_X, CARD_Y));
+        setPreferredSize(new Dimension(CARD_X*4, CARD_Y*4));
         setMinimumSize(new Dimension(CARD_X, CARD_Y));
+
+        setLayout(new GridLayout(0, 4));
+
+        coluna1 = new JPanel(new BoxLayout(coluna1, BoxLayout.Y_AXIS));
+        coluna2 = new JPanel(new BoxLayout(coluna2, BoxLayout.Y_AXIS));
+        coluna3 = new JPanel(new BoxLayout(coluna3, BoxLayout.Y_AXIS));
+        coluna4 = new JPanel(new BoxLayout(coluna4, BoxLayout.Y_AXIS));
 
     }
 
@@ -35,7 +59,7 @@ public class EmpirePanel extends JPanel implements Constants, Observer {
         ArrayList<Sistema> Empire = ob.getEmpire();
 
         int x = 0, y = 0;
-        
+
         for (Carta sistema : Empire) {
 
             if (x + CARD_X + BETWEEN_PANELS_X > getWidth()) {

@@ -182,13 +182,6 @@ public class MicroSpaceEmpirePanel extends JPanel implements Observer, Constants
 
     private void setupComponents() {
 
-//        NSDLabel = new JLabel("Near System Deck");
-//        NSDLabel.setFont(new Font("Arial", Font.ITALIC, 12));
-//        NSDLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-//
-//        DSDLabel = new JLabel("Distant System DEck");
-//        DSDLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-//        DSDLabel.setFont(new Font("Arial", Font.BOLD, 12));
         NSDPanel = new NearSystemDeckPanel(ob);
 
         DSDPanel = new DistantSystemDeckPanel(ob);

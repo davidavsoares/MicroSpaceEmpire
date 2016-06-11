@@ -23,6 +23,7 @@ public class DicePanel extends JPanel implements Constants, Observer {
         this.ob = ob;
         this.ob.addObserver(this);
         this.setLayout(new BorderLayout());
+        
         int index = ob.getDice();
         setOpaque(false);
 
@@ -31,7 +32,7 @@ public class DicePanel extends JPanel implements Constants, Observer {
         setMinimumSize(new Dimension(DICE_X, DICE_Y));
 
         ImageIcon DiceImg;
-        Image img = MicroSpaceEmpirePanel.getDice(index);
+        Image img = MicroSpaceEmpirePanel.getDice(0);
         DiceImg = new ImageIcon(img.getScaledInstance(DICE_X, DICE_Y, java.awt.Image.SCALE_SMOOTH));
         DiceImgL = new JLabel(DiceImg);
         DiceImgL.setPreferredSize(new Dimension(RESOURCES_X, RESOURCES_Y));

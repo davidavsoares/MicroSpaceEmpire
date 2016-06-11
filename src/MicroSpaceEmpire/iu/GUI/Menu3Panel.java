@@ -57,6 +57,7 @@ public class Menu3Panel extends JPanel implements Constants, Observer {
         CFMilitarB.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ev) {
+                setVisible(false);
                 ob.ConstruirForcaMilitar();
             }
         });
@@ -64,6 +65,7 @@ public class Menu3Panel extends JPanel implements Constants, Observer {
         DTechB.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ev) {
+                setVisible(false);
                 ob.DescobrirTecnologia();
             }
         });
@@ -71,6 +73,7 @@ public class Menu3Panel extends JPanel implements Constants, Observer {
         AvancarB.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ev) {
+                setVisible(false);
                 ob.Passar();
             }
         });
