@@ -177,7 +177,7 @@ public class MicroSpaceEmpirePanel extends JPanel implements Observer, Constants
         setupComponents();
         setupLayout();
 
-//        update(jogo, null);
+        update(ob, null);
     }
 
     private void setupComponents() {
@@ -227,12 +227,11 @@ public class MicroSpaceEmpirePanel extends JPanel implements Observer, Constants
         this.add(Este, BorderLayout.EAST);
         this.add(Oeste, BorderLayout.WEST);
 
-        validate();
+        //validate();
     }
 
     @Override
     public void update(Observable ob, Object arg) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override

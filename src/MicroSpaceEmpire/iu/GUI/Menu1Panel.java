@@ -4,6 +4,7 @@ import MicroSpaceEmpire.modelo.ObservableGame;
 import MicroSpaceEmpire.modelo.logica.Estado_1;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -32,6 +33,7 @@ public class Menu1Panel extends JPanel implements Constants, Observer {
     public Menu1Panel(ObservableGame ob)
     {
         this.ob = ob;
+        this.ob.addObserver(this);
         this.setLayout(new GridLayout(0,1,0,10));
         this.setOpaque(false);
         
@@ -82,6 +84,11 @@ public class Menu1Panel extends JPanel implements Constants, Observer {
     @Override
     public void update(Observable o, Object arg) {
         setVisible(ob.getEstado() instanceof Estado_1);
+    }
+    
+    @Override
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
     }
     
 }

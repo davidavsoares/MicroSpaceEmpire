@@ -4,6 +4,7 @@ import MicroSpaceEmpire.modelo.ObservableGame;
 import MicroSpaceEmpire.modelo.logica.Estado_32;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
@@ -40,6 +41,7 @@ public class TechnologyPanel extends JPanel implements Constants, Observer {
 
     public TechnologyPanel(ObservableGame ob) {
         this.ob = ob;
+        this.ob.addObserver(this);
         this.setLayout(new GridLayout(0, 1));
         this.setOpaque(false);
 
@@ -178,4 +180,8 @@ public class TechnologyPanel extends JPanel implements Constants, Observer {
         setVisible(ob.getEstado() instanceof Estado_32);
     }
 
+    @Override
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+    }
 }

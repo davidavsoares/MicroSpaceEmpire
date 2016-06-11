@@ -28,6 +28,7 @@ public class InfoPanel extends JPanel implements Constants, Observer {
     public InfoPanel(ObservableGame observableGame) {
         setOpaque(false);
         this.ob = observableGame;
+        this.ob.addObserver(this);
         this.setLayout(new BorderLayout());
         this.setPreferredSize(new Dimension((CARD_X * 2), (CARD_Y * 2)));
 

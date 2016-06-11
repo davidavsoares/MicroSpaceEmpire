@@ -4,6 +4,7 @@ import MicroSpaceEmpire.modelo.ObservableGame;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.Image;
 import java.util.Observable;
 import java.util.Observer;
@@ -32,6 +33,7 @@ public class ResourcesPanel extends JPanel implements Constants, Observer {
 
     public ResourcesPanel(ObservableGame ob) {
         this.ob = ob;
+        this.ob.addObserver(this);
         this.setOpaque(false);
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
@@ -145,5 +147,10 @@ public class ResourcesPanel extends JPanel implements Constants, Observer {
         MStImg = new ImageIcon(img5.getScaledInstance(RESOURCES_X, RESOURCES_Y, java.awt.Image.SCALE_SMOOTH));
         MStImgL.setIcon(MStImg);
 
+    }
+    
+    @Override
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
     }
 }
