@@ -3,17 +3,20 @@ package MicroSpaceEmpire.iu.GUI;
 import static MicroSpaceEmpire.iu.GUI.Constants.CARD_X;
 import static MicroSpaceEmpire.iu.GUI.Constants.CARD_Y;
 import MicroSpaceEmpire.modelo.ObservableGame;
+import MicroSpaceEmpire.modelo.logica.Estado_1;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Observable;
+import java.util.Observer;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-public class DistantSystemDeckPanel extends JPanel implements Constants {
+public class DistantSystemDeckPanel extends JPanel implements Constants, Observer {
 
     private ObservableGame ob;
     private JButton TirarCarta;
@@ -25,6 +28,7 @@ public class DistantSystemDeckPanel extends JPanel implements Constants {
         CardImg = new ImageIcon(img.getScaledInstance(CARD_X, CARD_Y, java.awt.Image.SCALE_SMOOTH));
 
         this.ob = ob;
+        ob.addObserver(this);
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
         this.setMaximumSize(new Dimension(CARD_X, CARD_Y));
@@ -43,6 +47,11 @@ public class DistantSystemDeckPanel extends JPanel implements Constants {
         super.paintComponent(g);
         //VALIDACAO PARA VAZIO!
         g.drawImage(MicroSpaceEmpirePanel.getNearSystemBackImage(), 0, 0, CARD_X, CARD_Y, this);
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        TirarCarta.setEnabled(ob.getEstado() instanceof Estado_1);
     }
 
     class TirarCarta_DistantSystem implements ActionListener {

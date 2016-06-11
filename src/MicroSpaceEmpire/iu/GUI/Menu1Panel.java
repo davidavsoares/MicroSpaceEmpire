@@ -74,7 +74,7 @@ public class Menu1Panel extends JPanel implements Constants, Observer {
         this.add(Cont);
         this.add(Separador);
         this.add(ConquistarB);
-        this.add(Separador2);
+        //this.add(Separador2);
         this.add(PassarB);
         this.add(Separador3);
         

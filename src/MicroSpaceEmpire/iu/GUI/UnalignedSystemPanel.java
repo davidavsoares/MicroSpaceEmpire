@@ -12,7 +12,7 @@ import java.awt.Graphics;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 
-public class UnalignedSystemPanel extends JPanel implements Constants {
+public class UnalignedSystemPanel extends JPanel implements Constants{
 
     private ObservableGame observableGame;
 //    private BlackAndWhitePanel blackAndWhitePanel;

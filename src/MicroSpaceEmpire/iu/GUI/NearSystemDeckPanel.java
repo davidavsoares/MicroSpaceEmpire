@@ -1,17 +1,20 @@
 package MicroSpaceEmpire.iu.GUI;
 
 import MicroSpaceEmpire.modelo.ObservableGame;
+import MicroSpaceEmpire.modelo.logica.Estado_1;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Observable;
+import java.util.Observer;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-public class NearSystemDeckPanel extends JPanel implements Constants {
+public class NearSystemDeckPanel extends JPanel implements Constants, Observer {
 
     private ObservableGame ob;
     private JButton TirarCarta;
@@ -25,6 +28,7 @@ public class NearSystemDeckPanel extends JPanel implements Constants {
         this.setLayout(new BorderLayout());
 
         this.ob = ob;
+        ob.addObserver(this);
         setOpaque(false);
         setMaximumSize(new Dimension(CARD_X, CARD_Y));
         setPreferredSize(new Dimension(CARD_X, CARD_Y));
@@ -44,6 +48,11 @@ public class NearSystemDeckPanel extends JPanel implements Constants {
         //VALIDACAO VAZIO
 
         //g.drawImage(MicroSpaceEmpirePanel.getSystemBackImage(), 0, 0, CARD_X, CARD_Y, this);
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        TirarCarta.setEnabled(ob.getEstado() instanceof Estado_1);
     }
 
     class TirarCarta_NearSystem implements ActionListener {
