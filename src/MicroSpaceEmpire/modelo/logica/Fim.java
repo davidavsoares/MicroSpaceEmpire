@@ -12,5 +12,6 @@ public class Fim extends Estado_Base {
     public Fim(Dados GameInfo) {
         super(GameInfo);
     }
+    
 
 }

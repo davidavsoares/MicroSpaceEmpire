@@ -68,6 +68,13 @@ public class Menu1Panel extends JPanel implements Constants, Observer {
                 ob.Passar();
             }
         });
+        ConquistarB.addActionListener(new ActionListener(){        
+            @Override
+            public void actionPerformed(ActionEvent ev)
+            {
+                ob.ConquistarSistema();
+            }
+        });
         
         Cont.add(Dados);
         

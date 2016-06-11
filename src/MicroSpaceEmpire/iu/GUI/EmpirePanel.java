@@ -6,12 +6,15 @@ import MicroSpaceEmpire.modelo.Cartas.Systems.DistantSystems.*;
 import MicroSpaceEmpire.modelo.Cartas.Systems.NearSystems.*;
 import MicroSpaceEmpire.modelo.Cartas.Systems.StartingSystems.HomeWorld;
 import MicroSpaceEmpire.modelo.ObservableGame;
+import MicroSpaceEmpire.modelo.logica.Estado_11;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 import javax.swing.JPanel;
 
-public class EmpirePanel extends JPanel implements Constants {
+public class EmpirePanel extends JPanel implements Constants, Observer {
 
     private ObservableGame ob;
 
@@ -66,6 +69,11 @@ public class EmpirePanel extends JPanel implements Constants {
             x += CARD_X + BETWEEN_PANELS_X;
 
         }
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        repaint();
     }
 
 }

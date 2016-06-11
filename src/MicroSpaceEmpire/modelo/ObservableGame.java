@@ -140,6 +140,20 @@ public class ObservableGame extends Observable {
         notifyObservers();
     }
     
+    public void Batalha(int opcao)
+    {
+        ME.Batalha(opcao);
+        setChanged();
+        notifyObservers();
+    }
+    
+    public void ConquistarSistema()
+    {
+        ME.ConquistarSistema();
+        setChanged();
+        notifyObservers();
+    }
+    
     public IEstado getEstado()
     {
         return ME.getEstado();
