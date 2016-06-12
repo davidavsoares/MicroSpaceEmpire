@@ -1,5 +1,5 @@
 
-package three_in_row.files;
+package MicroSpaceEmpire.files;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -8,11 +8,12 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-/** 
- * @author Jose Marinho
- *
- */
-
+    /**
+     * I.S.E.C.
+     *
+     * @author DavidSoares [21220084] && JorgeNogueira [21200794] && Jose Marinho
+     * @param args
+     */
 public class FileUtility
 {
     public static final String FILE_TO_SAVE_GAME = "savedgame.bin";

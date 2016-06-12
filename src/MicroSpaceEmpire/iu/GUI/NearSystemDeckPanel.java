@@ -14,6 +14,12 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+/**
+ * I.S.E.C.
+ *
+ * @author DavidSoares [21220084] && JorgeNogueira [21200794]
+ * @param args
+ */
 public class NearSystemDeckPanel extends JPanel implements Constants, Observer {
 
     private ObservableGame ob;
@@ -59,7 +65,7 @@ public class NearSystemDeckPanel extends JPanel implements Constants, Observer {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-                ob.ExplorarNearSystem();
+            ob.ExplorarNearSystem();
         }
     }
 }

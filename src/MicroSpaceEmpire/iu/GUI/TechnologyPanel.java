@@ -18,20 +18,19 @@ import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 
 /**
+ * I.S.E.C.
  *
- * @author kalin
+ * @author DavidSoares [21220084] && JorgeNogueira [21200794]
+ * @param args
  */
 public class TechnologyPanel extends JPanel implements Constants, Observer {
 
@@ -122,7 +121,6 @@ public class TechnologyPanel extends JPanel implements Constants, Observer {
             }
         });
         CShipsB.setToolTipText("Tecnologia de 1ª geração : Permite força militar até um maximo de 5");
-        
 
         FStarbasesB.addActionListener(new ActionListener() {
             @Override

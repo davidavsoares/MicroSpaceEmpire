@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package MicroSpaceEmpire.iu.GUI;
 
 import MicroSpaceEmpire.modelo.ObservableGame;
@@ -20,13 +15,15 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 /**
+ * I.S.E.C.
  *
- * @author kalin
+ * @author DavidSoares [21220084] && JorgeNogueira [21200794]
+ * @param args
  */
 public class Menu11Panel extends JPanel implements Constants, Observer {
 
     private ObservableGame ob;
-    
+
     private JButton Retornar;
 
     private JLabel Separador;
@@ -73,7 +70,7 @@ public class Menu11Panel extends JPanel implements Constants, Observer {
     public void update(Observable o, Object arg) {
         setVisible(ob.getEstado() instanceof Estado_11);
     }
-    
+
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);

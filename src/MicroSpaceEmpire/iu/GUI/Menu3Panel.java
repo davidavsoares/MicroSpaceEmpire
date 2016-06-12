@@ -14,8 +14,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
+ * I.S.E.C.
  *
- * @author kalin
+ * @author DavidSoares [21220084] && JorgeNogueira [21200794]
+ * @param args
  */
 public class Menu3Panel extends JPanel implements Constants, Observer {
 
@@ -93,7 +95,7 @@ public class Menu3Panel extends JPanel implements Constants, Observer {
     public void update(Observable o, Object arg) {
         setVisible(ob.getEstado() instanceof Estado_3);
     }
-    
+
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);

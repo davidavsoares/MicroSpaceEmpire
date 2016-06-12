@@ -20,8 +20,14 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
-import three_in_row.files.FileUtility;
+import MicroSpaceEmpire.files.FileUtility;
 
+/**
+ * I.S.E.C.
+ *
+ * @author DavidSoares [21220084] && JorgeNogueira [21200794]
+ * @param args
+ */
 public class MicroSpaceEmpireFrame extends JFrame implements Observer, Constants {
 
     private ObservableGame ob;
@@ -62,6 +68,7 @@ public class MicroSpaceEmpireFrame extends JFrame implements Observer, Constants
         @Override
         public void actionPerformed(ActionEvent e) {
             ob.Sair();
+            ob.NovoJogo();
         }
     }
 
@@ -160,19 +167,6 @@ public class MicroSpaceEmpireFrame extends JFrame implements Observer, Constants
         JMenuItem exitJMI = new JMenuItem("Exit");
         exitJMI.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.CTRL_MASK));
 
-        JMenu secMenu = new JMenu("Teste");
-        secMenu.setMnemonic(KeyEvent.VK_T);
-
-        JMenuItem lolJMI = new JMenuItem("Lol");
-        lolJMI.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, ActionEvent.CTRL_MASK));
-
-        JMenuItem yoloJMI = new JMenuItem("Yolo");
-        yoloJMI.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Y, ActionEvent.CTRL_MASK));
-
-        secMenu.add(lolJMI);
-        secMenu.add(yoloJMI);
-
-        gameMenu.add(secMenu);
         gameMenu.add(newObjJMI);
         gameMenu.add(saveObjJMI);
         gameMenu.add(loadObjJMI);

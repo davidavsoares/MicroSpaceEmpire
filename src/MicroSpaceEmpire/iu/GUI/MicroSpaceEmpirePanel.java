@@ -9,7 +9,15 @@ import javax.swing.*;
 import MicroSpaceEmpire.modelo.ObservableGame;
 import java.awt.BorderLayout;
 import java.awt.Graphics;
+import java.awt.Image;
+import static java.awt.Image.SCALE_SMOOTH;
 
+/**
+ * I.S.E.C.
+ *
+ * @author DavidSoares [21220084] && JorgeNogueira [21200794]
+ * @param args
+ */
 public class MicroSpaceEmpirePanel extends JPanel implements Observer, Constants {
 
     private ObservableGame ob;
@@ -20,135 +28,43 @@ public class MicroSpaceEmpirePanel extends JPanel implements Observer, Constants
     private UnalignedSystemPanel USPanel;
     private CurrentEventPanel CEPanel;
 
-    static private BufferedImage EventBackImage = null,
+    static private Image BackgroundImage = null, EventBackImage = null,
             //SISTEMAS
             HomeWorldImage = null, NearSystemBackImage = null, DistantSystemBackImage = null,
             //SISTEMAS PROXIMOS
             CygnusImage = null, EpsilonEridaniImage = null, ProcyonImage = null, ProximaImage = null, SiriusImage = null, TauCetiImage = null, Wolf359Image = null,
             //SISTEMAS DISTANTES
-            CanopusImage = null, GalaxysEdgeImage = null, PolarisImage = null,
-            //RECURSOS
+            CanopusImage = null, GalaxysEdgeImage = null, PolarisImage = null;
+
+    static private BufferedImage //RECURSOS
             MetalStorage[] = new BufferedImage[MetalStorageImage.length],
             MetalProduction[] = new BufferedImage[MetalProductionImage.length],
             WealthStorage[] = new BufferedImage[WealthStorageImage.length],
             WealthProduction[] = new BufferedImage[WealthProductionImage.length],
             MilitaryStrength[] = new BufferedImage[MilitaryStrengthImage.length],
             //DADO
-            Dice[] = new BufferedImage[DiceImage.length],
-            BackgroundImage = null;
-
-    public static BufferedImage getEventBackImage() {
-        return EventBackImage;
-    }
-
-    public static BufferedImage getHomeWorldImage() {
-        return HomeWorldImage;
-    }
-
-    public static BufferedImage getNearSystemBackImage() {
-        return NearSystemBackImage;
-    }
-
-    public static BufferedImage getDistantSystemBackImage() {
-        return DistantSystemBackImage;
-    }
-
-    public static BufferedImage getCygnusImage() {
-        return CygnusImage;
-    }
-
-    public static BufferedImage getEpsilonEridaniImage() {
-        return EpsilonEridaniImage;
-    }
-
-    public static BufferedImage getProcyonImage() {
-        return ProcyonImage;
-    }
-
-    public static BufferedImage getProximaImage() {
-        return ProximaImage;
-    }
-
-    public static BufferedImage getSiriusImage() {
-        return SiriusImage;
-    }
-
-    public static BufferedImage getTauCetiImage() {
-        return TauCetiImage;
-    }
-
-    public static BufferedImage getWolf359Image() {
-        return Wolf359Image;
-    }
-
-    public static BufferedImage getCanopusImage() {
-        return CanopusImage;
-    }
-
-    public static BufferedImage getGalaxysEdgeImage() {
-        return GalaxysEdgeImage;
-    }
-
-    public static BufferedImage getPolarisImage() {
-        return PolarisImage;
-    }
-
-    public ObservableGame getOb() {
-        return ob;
-    }
-
-    public NearSystemDeckPanel getNSDPanel() {
-        return NSDPanel;
-    }
-
-    public DistantSystemDeckPanel getDSDPanel() {
-        return DSDPanel;
-    }
-
-    public static BufferedImage getMetalStorage(int index) {
-        return MetalStorage[index];//ob.getMetalStorage()
-    }
-
-    public static BufferedImage getMetalProduction(int index) {
-        return MetalProduction[index];//ob.getMetalProduction() - 1
-    }
-
-    public static BufferedImage getWealthStorage(int index) {
-        return WealthStorage[index];//ob.getWealthStorage()
-    }
-
-    public static BufferedImage getWealthProduction(int index) {
-        return WealthProduction[index];//ob.getWealthProduction() - 1
-    }
-
-    public static BufferedImage getMilitaryStrength(int index) {
-        return MilitaryStrength[index];//ob.getMilitaryStrength()
-    }
-
-    public static BufferedImage getDice(int index) {
-        return Dice[index];
-    }
+            Dice[] = new BufferedImage[DiceImage.length];
 
     static {
         try {
             //CARREGA IMAGENS DE SISTEMAS
-            HomeWorldImage = ImageIO.read(Resources.getResourceFile("images/System/HomeWorld.jpg"));
-            NearSystemBackImage = ImageIO.read(Resources.getResourceFile("images/System/NearSystemBack.jpg"));
-            DistantSystemBackImage = ImageIO.read(Resources.getResourceFile("images/System/DistantSystemBack.jpg"));
+            HomeWorldImage = ImageIO.read(Resources.getResourceFile("images/System/HomeWorld.jpg")).getScaledInstance(CARD_X, CARD_Y, SCALE_SMOOTH);
+            NearSystemBackImage = ImageIO.read(Resources.getResourceFile("images/System/NearSystemBack.jpg")).getScaledInstance(CARD_X, CARD_Y, SCALE_SMOOTH);
+            DistantSystemBackImage = ImageIO.read(Resources.getResourceFile("images/System/DistantSystemBack.jpg")).getScaledInstance(CARD_X, CARD_Y, SCALE_SMOOTH);
 
             //CARREGA IMAGENS DE SISTEMAS PROXIMOS
-            CygnusImage = ImageIO.read(Resources.getResourceFile("images/System/Near Systems/Cygnus.jpg"));
-            EpsilonEridaniImage = ImageIO.read(Resources.getResourceFile("images/System/Near Systems/EpsilonEridani.jpg"));
-            ProcyonImage = ImageIO.read(Resources.getResourceFile("images/System/Near Systems/Procyon.jpg"));
-            ProximaImage = ImageIO.read(Resources.getResourceFile("images/System/Near Systems/Proxima.jpg"));
-            SiriusImage = ImageIO.read(Resources.getResourceFile("images/System/Near Systems/Sirius.jpg"));
-            TauCetiImage = ImageIO.read(Resources.getResourceFile("images/System/Near Systems/TauCeti.jpg"));
-            Wolf359Image = ImageIO.read(Resources.getResourceFile("images/System/Near Systems/Wolf359.jpg"));
+            CygnusImage = ImageIO.read(Resources.getResourceFile("images/System/Near Systems/Cygnus.jpg")).getScaledInstance(CARD_X, CARD_Y, SCALE_SMOOTH);
+            EpsilonEridaniImage = ImageIO.read(Resources.getResourceFile("images/System/Near Systems/EpsilonEridani.jpg")).getScaledInstance(CARD_X, CARD_Y, SCALE_SMOOTH);
+            ProcyonImage = ImageIO.read(Resources.getResourceFile("images/System/Near Systems/Procyon.jpg")).getScaledInstance(CARD_X, CARD_Y, SCALE_SMOOTH);
+            ProximaImage = ImageIO.read(Resources.getResourceFile("images/System/Near Systems/Proxima.jpg")).getScaledInstance(CARD_X, CARD_Y, SCALE_SMOOTH);
+            SiriusImage = ImageIO.read(Resources.getResourceFile("images/System/Near Systems/Sirius.jpg")).getScaledInstance(CARD_X, CARD_Y, SCALE_SMOOTH);
+            TauCetiImage = ImageIO.read(Resources.getResourceFile("images/System/Near Systems/TauCeti.jpg")).getScaledInstance(CARD_X, CARD_Y, SCALE_SMOOTH);
+            Wolf359Image = ImageIO.read(Resources.getResourceFile("images/System/Near Systems/Wolf359.jpg")).getScaledInstance(CARD_X, CARD_Y, SCALE_SMOOTH);
 
             //CARREGA IMAGENS DE SISTEMAS DISTANTES
-            CanopusImage = ImageIO.read(Resources.getResourceFile("images/System/Distant System/Canopus.jpg"));
-            GalaxysEdgeImage = ImageIO.read(Resources.getResourceFile("images/System/Distant System/GalaxysEdge.jpg"));
-            PolarisImage = ImageIO.read(Resources.getResourceFile("images/System/Distant System/Polaris.jpg"));
+            CanopusImage = ImageIO.read(Resources.getResourceFile("images/System/Distant System/Canopus.jpg")).getScaledInstance(CARD_X, CARD_Y, SCALE_SMOOTH);
+            GalaxysEdgeImage = ImageIO.read(Resources.getResourceFile("images/System/Distant System/GalaxysEdge.jpg")).getScaledInstance(CARD_X, CARD_Y, SCALE_SMOOTH);
+            PolarisImage = ImageIO.read(Resources.getResourceFile("images/System/Distant System/Polaris.jpg")).getScaledInstance(CARD_X, CARD_Y, SCALE_SMOOTH);
 
             BackgroundImage = ImageIO.read(Resources.getResourceFile(BackGroundImage));
 
@@ -231,6 +147,118 @@ public class MicroSpaceEmpirePanel extends JPanel implements Observer, Constants
     protected void paintComponent(Graphics g) {
         super.paintComponent(g); //To change body of generated methods, choose Tools | Templates.
         g.drawImage(BackgroundImage, 0, 0, null);
+    }
+
+    public ObservableGame getOb() {
+        return ob;
+    }
+
+    public NearSystemDeckPanel getNSDPanel() {
+        return NSDPanel;
+    }
+
+    public DistantSystemDeckPanel getDSDPanel() {
+        return DSDPanel;
+    }
+
+    public InfoPanel getRSPanel() {
+        return RSPanel;
+    }
+
+    public EmpirePanel getEPPanel() {
+        return EPPanel;
+    }
+
+    public UnalignedSystemPanel getUSPanel() {
+        return USPanel;
+    }
+
+    public CurrentEventPanel getCEPanel() {
+        return CEPanel;
+    }
+
+    public static Image getBackgroundImage() {
+        return BackgroundImage;
+    }
+
+    public static Image getEventBackImage() {
+        return EventBackImage;
+    }
+
+    public static Image getHomeWorldImage() {
+        return HomeWorldImage;
+    }
+
+    public static Image getNearSystemBackImage() {
+        return NearSystemBackImage;
+    }
+
+    public static Image getDistantSystemBackImage() {
+        return DistantSystemBackImage;
+    }
+
+    public static Image getCygnusImage() {
+        return CygnusImage;
+    }
+
+    public static Image getEpsilonEridaniImage() {
+        return EpsilonEridaniImage;
+    }
+
+    public static Image getProcyonImage() {
+        return ProcyonImage;
+    }
+
+    public static Image getProximaImage() {
+        return ProximaImage;
+    }
+
+    public static Image getSiriusImage() {
+        return SiriusImage;
+    }
+
+    public static Image getTauCetiImage() {
+        return TauCetiImage;
+    }
+
+    public static Image getWolf359Image() {
+        return Wolf359Image;
+    }
+
+    public static Image getCanopusImage() {
+        return CanopusImage;
+    }
+
+    public static Image getGalaxysEdgeImage() {
+        return GalaxysEdgeImage;
+    }
+
+    public static Image getPolarisImage() {
+        return PolarisImage;
+    }
+
+    public static BufferedImage getMetalStorage(int index) {
+        return MetalStorage[index];//ob.getMetalStorage()
+    }
+
+    public static BufferedImage getMetalProduction(int index) {
+        return MetalProduction[index];//ob.getMetalProduction() - 1
+    }
+
+    public static BufferedImage getWealthStorage(int index) {
+        return WealthStorage[index];//ob.getWealthStorage()
+    }
+
+    public static BufferedImage getWealthProduction(int index) {
+        return WealthProduction[index];//ob.getWealthProduction() - 1
+    }
+
+    public static BufferedImage getMilitaryStrength(int index) {
+        return MilitaryStrength[index];//ob.getMilitaryStrength()
+    }
+
+    public static BufferedImage getDice(int index) {
+        return Dice[index];
     }
 
 }

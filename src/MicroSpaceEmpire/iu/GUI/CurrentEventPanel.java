@@ -1,11 +1,14 @@
 package MicroSpaceEmpire.iu.GUI;
 
+import static MicroSpaceEmpire.iu.GUI.Constants.CARD_X;
+import static MicroSpaceEmpire.iu.GUI.Constants.CARD_Y;
 import MicroSpaceEmpire.modelo.Cartas.Event;
 import MicroSpaceEmpire.modelo.Cartas.Events.*;
 import MicroSpaceEmpire.modelo.ObservableGame;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.image.BufferedImage;
+import java.awt.Image;
+import static java.awt.Image.SCALE_SMOOTH;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
@@ -14,7 +17,7 @@ public class CurrentEventPanel extends JPanel implements Constants {
 
     private ObservableGame ob;
 
-    static private BufferedImage//EVENTOS
+    static private Image//EVENTOS
             AsteroidImage = null, DerelictShipImage = null, LargeInvasionForceImage = null,
             PeaceQuietImage = null, RevoltImage = null, Revolt2Image = null, SmallInvasionForceImage = null,
             StrikeImage = null;
@@ -59,14 +62,14 @@ public class CurrentEventPanel extends JPanel implements Constants {
     static {
         try {
             //CARREGA IMAGENS DE EVENTOS
-            AsteroidImage = ImageIO.read(Resources.getResourceFile("images/Event/Asteroid.jpg"));
-            DerelictShipImage = ImageIO.read(Resources.getResourceFile("images/Event/DerelictShip.jpg"));
-            LargeInvasionForceImage = ImageIO.read(Resources.getResourceFile("images/Event/LargeInvasionForce.jpg"));
-            PeaceQuietImage = ImageIO.read(Resources.getResourceFile("images/Event/PeaceQuiet.jpg"));
-            RevoltImage = ImageIO.read(Resources.getResourceFile("images/Event/Revolt.jpg"));
-            Revolt2Image = ImageIO.read(Resources.getResourceFile("images/Event/Revolt2.jpg"));
-            SmallInvasionForceImage = ImageIO.read(Resources.getResourceFile("images/Event/SmallInvasionForce.jpg"));
-            StrikeImage = ImageIO.read(Resources.getResourceFile("images/Event/Strike.jpg"));
+            AsteroidImage = ImageIO.read(Resources.getResourceFile("images/Event/Asteroid.jpg")).getScaledInstance(CARD_X, CARD_Y, SCALE_SMOOTH);
+            DerelictShipImage = ImageIO.read(Resources.getResourceFile("images/Event/DerelictShip.jpg")).getScaledInstance(CARD_X, CARD_Y, SCALE_SMOOTH);
+            LargeInvasionForceImage = ImageIO.read(Resources.getResourceFile("images/Event/LargeInvasionForce.jpg")).getScaledInstance(CARD_X, CARD_Y, SCALE_SMOOTH);
+            PeaceQuietImage = ImageIO.read(Resources.getResourceFile("images/Event/PeaceQuiet.jpg")).getScaledInstance(CARD_X, CARD_Y, SCALE_SMOOTH);
+            RevoltImage = ImageIO.read(Resources.getResourceFile("images/Event/Revolt.jpg")).getScaledInstance(CARD_X, CARD_Y, SCALE_SMOOTH);
+            Revolt2Image = ImageIO.read(Resources.getResourceFile("images/Event/Revolt2.jpg")).getScaledInstance(CARD_X, CARD_Y, SCALE_SMOOTH);
+            SmallInvasionForceImage = ImageIO.read(Resources.getResourceFile("images/Event/SmallInvasionForce.jpg")).getScaledInstance(CARD_X, CARD_Y, SCALE_SMOOTH);
+            StrikeImage = ImageIO.read(Resources.getResourceFile("images/Event/Strike.jpg")).getScaledInstance(CARD_X, CARD_Y, SCALE_SMOOTH);
         } catch (IOException e) {
             System.out.println("Error loading images ");
         }

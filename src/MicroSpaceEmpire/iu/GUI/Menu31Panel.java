@@ -15,8 +15,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 /**
+ * I.S.E.C.
  *
- * @author kalin
+ * @author DavidSoares [21220084] && JorgeNogueira [21200794]
+ * @param args
  */
 public class Menu31Panel extends JPanel implements Constants, Observer {
 

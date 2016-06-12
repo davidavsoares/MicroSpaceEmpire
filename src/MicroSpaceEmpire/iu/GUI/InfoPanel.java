@@ -10,8 +10,10 @@ import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
 /**
+ * I.S.E.C.
  *
- * @author kalin
+ * @author DavidSoares [21220084] && JorgeNogueira [21200794]
+ * @param args
  */
 public class InfoPanel extends JPanel implements Constants, Observer {
 
@@ -48,11 +50,11 @@ public class InfoPanel extends JPanel implements Constants, Observer {
         WestPanel.add(DP, BorderLayout.SOUTH);
         WestPanel.setAlignmentY(CENTER_ALIGNMENT);
         WestPanel.setOpaque(false);
-        
+
         JPanel CenterPanel = new JPanel();
-        CenterPanel.setLayout(new BoxLayout(CenterPanel,BoxLayout.Y_AXIS));
+        CenterPanel.setLayout(new BoxLayout(CenterPanel, BoxLayout.Y_AXIS));
         CenterPanel.setOpaque(false);
-        
+
         CenterPanel.add(TP);
         //CenterPanel.add(M31P);
         CenterPanel.add(M3P);
@@ -71,6 +73,6 @@ public class InfoPanel extends JPanel implements Constants, Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        
-        }
+
+    }
 }

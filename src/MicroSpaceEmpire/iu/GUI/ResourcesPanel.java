@@ -14,8 +14,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
+ * I.S.E.C.
  *
- * @author kalin
+ * @author DavidSoares [21220084] && JorgeNogueira [21200794]
+ * @param args
  */
 public class ResourcesPanel extends JPanel implements Constants, Observer {
 
@@ -148,7 +150,7 @@ public class ResourcesPanel extends JPanel implements Constants, Observer {
         MStImgL.setIcon(MStImg);
 
     }
-    
+
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
