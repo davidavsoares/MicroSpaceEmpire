@@ -46,8 +46,7 @@ public class DistantSystemDeckPanel extends JPanel implements Constants, Observe
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         //VALIDACAO PARA VAZIO!
-        g.drawImage(MicroSpaceEmpirePanel.getNearSystemBackImage(), 0, 0, CARD_X, CARD_Y, this);
-    }
+          }
 
     @Override
     public void update(Observable o, Object arg) {

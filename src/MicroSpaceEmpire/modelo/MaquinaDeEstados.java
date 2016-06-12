@@ -10,14 +10,16 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import MicroSpaceEmpire.modelo.Cartas.*;
 import MicroSpaceEmpire.modelo.Tecnologias.Technology_SuperClasse;
+import java.io.Serializable;
 
 /**
  * I.S.E.C.
  *
  * @author DavidSoares [21220084] && JorgeNogueira [21200794]
  */
-public class MaquinaDeEstados {
+public class MaquinaDeEstados implements Serializable {
 
+    private static final long serialVersionUID = 42L;
     private IEstado estado;
 
     private Dados GameInfo;
@@ -157,9 +159,8 @@ public class MaquinaDeEstados {
     public ArrayList<Sistema> getUnalignedSystems() {
         return getGameInfo().getUnalignedSystems();
     }
-    
-    public ArrayList<Technology_SuperClasse> getTechnologyDiscovered()
-    {
+
+    public ArrayList<Technology_SuperClasse> getTechnologyDiscovered() {
         return getGameInfo().getTechnologyDiscovered();
     }
 

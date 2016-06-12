@@ -67,7 +67,7 @@ public class MicroSpaceEmpireFrame extends JFrame implements Observer, Constants
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            ob.Sair();
+//            ob.Sair();
             ob.NovoJogo();
         }
     }
