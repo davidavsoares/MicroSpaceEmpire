@@ -74,22 +74,6 @@ public class Estado_Base implements IEstado, java.io.Serializable {
         return this;
     }
 
-//    @Override
-//    public IEstado DescobrirEConstruir() {
-//        return this;
-//    }
-
-//    public boolean ConstroiForcaMilitar() {
-//        if (getGameInfo().getMetal() >= 1 && getGameInfo().getWealth() >= 1) {
-//            getGameInfo().setMetal(getGameInfo().getMetal() - 1);
-//            getGameInfo().setWealth(getGameInfo().getWealth() - 1);
-//            getGameInfo().setMilitaryStrength(getGameInfo().getMilitaryStrength() + 1);
-//            return false;
-//        } else {
-//            return true;
-//        }
-//    }
-
     //-----------ESTADO[3.2]---------//
     @Override
     public IEstado DescobrirTecnologia(String tech) {
@@ -110,14 +94,10 @@ public class Estado_Base implements IEstado, java.io.Serializable {
     public IEstado Passar() {
         return this;
     }
-//
-//    public void ContarPontos() {
-//
-//    }
 
     @Override
     public IEstado Sair() {
-        return new Fim(GameInfo);
+        return new MenuInicial(new Dados());
     }
 
     @Override

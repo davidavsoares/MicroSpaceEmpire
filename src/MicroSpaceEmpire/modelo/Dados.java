@@ -426,7 +426,7 @@ public class Dados implements java.io.Serializable {
             s += "\n" + "           Bónus de Exploração:   1";
             AdicionaVictoryPoints(1);
             // Obtem victory points senhor da guerra //
-            if (isEmptyUnalignedSystems()) {
+            if (Empire.size() == 11) {
                 s += "\n" + "           Bónus senhora da guerra:   3";
                 AdicionaVictoryPoints(3);
             }

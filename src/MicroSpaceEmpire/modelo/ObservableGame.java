@@ -80,88 +80,78 @@ public class ObservableGame extends Observable {
         setChanged();
         notifyObservers();
     }
+
     public void ExplorarDistantSystem() {
         ME.ExplorarNearSystem();
         setChanged();
         notifyObservers();
     }
-    
-    public void VoltarMenuAnterior()
-    {
+
+    public void VoltarMenuAnterior() {
         ME.VoltarMenuAnterior();
         setChanged();
         notifyObservers();
     }
-    
-    public void Passar()
-    {
+
+    public void Passar() {
         ME.Passar();
         setChanged();
         notifyObservers();
     }
-    
-    public void DecRiquezaIncMetal()
-    {
+
+    public void DecRiquezaIncMetal() {
         ME.DecRiquezaIncMetal();
         setChanged();
         notifyObservers();
     }
-    
-    public void DecMetalIncRiqueza()
-    {
+
+    public void DecMetalIncRiqueza() {
         ME.DecMetalIncRiqueza();
         setChanged();
         notifyObservers();
     }
-    
-    public void ConstruirForcaMilitar()
-    {
+
+    public void ConstruirForcaMilitar() {
         ME.ConstruirForcaMilitar();
         setChanged();
         notifyObservers();
     }
-    
-    public void DescobrirTecnologia()
-    {
+
+    public void DescobrirTecnologia() {
         ME.DescobrirTecnologia();
         setChanged();
         notifyObservers();
     }
-    
-    public void NovoJogo()
-    {
+
+    public void NovoJogo() {
         ME.NovoJogo();
         setChanged();
         notifyObservers();
     }
-    public void DescobrirTecnologia(String Tech)
-    {
+
+    public void DescobrirTecnologia(String Tech) {
         ME.DescobrirTecnologia(Tech);
         setChanged();
         notifyObservers();
     }
-    
-    public void Batalha(int opcao)
-    {
+
+    public void Batalha(int opcao) {
         ME.Batalha(opcao + 1);
         setChanged();
         notifyObservers();
     }
-    
-    public void ConquistarSistema()
-    {
+
+    public void ConquistarSistema() {
         ME.ConquistarSistema();
         setChanged();
         notifyObservers();
     }
-    
-    public ArrayList<Technology_SuperClasse> getTechnologyDiscovered()
-    {
+
+    public ArrayList<Technology_SuperClasse> getTechnologyDiscovered() {
         return ME.getTechnologyDiscovered();
     }
-    
-    public IEstado getEstado()
-    {
+
+    public IEstado getEstado() {
         return ME.getEstado();
     }
 

@@ -128,6 +128,7 @@ public class MaquinaDeEstados implements Serializable {
     }
 
     public void Sair() {
+        setGameInfo(new Dados());
         setEstado(getEstado().Sair());
     }
 
@@ -150,9 +151,6 @@ public class MaquinaDeEstados implements Serializable {
     }
 
     public ArrayList<Sistema> getEmpire() {
-
-//        ArrayList<System> ola = new ArrayList<>();
-//                ola = getGameInfo().getEmpire();
         return getGameInfo().getEmpire();
     }
 

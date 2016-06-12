@@ -52,7 +52,7 @@ public class InterfaceUtilizador {
                 iuEstado_3();
             }
         }
-        CalculaPontuacao();
+        //CalculaPontuacao();
 
     }
 

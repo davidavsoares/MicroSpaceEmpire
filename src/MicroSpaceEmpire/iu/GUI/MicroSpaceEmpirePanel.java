@@ -94,6 +94,7 @@ public class MicroSpaceEmpirePanel extends JPanel implements Observer, Constants
         setupLayout();
 
         update(ob, null);
+        validate();
     }
 
     private void setupComponents() {

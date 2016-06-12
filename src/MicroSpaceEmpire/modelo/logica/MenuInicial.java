@@ -25,4 +25,11 @@ public class MenuInicial extends Estado_Base {
         return new Estado_1(getGameInfo());
     }
 
+    @Override
+    public IEstado Sair() {
+       return new Fim(getGameInfo());
+    }
+    
+    
+
 }
