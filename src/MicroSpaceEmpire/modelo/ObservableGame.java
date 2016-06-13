@@ -44,6 +44,14 @@ public class ObservableGame extends Observable {
     public ArrayList<Event> getEventDeck() {
         return ME.getEventDeck();
     }
+    
+    public ArrayList<Event> getEventDiscard() {
+        return ME.getEventDiscard();
+    }
+    
+    public int getAno() {
+        return ME.getAno();
+    }
 
     public Event getCurrentEvent() {
         return ME.getCurrentEvent();

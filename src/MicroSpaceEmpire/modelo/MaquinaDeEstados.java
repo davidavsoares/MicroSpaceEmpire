@@ -165,6 +165,15 @@ public class MaquinaDeEstados implements Serializable {
     public ArrayList<Event> getEventDeck() {
         return GameInfo.getEventDeck();
     }
+    
+    public int getAno()
+    {
+        return GameInfo.getANO();
+    }
+    
+    public ArrayList<Event> getEventDiscard() {
+        return GameInfo.getEventDiscard();
+    }
 
     public Event getCurrentEvent() {
         return GameInfo.getCurrentEvent();
