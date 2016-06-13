@@ -59,6 +59,7 @@ public class NearSystemDeckPanel extends JPanel implements Constants, Observer {
     @Override
     public void update(Observable o, Object arg) {
         TirarCarta.setEnabled(ob.getEstado() instanceof Estado_1);
+        TirarCarta.setVisible(!ob.getNearSystemsDeck().isEmpty());
     }
 
     class TirarCarta_NearSystem implements ActionListener {

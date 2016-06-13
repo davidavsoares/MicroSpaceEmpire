@@ -41,14 +41,22 @@ public class ObservableGame extends Observable {
         return ME.getUnalignedSystems();
     }
 
+    public ArrayList<Sistema> getNearSystemsDeck() {
+        return ME.getNearSystemsDeck();
+    }
+
+    public ArrayList<Sistema> getDistantSystemsDeck() {
+        return ME.getDistantSystemsDeck();
+    }
+
     public ArrayList<Event> getEventDeck() {
         return ME.getEventDeck();
     }
-    
+
     public ArrayList<Event> getEventDiscard() {
         return ME.getEventDiscard();
     }
-    
+
     public int getAno() {
         return ME.getAno();
     }
@@ -163,4 +171,18 @@ public class ObservableGame extends Observable {
         return ME.getEstado();
     }
 
+    @Override
+    public String toString()
+    {
+        return ME.toString();
+    }
+    
+       public String getVictoryPoints()
+    {
+        return ME.getVictoryPoints();
+    }
+       public void setFim()
+       {
+           ME.setFim();
+       }
 }

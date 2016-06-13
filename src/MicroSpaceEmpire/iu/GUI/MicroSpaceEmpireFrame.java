@@ -67,13 +67,14 @@ public class MicroSpaceEmpireFrame extends JFrame implements Observer, Constants
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            ob.setMaquinaDeEstados(new MaquinaDeEstados());
+            ob.Sair();
+            //ob.setFim();
+           // ob.setMaquinaDeEstados(new MaquinaDeEstados());
         }
     }
 
     @Override
     public void update(Observable o, Object arg) {
-        repaint();
     }
 
     class SaveObjMenuBarListener implements ActionListener {
@@ -124,7 +125,7 @@ public class MicroSpaceEmpireFrame extends JFrame implements Observer, Constants
         @Override
         public void actionPerformed(ActionEvent e) {
             JOptionPane.showMessageDialog(MicroSpaceEmpireFrame.this,
-                    "Deve carregar numa carta ... Falta implementação",
+                    "Deve carregar numa carta para atacar planeta ou num botao de opcao",
                     "Help Contents", JOptionPane.PLAIN_MESSAGE);
         }
     }

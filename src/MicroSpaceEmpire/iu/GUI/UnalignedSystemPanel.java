@@ -2,7 +2,6 @@ package MicroSpaceEmpire.iu.GUI;
 
 import static MicroSpaceEmpire.iu.GUI.Constants.CARD_X;
 import static MicroSpaceEmpire.iu.GUI.Constants.CARD_Y;
-import MicroSpaceEmpire.modelo.Cartas.Carta;
 import MicroSpaceEmpire.modelo.Cartas.Sistema;
 import MicroSpaceEmpire.modelo.Cartas.Systems.DistantSystems.*;
 import MicroSpaceEmpire.modelo.Cartas.Systems.NearSystems.*;
@@ -55,7 +54,7 @@ public class UnalignedSystemPanel extends JPanel implements Constants, Observer 
         this.setLayout(new GridLayout(1, 1));
         setOpaque(false);
         //setMaximumSize(new Dimension(CARD_X, CARD_Y));
-        setPreferredSize(new Dimension(CARD_X * 2, CARD_Y * 2));
+        setPreferredSize(new Dimension(CARD_X, CARD_Y));
         setMinimumSize(new Dimension(CARD_X, CARD_Y));
 
         BoxEsq = new JPanel();
@@ -333,10 +332,10 @@ public class UnalignedSystemPanel extends JPanel implements Constants, Observer 
     @Override
     public void update(Observable o, Object arg) {
         setEnabled(ob.getEstado() instanceof Estado_11);
-        ArrayList<Sistema> USystems;
-        USystems = ob.getUnalignedSystems();
 
-        for (Carta sistema : USystems) {
+        ArrayList<Sistema> USystems = ob.getUnalignedSystems();
+
+        for (Sistema sistema : USystems) {
             if (sistema instanceof HomeWorld) {
                 HW.setVisible(true);
                 HW.setEnabled(true);
@@ -372,7 +371,7 @@ public class UnalignedSystemPanel extends JPanel implements Constants, Observer 
                 DSP.setEnabled(true);
             }
         }
-
+        validate();
     }
 
 }

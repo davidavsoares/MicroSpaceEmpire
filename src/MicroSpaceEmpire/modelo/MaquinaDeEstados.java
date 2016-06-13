@@ -10,6 +10,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import MicroSpaceEmpire.modelo.Cartas.*;
 import MicroSpaceEmpire.modelo.Tecnologias.Technology_SuperClasse;
+import MicroSpaceEmpire.modelo.logica.Fim;
 import java.io.Serializable;
 
 /**
@@ -53,6 +54,7 @@ public class MaquinaDeEstados implements Serializable {
 // -------------------------- MENU INICIAL ---------------------------------- //
     public void NovoJogo() {
         setEstado(estado.NovoJogo());
+        GameInfo.PreparaJogo();
     }
 
     public IEstado CarregarJogo() {
@@ -158,6 +160,14 @@ public class MaquinaDeEstados implements Serializable {
         return getGameInfo().getUnalignedSystems();
     }
 
+    public ArrayList<Sistema> getNearSystemsDeck() {
+        return GameInfo.getNearSystemsDeck();
+    }
+
+    public ArrayList<Sistema> getDistantSystemsDeck() {
+        return GameInfo.getDistantSystemsDeck();
+    }
+
     public ArrayList<Technology_SuperClasse> getTechnologyDiscovered() {
         return getGameInfo().getTechnologyDiscovered();
     }
@@ -165,12 +175,11 @@ public class MaquinaDeEstados implements Serializable {
     public ArrayList<Event> getEventDeck() {
         return GameInfo.getEventDeck();
     }
-    
-    public int getAno()
-    {
+
+    public int getAno() {
         return GameInfo.getANO();
     }
-    
+
     public ArrayList<Event> getEventDiscard() {
         return GameInfo.getEventDiscard();
     }
@@ -201,5 +210,15 @@ public class MaquinaDeEstados implements Serializable {
 
     public int getMilitaryStrength() {
         return GameInfo.getMilitaryStrength();
+    }
+    
+    public String getVictoryPoints()
+    {
+        return GameInfo.CalculaVictoryPoints();
+    }
+    
+    public void setFim()
+    {
+        estado = new Fim(GameInfo);
     }
 }

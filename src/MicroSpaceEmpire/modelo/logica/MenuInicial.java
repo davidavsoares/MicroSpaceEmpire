@@ -21,7 +21,7 @@ public class MenuInicial extends Estado_Base {
 
     @Override
     public IEstado NovoJogo() {         // chamar construtor no novo jogo
-        getGameInfo().PreparaJogo();
+        //getGameInfo().PreparaJogo();
         return new Estado_1(getGameInfo());
     }
 

@@ -51,6 +51,7 @@ public class DistantSystemDeckPanel extends JPanel implements Constants, Observe
     @Override
     public void update(Observable o, Object arg) {
         TirarCarta.setEnabled(ob.getEstado() instanceof Estado_1);
+        TirarCarta.setVisible(!ob.getDistantSystemsDeck().isEmpty());
     }
 
     class TirarCarta_DistantSystem implements ActionListener {

@@ -60,7 +60,7 @@ public class MenuInicialPanel extends JPanel implements Constants, Observer {
         SairB.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ev) {
-                ob.Sair();
+                System.exit(0);
             }
         });
 

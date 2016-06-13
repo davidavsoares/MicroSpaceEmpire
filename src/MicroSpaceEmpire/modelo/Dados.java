@@ -61,9 +61,9 @@ public class Dados implements java.io.Serializable {
         TechnologyDiscovered = new ArrayList<>();       //Cria um array com as tecnologias descobertas
         TechnologiesAvaliable = new ArrayList<>();      //Cria  um array com as tecnologias
 
-        //UnalignedSystems.add(new Proxima(this));//PARA TESTES!!!
+        
 
-        //PreparaJogo();                                  //Chama a funcao que prepara inicialmente o jogo       
+       // PreparaJogo();                                  //Chama a funcao que prepara inicialmente o jogo       
     }
 
     public void PreparaJogo() {
@@ -174,6 +174,10 @@ public class Dados implements java.io.Serializable {
 
     public ArrayList<Sistema> getEmpire() {      //Funcao que permite adicionar um sistema ao império
         return Empire;
+    }
+
+    public int getMaxMilitary() {
+        return MaxMilitary;
     }
 
 //[Near Sistems]--------------------------------------------------------------// 
@@ -432,7 +436,7 @@ public class Dados implements java.io.Serializable {
             }
         }
         // Obtem victory points bonus cientifico //
-        if (isEmptyTechnologies()) {
+        if (!isEmptyTechnologies()) {
             s += "\n" + "           Bónus cientifico:  1";
             AdicionaVictoryPoints(1);
         }

@@ -1,7 +1,7 @@
 package MicroSpaceEmpire.iu.GUI;
 
 import MicroSpaceEmpire.modelo.ObservableGame;
-import MicroSpaceEmpire.modelo.logica.Estado_3;
+import MicroSpaceEmpire.modelo.logica.*;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.GridLayout;
@@ -93,7 +93,8 @@ public class Menu3Panel extends JPanel implements Constants, Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        setVisible(ob.getEstado() instanceof Estado_3);
+        setVisible(ob.getEstado() instanceof Estado_3 && !(ob.getEstado() instanceof Estado_32)&& !(ob.getEstado() instanceof Estado_31));
+        
     }
 
     @Override

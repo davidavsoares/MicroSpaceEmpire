@@ -13,7 +13,7 @@ public interface Constants {
 
     //Micro Space Empire
     static final int CARD_X = (int) (DIM_X_FRAME * 0.12);       //para 1366 * 768 permite ter 8 cartas na horizontal
-    static final int CARD_Y = (int) (DIM_Y_FRAME * 0.3);
+    static final int CARD_Y = (int) (DIM_Y_FRAME * 0.28);
 
     static final int RESOURCES_Y = (int) (CARD_Y * 0.25);
     static final int RESOURCES_X = RESOURCES_Y;

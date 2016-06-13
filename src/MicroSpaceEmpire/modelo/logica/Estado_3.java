@@ -21,9 +21,6 @@ public class Estado_3 extends Estado_Base {
         this.Repeticao = Repeticao;
     }
 
-//    public boolean isRepeticao() {
-//        return Repeticao;
-//    }
     @Override
     public IEstado DescobrirTecnologia() {
         return new Estado_32(getGameInfo(), Repeticao);
@@ -61,7 +58,7 @@ public class Estado_3 extends Estado_Base {
     }
 
     public boolean ConstroiForcaMilitar() {
-        if (getGameInfo().getMetalStorage() >= 1 && getGameInfo().getWealthStorage() >= 1) {
+        if (getGameInfo().getMetalStorage() >= 1 && getGameInfo().getWealthStorage() >= 1 && getGameInfo().getMilitaryStrength() != getGameInfo().getMaxMilitary()) {
             getGameInfo().setMetalStorage(getGameInfo().getMetalStorage() - 1);
             getGameInfo().setWealthStorage(getGameInfo().getWealthStorage() - 1);
             getGameInfo().setMilitaryStrength(getGameInfo().getMilitaryStrength() + 1);
